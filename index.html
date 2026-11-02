@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>A King's Experience Grooming Parlor | Barbershop in Reading, PA</title>
+<meta name="description" content="A King's Experience Grooming Parlor, a barbershop at 5466 Perkiomen Ave, Reading PA. Fades, tapers, beard work and kids cuts. Book your barber online. Open Monday to Saturday, 8am to 7pm.">
+<meta property="og:title" content="A King's Experience Grooming Parlor">
+<meta property="og:description" content="Barbershop in Reading, PA. Treated like royalty, every chair, every cut.">
+<meta property="og:image" content="img/shop-row.webp">
+<meta name="theme-color" content="#0b0b0c">
+<link rel="icon" href="img/logo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;0,6..96,900;1,6..96,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BarberShop","name":"A King's Experience Grooming Parlor","image":"https://kings-grooming.vercel.app/img/shop-row.webp","telephone":"+1-484-360-9967","email":"info@kingsgroomingparlor.com","address":{"@type":"PostalAddress","streetAddress":"5466 Perkiomen Ave, Suite D21","addressLocality":"Reading","addressRegion":"PA","postalCode":"19606","addressCountry":"US"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"08:00","closes":"19:00"}],"url":"https://kings-grooming.vercel.app/"}
+</script>
+<style>
+:root{
+  --ink:#0b0b0c; --ink2:#141416; --ink3:#1d1d20; --line:rgba(255,255,255,.09);
+  --chalk:#f3f1ec; --mute:#a7a59f; --dim:#6e6c67;
+  --royal:#5b2bd6; --royal2:#8b6cf0;
+  --chrome:linear-gradient(100deg,#c9cbd0 0%,#ffffff 22%,#d3d5da 38%,#ffffff 52%,#c4c6cb 70%,#f4f5f7 86%,#cfd1d6 100%);
+  --serif:'Bodoni Moda',Didot,'Times New Roman',serif; --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --pad:clamp(20px,5vw,72px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--ink);color:var(--chalk);font:400 16px/1.6 var(--sans);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--pad)}
+.chrome{background:var(--chrome);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 9s linear infinite}
+@keyframes sheen{to{background-position:-220% 0}}
+.kicker{font:600 12px/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:var(--mute)}
+.kicker b{color:var(--royal2);font-weight:600}
+h2{font:700 clamp(40px,6.4vw,88px)/.98 var(--serif);letter-spacing:-.02em}
+h2 em{font-style:italic;font-weight:500}
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 14px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:18px 26px;border-radius:999px;border:1px solid var(--line);color:var(--chalk);background:transparent;cursor:pointer;transition:transform .25s,background .25s,border-color .25s,color .25s}
+.btn:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.35)}
+.btn.solid{background:var(--chalk);color:var(--ink);border-color:var(--chalk)}
+.btn.solid:hover{background:#fff}
+.btn svg{width:16px;height:16px}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- splash ---------- */
+#splash{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 42%,#1c1c21 0%,#0b0b0c 62%);transition:opacity .8s ease,visibility 0s linear .8s}
+#splash.gone{opacity:0;visibility:hidden}
+#splash .board{position:absolute;inset:0;background-image:linear-gradient(45deg,rgba(255,255,255,.025) 25%,transparent 25%,transparent 75%,rgba(255,255,255,.025) 75%),linear-gradient(45deg,rgba(255,255,255,.025) 25%,transparent 25%,transparent 75%,rgba(255,255,255,.025) 75%);background-size:120px 120px;background-position:0 0,60px 60px;-webkit-mask:radial-gradient(ellipse at 50% 45%,#000 0%,transparent 70%);mask:radial-gradient(ellipse at 50% 45%,#000 0%,transparent 70%)}
+#splash .inner{position:relative;text-align:center;padding:24px}
+#splash .badge{width:min(300px,62vw);margin:0 auto;position:relative;filter:drop-shadow(0 30px 60px rgba(0,0,0,.7));animation:rise 1.4s cubic-bezier(.2,.7,.2,1) both}
+#splash .badge::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);background-size:300% 100%;-webkit-mask:url(img/logo.webp) center/contain no-repeat;mask:url(img/logo.webp) center/contain no-repeat;animation:glint 4.5s ease-in-out 1.2s infinite}
+@keyframes glint{0%{background-position:150% 0}45%,100%{background-position:-60% 0}}
+@keyframes rise{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
+#splash .tag{margin:34px 0 30px;font:500 italic clamp(22px,3.4vw,30px)/1.25 var(--serif);color:var(--chalk);animation:rise 1.2s .35s both}
+#splash .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;animation:rise 1.2s .55s both}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent}
+nav.solid{background:rgba(11,11,12,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
+nav .mark{display:flex;align-items:center;gap:12px;text-decoration:none}
+nav .mark img{width:38px}
+nav .mark span{font:700 17px/1 var(--serif);letter-spacing:.02em}
+nav .links{display:flex;gap:30px;align-items:center}
+nav .links a{font:500 13px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--mute);transition:color .2s}
+nav .links a:hover{color:var(--chalk)}
+nav .links .btn{padding:13px 20px;color:var(--ink)}
+#burger{display:none;background:none;border:0;color:var(--chalk);width:44px;height:44px;cursor:pointer}
+@media (max-width:900px){
+  nav .links{position:fixed;inset:74px 0 auto 0;flex-direction:column;gap:0;background:rgba(11,11,12,.97);border-bottom:1px solid var(--line);padding:8px var(--pad) 24px;transform:translateY(-12px);opacity:0;pointer-events:none;transition:.3s}
+  nav .links a{padding:16px 0;width:100%;border-bottom:1px solid var(--line);font-size:14px}
+  nav .links .btn{margin-top:18px;justify-content:center;border-bottom:0}
+  nav.open .links{opacity:1;transform:none;pointer-events:auto}
+  #burger{display:block}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
+.hero .bg{position:absolute;inset:-6% 0 0;background:url(img/shop-row.webp) center 40%/cover;transform:scale(1.08);will-change:transform}
+.hero .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,12,.55) 0%,rgba(11,11,12,.25) 35%,rgba(11,11,12,.88) 78%,var(--ink) 100%)}
+.hero .wrap{position:relative;width:100%;padding-bottom:clamp(48px,9vh,110px)}
+.hero h1{font:900 clamp(56px,11.5vw,168px)/.86 var(--serif);letter-spacing:-.035em;margin:22px 0 26px}
+.hero h1 em{font-weight:500;font-style:italic;display:block}
+.hero p{max-width:520px;color:#d8d6d0;font-size:clamp(16px,1.6vw,19px)}
+.hero .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.status{display:inline-flex;align-items:center;gap:10px;font:600 12px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(11,11,12,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.status i{width:8px;height:8px;border-radius:50%;background:#3ddc84;box-shadow:0 0 0 0 rgba(61,220,132,.6);animation:ping 2s infinite}
+.status.closed i{background:#e5484d;animation:none}
+@keyframes ping{70%{box-shadow:0 0 0 10px rgba(61,220,132,0)}100%{box-shadow:0 0 0 0 rgba(61,220,132,0)}}
+
+/* ---------- ticker ---------- */
+.ticker{border-block:1px solid var(--line);overflow:hidden;background:var(--ink2)}
+.ticker .t{display:flex;width:max-content;animation:tick 38s linear infinite}
+.ticker span{font:500 italic clamp(20px,2.4vw,30px)/1 var(--serif);padding:22px 28px;white-space:nowrap;color:var(--mute)}
+.ticker span b{font-style:normal;font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--royal2);margin-right:28px;vertical-align:middle}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+section{padding:clamp(88px,13vw,170px) 0;position:relative}
+.head{display:grid;grid-template-columns:1fr;gap:22px;margin-bottom:clamp(44px,6vw,80px)}
+.head p{color:var(--mute);max-width:560px;font-size:17px}
+@media (min-width:900px){.head{grid-template-columns:1.2fr 1fr;align-items:end}}
+
+/* ---------- creed ---------- */
+.creed{background:var(--ink)}
+.creed .big{font:500 clamp(30px,4.6vw,64px)/1.12 var(--serif);letter-spacing:-.015em;max-width:1050px}
+.creed .big em{font-style:italic}
+.creed .big .w{opacity:.16;transition:opacity .5s}
+.creed .big .w.on{opacity:1}
+.creed .sig{display:flex;gap:40px;flex-wrap:wrap;margin-top:60px;padding-top:34px;border-top:1px solid var(--line)}
+.creed .sig div{min-width:180px}
+.creed .sig strong{display:block;font:700 clamp(34px,4vw,52px)/1 var(--serif)}
+.creed .sig span{color:var(--mute);font-size:14px}
+
+/* ---------- barbers ---------- */
+.court{background:var(--ink2)}
+.court-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media (min-width:900px){.court-grid{grid-template-columns:repeat(3,1fr);gap:18px}}
+@media (max-width:520px){.court-grid{grid-template-columns:1fr}}
+.card{position:relative;border-radius:22px;overflow:hidden;background:var(--ink3);aspect-ratio:3/4;isolation:isolate;cursor:pointer;outline:none}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;transition:transform 1.1s cubic-bezier(.2,.7,.2,1),filter .6s;filter:grayscale(.35) contrast(1.04)}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(11,11,12,.92) 100%);z-index:1}
+.card:hover img,.card:focus-visible img{transform:scale(1.06);filter:none}
+.card .meta{position:absolute;left:20px;right:20px;bottom:20px;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.card h3{font:700 32px/1 var(--serif)}
+.card .role{font:600 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--mute);margin-top:9px}
+.card .book{flex:none;display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--chalk);color:var(--ink);text-decoration:none;transition:transform .3s,background .3s}
+.card .book:hover{transform:rotate(-45deg) scale(1.06);background:#fff}
+.card .book svg{width:20px;height:20px}
+.card .num{position:absolute;top:18px;left:20px;z-index:2;font:500 italic 15px/1 var(--serif);color:rgba(255,255,255,.7)}
+
+/* ---------- lookbook ---------- */
+.lookbook{background:#000;overflow:hidden}
+.lb-rail{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 var(--pad) 22px;scrollbar-width:none;cursor:grab}
+.lb-rail::-webkit-scrollbar{display:none}
+.lb-rail.drag{cursor:grabbing;scroll-snap-type:none}
+.cut{flex:0 0 clamp(240px,26vw,340px);scroll-snap-align:start;border-radius:20px;overflow:hidden;background:radial-gradient(ellipse at 50% 35%,#1b1b1f 0%,#000 70%);border:1px solid rgba(255,255,255,.06);position:relative}
+.cut img{width:100%;aspect-ratio:1;object-fit:contain;transition:transform .8s cubic-bezier(.2,.7,.2,1);pointer-events:none;user-select:none}
+.cut:hover img{transform:scale(1.05)}
+.cut figcaption{position:absolute;left:18px;bottom:16px;font:600 11px/1 var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--mute)}
+.lb-ctrl{display:flex;gap:10px}
+.lb-ctrl button{width:54px;height:54px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--chalk);cursor:pointer;transition:background .2s}
+.lb-ctrl button:hover{background:rgba(255,255,255,.08)}
+.lb-ctrl svg{width:18px;height:18px}
+
+/* ---------- parlor ---------- */
+.parlor{background:var(--ink)}
+.mosaic{display:grid;gap:14px;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(150px,19vw,280px);grid-auto-flow:dense}
+.mosaic figure{border-radius:18px;overflow:hidden;position:relative}
+.mosaic img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.mosaic figure:hover img{transform:scale(1.05)}
+.m1{grid-column:span 2;grid-row:span 2}.m2{grid-column:span 2}.m3,.m4{grid-column:span 1}.m5,.m6{grid-column:span 2}
+@media (max-width:760px){.mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px}.m1{grid-column:span 2;grid-row:span 2}.m2,.m5,.m6{grid-column:span 2;grid-row:span 1}.m3,.m4{grid-column:span 1;grid-row:span 2}}
+.perks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-top:56px}
+.perks div{background:var(--ink);padding:28px 26px}
+.perks b{display:block;font:700 22px/1.2 var(--serif);margin-bottom:6px}
+.perks span{color:var(--mute);font-size:15px}
+
+/* ---------- etiquette ---------- */
+.etiquette{background:var(--ink2)}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.rule{border:1px solid var(--line);border-radius:22px;padding:34px 30px;background:linear-gradient(180deg,rgba(255,255,255,.025),transparent)}
+.rule .n{font:900 64px/1 var(--serif)}
+.rule h3{font:700 26px/1.15 var(--serif);margin:18px 0 10px}
+.rule p{color:var(--mute)}
+
+/* ---------- merch ---------- */
+.merch{background:var(--ink);text-align:center}
+.merch h2{margin:18px 0 18px}
+.merch p{color:var(--mute);max-width:560px;margin:0 auto 34px}
+
+/* ---------- visit ---------- */
+.visit{background:var(--ink2)}
+.visit-grid{display:grid;gap:18px;grid-template-columns:1fr}
+@media (min-width:900px){.visit-grid{grid-template-columns:1fr 1.15fr}}
+.info{border:1px solid var(--line);border-radius:22px;padding:clamp(28px,4vw,46px);display:flex;flex-direction:column;gap:30px}
+.info h3{font:600 11px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
+.info .v{font:500 clamp(22px,2.4vw,28px)/1.3 var(--serif)}
+.info a{text-decoration:none;border-bottom:1px solid var(--line);transition:border-color .2s}
+.info a:hover{border-color:var(--chalk)}
+.hours{display:grid;grid-template-columns:auto 1fr;gap:6px 22px;font-size:16px}
+.hours .d{color:var(--mute)}
+.hours .today{color:var(--chalk);font-weight:600}
+.map{border-radius:22px;overflow:hidden;border:1px solid var(--line);min-height:420px;background:var(--ink3)}
+.map iframe{width:100%;height:100%;min-height:420px;border:0;filter:grayscale(1) invert(.92) contrast(.9)}
+
+footer{padding:60px 0 calc(40px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:var(--ink)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center;color:var(--dim);font-size:14px}
+footer img{width:54px}
+footer .l{display:flex;gap:16px;align-items:center}
+footer a{color:var(--mute);text-decoration:none}
+
+/* ---------- booking sheet ---------- */
+#sheet{position:fixed;inset:0;z-index:80;display:grid;place-items:end center;visibility:hidden;pointer-events:none}
+#sheet.open{visibility:visible;pointer-events:auto}
+#sheet .scrim{position:absolute;inset:0;background:rgba(0,0,0,.6);opacity:0;transition:opacity .35s}
+#sheet.open .scrim{opacity:1}
+#sheet .panel{position:relative;width:min(560px,100%);max-height:88svh;overflow:auto;background:var(--ink2);border:1px solid var(--line);border-radius:26px 26px 0 0;padding:26px var(--pad) calc(28px + env(safe-area-inset-bottom));transform:translateY(100%);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+@media (min-width:700px){#sheet{place-items:center}#sheet .panel{border-radius:26px;padding:34px}}
+#sheet.open .panel{transform:none}
+#sheet .grab{width:44px;height:5px;border-radius:9px;background:rgba(255,255,255,.18);margin:0 auto 20px}
+#sheet h3{font:700 34px/1.05 var(--serif);margin:10px 0 6px}
+#sheet .sub{color:var(--mute);margin-bottom:22px}
+.pick{display:flex;align-items:center;gap:16px;padding:12px;border:1px solid var(--line);border-radius:18px;text-decoration:none;margin-bottom:10px;transition:background .2s,border-color .2s}
+.pick:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.22)}
+.pick img{width:58px;height:58px;border-radius:14px;object-fit:cover;object-position:center 20%}
+.pick b{font:700 22px/1 var(--serif);display:block}
+.pick span{font-size:13px;color:var(--mute)}
+.pick svg{margin-left:auto;width:18px;height:18px;color:var(--mute)}
+#sheet .x{position:absolute;top:16px;right:16px;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--chalk);font-size:20px;cursor:pointer}
+.note{font-size:13px;color:var(--dim);margin-top:14px;text-align:center}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div id="splash" role="dialog" aria-label="Welcome">
+  <div class="board"></div>
+  <div class="inner">
+    <img class="badge" src="img/logo.webp" alt="Kings Grooming Parlor">
+    <p class="tag">Welcome to the Parlor, Your Majesty.</p>
+    <div class="row">
+      <button class="btn solid" data-book>Book a barber</button>
+      <button class="btn" id="enter">Enter</button>
+    </div>
+  </div>
+</div>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="mark" href="#top"><img src="img/logo.webp" alt=""><span>King's Experience</span></a>
+    <div class="links">
+      <a href="#barbers">Barbers</a>
+      <a href="#lookbook">Lookbook</a>
+      <a href="#parlor">The Parlor</a>
+      <a href="#visit">Visit</a>
+      <button class="btn solid" data-book>Book now</button>
+    </div>
+    <button id="burger" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 8h16M4 16h16"/></svg></button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="bg" id="heroBg"></div>
+  <div class="shade"></div>
+  <div class="wrap">
+    <span class="status" id="status"><i></i><span>Open today</span></span>
+    <h1><span class="chrome">Treated like</span><em>royalty.</em></h1>
+    <p>A King's Experience Grooming Parlor. Precision cuts, clean fades and beard work on Perkiomen Avenue in Reading, from barbers who take the chair as seriously as you do.</p>
+    <div class="row">
+      <button class="btn solid" data-book>Book your barber <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <a class="btn" href="#visit">Hours &amp; directions</a>
+    </div>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true"><div class="t" id="tick"></div></div>
+
+<section class="creed">
+  <div class="wrap">
+    <p class="kicker reveal"><b>I</b> &nbsp; The promise</p>
+    <p class="big" id="creed" style="margin-top:28px">As the King or Queen of your own life, you deserve to be treated with respect. We can't control how other places treat you. <em>In our chair, it's nothing short of royalty.</em></p>
+    <div class="sig reveal">
+      <div><strong class="chrome">6</strong><span>Barbers behind the chair</span></div>
+      <div><strong class="chrome">6</strong><span>Days a week, 8am to 7pm</span></div>
+      <div><strong class="chrome">1</strong><span>Standard: detail and precision</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="court" id="barbers">
+  <div class="wrap">
+    <div class="head">
+      <div><p class="kicker reveal"><b>II</b> &nbsp; Behind the chair</p><h2 class="reveal" style="margin-top:18px">Choose your <em>barber.</em></h2></div>
+      <p class="reveal">Every barber books through their own calendar. Pick who you want, tap the arrow, and lock in your time.</p>
+    </div>
+    <div class="court-grid" id="court"></div>
+  </div>
+</section>
+
+<section class="lookbook" id="lookbook">
+  <div class="wrap">
+    <div class="head">
+      <div><p class="kicker reveal"><b>III</b> &nbsp; The lookbook</p><h2 class="reveal" style="margin-top:18px">Work from <em>the chair.</em></h2></div>
+      <div class="reveal" style="display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap"><p>Fades, tapers, line-ups, beards and kids cuts, all done in the Parlor. Drag to browse.</p>
+        <div class="lb-ctrl"><button id="lbPrev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><button id="lbNext" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
+    </div>
+  </div>
+  <div class="lb-rail" id="rail"></div>
+</section>
+
+<section class="parlor" id="parlor">
+  <div class="wrap">
+    <div class="head">
+      <div><p class="kicker reveal"><b>IV</b> &nbsp; The Parlor</p><h2 class="reveal" style="margin-top:18px">From the ambiance <em>to the service.</em></h2></div>
+      <p class="reveal">"When you know better, you do better." Every station has its own TV, real luminescent lighting and room to breathe, so you can relax and enjoy your time in the chair.</p>
+    </div>
+    <div class="mosaic">
+      <figure class="m1 reveal"><img src="img/shop-row.webp" alt="Row of barber chairs inside the Parlor" loading="lazy"></figure>
+      <figure class="m2 reveal"><img src="img/shop-chairs.webp" alt="Barber chairs and stations" loading="lazy"></figure>
+      <figure class="m3 reveal"><img src="img/shop-work.webp" alt="A barber at work in the Parlor" loading="lazy"></figure>
+      <figure class="m4 reveal"><img src="img/shop-station.webp" alt="A barber station with mirror and TV" loading="lazy"></figure>
+      <figure class="m5 reveal"><img src="img/shop-stations.webp" alt="Stations with tool chests" loading="lazy"></figure>
+      <figure class="m6 reveal"><img src="img/shop-chair.webp" alt="A barber chair at its station" loading="lazy"></figure>
+    </div>
+    <div style="margin-top:90px" class="head">
+      <div><p class="kicker reveal"><b>V</b> &nbsp; Careers</p><h2 class="reveal" style="margin-top:18px">Come work <em>with us.</em></h2></div>
+      <p class="reveal">Barbers and stylists who care about the craft: there's a chair for you. <a href="mailto:info@kingsgroomingparlor.com?subject=Joining%20the%20team" style="color:var(--chalk)">Apply by email</a>.</p>
+    </div>
+    <div class="perks reveal">
+      <div><b>Flexible schedules</b><span>Build the book that fits your life.</span></div>
+      <div><b>Monthly &amp; yearly incentives</b><span>Good work gets rewarded.</span></div>
+      <div><b>A mini-fridge for every two stations</b><span>Small things, every day.</span></div>
+      <div><b>TV &amp; Bluetooth headset per station</b><span>Your station, your vibe.</span></div>
+      <div><b>In-house marketing</b><span>We put your work in front of people.</span></div>
+      <div><b>Luminescent lighting</b><span>Ring lights unnecessary.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="etiquette">
+  <div class="wrap">
+    <div class="head">
+      <div><p class="kicker reveal"><b>VI</b> &nbsp; Parlor etiquette</p><h2 class="reveal" style="margin-top:18px">Not rules. <em>Just respect.</em></h2></div>
+      <p class="reveal">A couple of things that keep everyone's visit smooth, yours included.</p>
+    </div>
+    <div class="rules">
+      <div class="rule reveal"><div class="n chrome">01</div><h3>Cancelling? Just let us know.</h3><p>Stuff happens. Cancel more than 24 hours ahead with a call or a message. No-shows, or cancelling less than 3 hours before, may carry a fee at your barber's discretion.</p></div>
+      <div class="rule reveal"><div class="n chrome">02</div><h3>Running late? Tell us.</h3><p>Arrive on time so the next King or Queen does too. More than 15 minutes late and we may need to reschedule. A quick heads-up goes a long way.</p></div>
+      <div class="rule reveal"><div class="n chrome">03</div><h3>Gift cards available.</h3><p>Treat somebody to the experience. Ask at the front desk or give us a call to pick one up.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="merch">
+  <div class="wrap">
+    <p class="kicker reveal"><b>VII</b> &nbsp; KGP merch</p>
+    <h2 class="reveal">Wear the <em>crown.</em></h2>
+    <p class="reveal">Tees, hats and decals with the KGP chess-piece crest.</p>
+    <a class="btn reveal" href="https://www.kingsgroomingparlor.com/category/all-products" target="_blank" rel="noopener">Shop the store</a>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="head">
+      <div><p class="kicker reveal"><b>VIII</b> &nbsp; Visit the Parlor</p><h2 class="reveal" style="margin-top:18px">Your throne <em>is ready.</em></h2></div>
+    </div>
+    <div class="visit-grid">
+      <div class="info reveal">
+        <div><h3>Address</h3><p class="v"><a href="https://maps.google.com/?q=5466+Perkiomen+Ave+Suite+D21+Reading+PA+19606" target="_blank" rel="noopener">5466 Perkiomen Ave, Suite D21<br>Reading, PA 19606</a></p></div>
+        <div><h3>Call or email</h3><p class="v"><a href="tel:+14843609967">(484) 360-9967</a><br><a href="mailto:info@kingsgroomingparlor.com" style="font-size:.8em">info@kingsgroomingparlor.com</a></p></div>
+        <div><h3>Hours</h3><div class="hours" id="hours"></div></div>
+        <div><button class="btn solid" data-book>Book a barber</button></div>
+      </div>
+      <div class="map reveal"><iframe title="Map to A King's Experience Grooming Parlor" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=5466%20Perkiomen%20Ave%2C%20Reading%2C%20PA%2019606&z=15&output=embed"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="l"><img src="img/logo.webp" alt=""><span>&copy; <span id="yr"></span> A King's Experience Grooming Parlor</span></div>
+    <div class="l"><a href="tel:+14843609967">(484) 360-9967</a><a href="mailto:info@kingsgroomingparlor.com">Email</a><a href="#top">Top</a></div>
+  </div>
+</footer>
+
+<div id="sheet" aria-hidden="true">
+  <div class="scrim" data-close></div>
+  <div class="panel" role="dialog" aria-label="Book a barber">
+    <div class="grab"></div>
+    <button class="x" data-close aria-label="Close">&times;</button>
+    <p class="kicker">Book online</p>
+    <h3>Who's cutting today?</h3>
+    <p class="sub">Each barber keeps their own calendar. Pick one to see their open times.</p>
+    <div id="picks"></div>
+    <p class="note">Prefer to call? <a href="tel:+14843609967">(484) 360-9967</a></p>
+  </div>
+</div>
+
+<script>
+const BARBERS=[
+  {name:"Gully",role:"Hair Stylist & Barber",img:"img/barber-gully.webp",url:"https://daughter-of-a-king-106020.square.site/"},
+  {name:"Max",role:"Barber",img:"img/barber-max.webp",url:"https://jerocutz.square.site/"},
+  {name:"Jay",role:"Barber",img:"img/barber-jay.webp",url:"https://book.squareup.com/appointments/qzvobgjiyuguv0/location/LNCPP7GF0C7NY"},
+  {name:"Charlyh",role:"Barber",img:"img/barber-charlyh.webp",url:"https://charlyh-barber-shop.square.site/"},
+  {name:"Alien",role:"Barber",img:"img/barber-alien.webp",url:"https://the-alienated-barber-llc.square.site/"},
+  {name:"Uni Corin",role:"Barber",img:"img/barber-uni.webp",url:"https://squareup.com/appointments/book/a50a1f2e-cf8f-400f-88f7-efef523c4cb0/04CHWD8K085BG/services"}
+];
+const CUTS=["Skin fade","Low fade","Hard part","Textured fade","Kids curls","Fade & beard","Kids fade","Textured crop","Kids crop","Buzz & beard","Shave & goatee","Taper","Line-up & beard","Curly top"];
+const arrow='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>';
+
+/* barbers */
+const court=document.getElementById('court'), picks=document.getElementById('picks');
+BARBERS.forEach((b,i)=>{
+  court.insertAdjacentHTML('beforeend',`<article class="card reveal" tabindex="0"><span class="num">No. ${String(i+1).padStart(2,'0')}</span><img src="${b.img}" alt="${b.name}, ${b.role}" loading="lazy"><div class="meta"><div><h3>${b.name}</h3><p class="role">${b.role}</p></div><a class="book" href="${b.url}" target="_blank" rel="noopener" aria-label="Book with ${b.name}">${arrow}</a></div></article>`);
+  picks.insertAdjacentHTML('beforeend',`<a class="pick" href="${b.url}" target="_blank" rel="noopener"><img src="${b.img}" alt=""><div><b>${b.name}</b><span>${b.role}</span></div>${arrow}</a>`);
+});
+court.querySelectorAll('.card').forEach(c=>c.addEventListener('click',e=>{if(!e.target.closest('.book'))c.querySelector('.book').click()}));
+
+/* lookbook */
+const rail=document.getElementById('rail');
+CUTS.forEach((c,i)=>rail.insertAdjacentHTML('beforeend',`<figure class="cut"><img src="img/cut-${i+1}.webp" alt="${c} done at the Parlor" loading="lazy" draggable="false"><figcaption>${c}</figcaption></figure>`));
+const step=()=>rail.querySelector('.cut').offsetWidth+16;
+document.getElementById('lbNext').onclick=()=>rail.scrollBy({left:step(),behavior:'smooth'});
+document.getElementById('lbPrev').onclick=()=>rail.scrollBy({left:-step(),behavior:'smooth'});
+let dx=null,sl=0;
+rail.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;dx=e.clientX;sl=rail.scrollLeft;rail.classList.add('drag')});
+addEventListener('pointermove',e=>{if(dx!==null)rail.scrollLeft=sl-(e.clientX-dx)});
+addEventListener('pointerup',()=>{if(dx!==null){dx=null;rail.classList.remove('drag')}});
+
+/* ticker */
+const T=["Fades","Tapers","Beard work","Line-ups","Kids cuts","Gift cards","Mon to Sat, 8 to 7","5466 Perkiomen Ave"];
+const tickHTML=T.map(t=>`<span><b>&#9819;</b>${t}</span>`).join('');
+document.getElementById('tick').innerHTML=tickHTML+tickHTML;
+
+/* hours + live status (shop time, America/New_York) */
+const DAYS=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const now=new Date(new Date().toLocaleString('en-US',{timeZone:'America/New_York'}));
+const d=now.getDay(), h=now.getHours()+now.getMinutes()/60;
+document.getElementById('hours').innerHTML=[1,2,3,4,5,6,0].map(i=>`<span class="d ${i===d?'today':''}">${DAYS[i]}</span><span class="${i===d?'today':''}">${i===0?'Closed':'8:00 am to 7:00 pm'}</span>`).join('');
+const st=document.getElementById('status'), open=d!==0&&h>=8&&h<19;
+st.querySelector('span').textContent=open?'Open now until 7pm':(d===0||(d===6&&h>=19)?'Closed today, open Monday 8am':(h<8?'Opens today at 8am':'Closed, opens tomorrow 8am'));
+if(!open)st.classList.add('closed');
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* splash */
+const splash=document.getElementById('splash');
+const skip=/[?&]nosplash/.test(location.search)||(()=>{try{return sessionStorage.getItem('kgp-in')}catch(e){return null}})();
+const enter=()=>{splash.classList.add('gone');try{sessionStorage.setItem('kgp-in','1')}catch(e){}};
+if(skip)splash.classList.add('gone');
+document.getElementById('enter').onclick=enter;
+
+/* booking sheet */
+const sheet=document.getElementById('sheet');
+document.querySelectorAll('[data-book]').forEach(b=>b.addEventListener('click',()=>{enter();nav.classList.remove('open');sheet.classList.add('open');sheet.setAttribute('aria-hidden','false')}));
+sheet.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>{sheet.classList.remove('open');sheet.setAttribute('aria-hidden','true')});
+addEventListener('keydown',e=>{if(e.key==='Escape')sheet.classList.remove('open')});
+
+/* nav */
+const nav=document.getElementById('nav');
+document.getElementById('burger').onclick=()=>nav.classList.toggle('open');
+nav.querySelectorAll('.links a').forEach(a=>a.onclick=()=>nav.classList.remove('open'));
+
+/* creed: words light up as you scroll */
+const creed=document.getElementById('creed');
+creed.innerHTML=creed.innerHTML.replace(/(<em>|<\/em>)|([^\s<>]+)/g,(m,tag,w)=>tag?tag:`<span class="w">${w}</span>`);
+const words=[...creed.querySelectorAll('.w')];
+
+/* scroll effects */
+const heroBg=document.getElementById('heroBg');
+let ticking=false;
+function onScroll(){
+  const y=scrollY;
+  nav.classList.toggle('solid',y>40);
+  if(y<innerHeight*1.2)heroBg.style.transform=`translate3d(0,${y*.28}px,0) scale(1.08)`;
+  const r=creed.getBoundingClientRect(), p=Math.min(1,Math.max(0,(innerHeight*.85-r.top)/(r.height+innerHeight*.35)));
+  const n=Math.round(p*words.length); words.forEach((w,i)=>w.classList.toggle('on',i<n));
+  ticking=false;
+}
+addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});
+onScroll();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4)*70+'ms';io.observe(el)});
+</script>
+</body>
+</html>
