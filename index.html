@@ -242,7 +242,7 @@ em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff
 .head h2 em,.hero h1 em{background:none;animation:none;color:inherit;-webkit-background-clip:border-box;background-clip:border-box}
 
 /* HERO: pinned; scrolling walks you down the row of chairs */
-.hero{min-height:0;height:165svh;display:block;overflow:visible}
+.hero{min-height:0;height:150svh;display:block;overflow:visible}
 .hero .pin{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;align-items:center}
 .hero .bg{inset:0;transform:none;transform-origin:50% 46%;will-change:transform}
 .hero .wrap{will-change:transform,opacity}
@@ -320,6 +320,7 @@ em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff
 
 
 /* ================= V3 part 2 ================= */
+
 .cutname{text-align:center;margin-top:8px;min-height:84px}
 .cutname b{display:block;font:400 clamp(30px,4vw,46px)/1.1 var(--serif)}
 .cutname span{display:block;margin-top:8px;font:600 12px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
@@ -359,6 +360,13 @@ em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff
 /* contact: call card */
 .callbig{display:inline-flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none!important;border:0!important}
 
+@media (max-width:620px){
+  .tiles{grid-template-columns:1fr;gap:10px}
+  .tile{display:flex;align-items:center;gap:16px;text-align:left;padding:18px 20px}
+  .tile svg{margin:0;flex:none;width:34px;height:34px}
+  .about .frame{max-width:none;aspect-ratio:4/4.6}
+  .careers .photo{aspect-ratio:4/4.4}
+}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
@@ -702,9 +710,9 @@ function onScroll(){
   nav.classList.toggle('solid',y>40);
   const hp=Math.min(1,Math.max(0,y/(heroEl.offsetHeight-innerHeight)));
   const ez=hp*hp*(3-2*hp);
-  heroBg.style.transform=`scale(${1+ez*.85})`;
+  heroBg.style.transform=`scale(${1+ez*.45})`;
   heroTxt.style.transform=`translate3d(0,${-ez*90}px,0) scale(${1-ez*.12})`; heroTxt.style.opacity=1-Math.min(1,hp*1.6);
-  heroVig.style.opacity=Math.max(0,(hp-.6)/.4)*.6;
+  heroVig.style.opacity=Math.max(0,(hp-.7)/.3)*.3;
   const cr=carImg.getBoundingClientRect(); carImg.style.transform=`translate3d(0,${(cr.top+cr.height/2-innerHeight/2)*-.1-30}px,0)`;
   const ar=aboutFrame.getBoundingClientRect(); aboutImg.style.transform=`translate3d(0,${(ar.top+ar.height/2-innerHeight/2)*-.12}px,0)`;
   const r=creed.getBoundingClientRect(), p=Math.min(1,Math.max(0,(innerHeight*.85-r.top)/(r.height+innerHeight*.35)));
