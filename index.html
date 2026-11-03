@@ -181,7 +181,10 @@ section{padding:clamp(88px,13vw,170px) 0;position:relative}
 .hours .d{color:var(--mute)}
 .hours .today{color:var(--chalk);font-weight:600}
 .map{border-radius:22px;overflow:hidden;border:1px solid var(--line);min-height:420px;background:var(--ink3)}
-.map iframe{width:100%;height:100%;min-height:420px;border:0;filter:grayscale(1) invert(.92) contrast(.9)}
+.map{position:relative}
+.map iframe{display:block;width:100%;height:100%;min-height:440px;border:0;filter:saturate(.85)}
+.map .dir{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:999px;background:#0b0b0c;color:#fff;text-decoration:none;font:700 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;box-shadow:0 10px 30px rgba(0,0,0,.35);white-space:nowrap}
+.map .dir svg{width:16px;height:16px}
 
 footer{padding:60px 0 calc(40px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:var(--ink)}
 footer .wrap{display:flex;flex-direction:column;gap:18px;justify-content:center;align-items:center;text-align:center;color:var(--dim);font-size:14px}
@@ -457,6 +460,18 @@ footer.foot .wrap{display:block;text-align:left;color:var(--mute);font-size:15px
 .totop svg{width:15px;height:15px}
 .fword{font:400 10.4vw/.8 var(--serif);text-align:center;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.08);margin-top:34px;user-select:none;pointer-events:none}
 
+/* ================= AUDIT FIXES ================= */
+.hero .wrap{padding-top:110px}
+.hero .crest{width:clamp(76px,9vw,110px)}
+.about .frame img{object-position:68% center}
+@media (max-width:620px){
+  .thumbs{flex-wrap:nowrap;gap:8px}
+  .thumb{width:48px;height:48px}.thumb svg{inset:-4px;width:56px;height:56px}
+  .tabs button{padding:16px 9px;letter-spacing:.1em;font-size:12px}
+  .fcols{grid-template-columns:1fr;gap:30px}
+  .map iframe{min-height:360px}
+}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
@@ -605,7 +620,7 @@ footer.foot .wrap{display:block;text-align:left;color:var(--mute);font-size:15px
     <div class="more"><button class="btn" id="moreBtn">Show more</button><a class="btn solid" href="https://www.kingsgroomingparlor.com/category/all-products" target="_blank" rel="noopener">Shop the full store</a></div>
   </div>
 </section>
-<div id="qv" aria-hidden="true"><div class="scrim" data-qclose></div><div class="box" role="dialog" aria-label="Product" data-lenis-prevent><button class="x" data-qclose aria-label="Close">&times;</button><div class="qimg"><img decoding="async" id="qvImg" alt=""></div><div class="qtx"><span class="qc" id="qvCat"></span><h3 id="qvName"></h3><p class="qp" id="qvPrice"></p><a class="btn solid" id="qvBuy" target="_blank" rel="noopener">Buy on the KGP store</a><p class="qn">Checkout, sizes and colors on the KGP store.</p></div></div></div>
+<div id="qv" aria-hidden="true"><div class="scrim" data-qclose></div><div class="box" role="dialog" aria-label="Product" data-lenis-prevent><button class="x" data-qclose aria-label="Close">&times;</button><div class="qimg"><img decoding="async" id="qvImg" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"></div><div class="qtx"><span class="qc" id="qvCat"></span><h3 id="qvName"></h3><p class="qp" id="qvPrice"></p><a class="btn solid" id="qvBuy" target="_blank" rel="noopener">Buy on the KGP store</a><p class="qn">Checkout, sizes and colors on the KGP store.</p></div></div></div>
 
 <section class="visit" id="visit">
   <div class="wrap">
@@ -620,7 +635,7 @@ footer.foot .wrap{display:block;text-align:left;color:var(--mute);font-size:15px
         <div class="today" id="todayBar"></div>
         <div><button class="btn solid" data-book>Book a barber</button></div>
       </div>
-      <div class="map reveal"><iframe title="Map to A King's Experience Grooming Parlor" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=5466%20Perkiomen%20Ave%2C%20Reading%2C%20PA%2019606&z=15&output=embed"></iframe></div>
+      <div class="map reveal"><iframe title="Map to A King's Experience Grooming Parlor" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=A%20King%27s%20Experience%20Grooming%20Parlor%2C%205466%20Perkiomen%20Ave%20Suite%20D21%2C%20Reading%2C%20PA%2019606&z=16&output=embed"></iframe><a class="dir" href="https://www.google.com/maps/dir/?api=1&destination=5466+Perkiomen+Ave+Suite+D21+Reading+PA+19606" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Get directions</a></div>
     </div>
   </div>
 </section>
