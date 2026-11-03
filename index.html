@@ -229,6 +229,95 @@ section+section::before,.ticker+section::before{content:"";position:absolute;top
 .pole{display:inline-block;width:10px;height:44px;border-radius:6px;margin:0 auto 22px;background:repeating-linear-gradient(-45deg,#c8102e 0 6px,#fff 6px 12px,#1f3fbf 12px 18px,#fff 18px 24px);background-size:100% 200%;animation:pole 3s linear infinite;box-shadow:0 0 18px rgba(255,255,255,.15)}
 @keyframes pole{to{background-position:0 -68px}}
 
+
+/* ================= V3: motion build ================= */
+html{scroll-behavior:auto}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+/* split headings: each word slides up out of a mask */
+.sw{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .02em .12em;margin-bottom:-.12em}
+.sw>span{display:inline-block;transform:translateY(105%);transition:transform 1.1s cubic-bezier(.16,.84,.24,1)}
+.split.in .sw>span{transform:none}
+em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff 50%,#ffffff 70%,#b7acff 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 10s linear infinite}
+.head h2 em,.hero h1 em{background:none;animation:none;color:inherit;-webkit-background-clip:border-box;background-clip:border-box}
+
+/* HERO: pinned; scrolling walks you down the row of chairs */
+.hero{min-height:0;height:165svh;display:block;overflow:visible}
+.hero .pin{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;align-items:center}
+.hero .bg{inset:0;transform:none;transform-origin:50% 46%;will-change:transform}
+.hero .wrap{will-change:transform,opacity}
+.hero .vig{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none}
+.hero .cue{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font:600 11px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--mute)}
+.hero .cue i{width:1px;height:44px;background:linear-gradient(var(--chalk),transparent);animation:cue 2.2s ease-in-out infinite;transform-origin:top}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.08em}
+.hero h1 .ln>span{display:inline-block;transform:translateY(110%);animation:lnup 1.3s cubic-bezier(.16,.84,.24,1) forwards}
+.hero h1 .ln:nth-child(2)>span{animation-delay:.14s}
+@keyframes lnup{to{transform:none}}
+.hero .crest,.hero .status,.hero p,.hero .row{opacity:0;animation:fadeup 1.1s cubic-bezier(.16,.84,.24,1) forwards}
+.hero .status{animation-delay:.1s}.hero p{animation-delay:.45s}.hero .row{animation-delay:.6s}
+@keyframes fadeup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* ABOUT: split scene */
+.about{background:var(--ink);overflow:hidden}
+.about .grid{display:grid;gap:clamp(36px,6vw,90px);align-items:center;grid-template-columns:1fr}
+@media (min-width:900px){.about .grid{grid-template-columns:1fr 1.05fr}}
+.about .frame{position:relative;aspect-ratio:4/5;border-radius:26px;overflow:hidden;clip-path:inset(18% 12% 18% 12% round 26px);transition:clip-path 1.6s cubic-bezier(.16,.84,.24,1);max-width:560px;margin:0 auto;width:100%}
+.about .frame.in{clip-path:inset(0 0 0 0 round 26px)}
+.about .frame img{position:absolute;left:0;top:-10%;width:100%;height:120%;object-fit:cover;will-change:transform}
+.about .frame .badge{position:absolute;right:18px;bottom:18px;width:84px;filter:drop-shadow(0 10px 20px rgba(0,0,0,.6))}
+.about .txt{text-align:center}
+.about .big{font:400 clamp(28px,3.4vw,48px)/1.2 var(--serif);margin-top:26px}
+.about .big .w{opacity:.14;transition:opacity .45s}
+.about .big .w.on{opacity:1}
+.about .quote{margin-top:44px;padding-top:34px;border-top:1px solid var(--line);font:400 italic clamp(26px,3vw,40px)/1.2 var(--serif)}
+.about .quote .gr{display:inline}
+
+/* BARBERS: select stage */
+.stage{display:flex;flex-direction:column;align-items:center;gap:26px}
+.portrait{position:relative;width:min(440px,82vw);aspect-ratio:4/5;border-radius:28px;overflow:hidden;background:var(--ink3);box-shadow:0 40px 90px rgba(0,0,0,.55)}
+.portrait .ph{position:absolute;inset:0}
+.portrait .ph img{width:100%;height:100%;object-fit:cover;object-position:center 22%}
+.portrait .ph.enter{animation:wipe 1s cubic-bezier(.16,.84,.24,1) both}
+.portrait .ph.enter img{animation:zoomout 1.6s cubic-bezier(.16,.84,.24,1) both}
+@keyframes wipe{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes zoomout{from{transform:scale(1.18)}to{transform:none}}
+.portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(8,8,9,.9));z-index:2;pointer-events:none}
+.portrait .nm{position:absolute;left:0;right:0;bottom:22px;z-index:3;text-align:center}
+.portrait .nm b{display:block;font:400 clamp(40px,6vw,58px)/1 var(--serif)}
+.portrait .nm span{display:block;margin-top:8px;font:600 11px/1 var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--mute)}
+.portrait .nm.swap b,.portrait .nm.swap span{animation:fadeup .8s cubic-bezier(.16,.84,.24,1) both}
+.portrait .shine{position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.2) 48%,transparent 62%);background-size:250% 100%;background-position:150% 0}
+.portrait.flash .shine{animation:shinesweep 1.2s ease .2s}
+@keyframes shinesweep{from{background-position:150% 0}to{background-position:-60% 0}}
+.thumbs{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;max-width:560px}
+.thumb{position:relative;width:60px;height:60px;border-radius:50%;border:0;padding:0;background:none;cursor:pointer}
+.thumb img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:center 22%;filter:grayscale(1) brightness(.7);transition:filter .4s,transform .4s}
+.thumb:hover img{filter:grayscale(.3) brightness(.95)}
+.thumb.on img{filter:none;transform:scale(1.08)}
+.thumb svg{position:absolute;inset:-5px;width:70px;height:70px;transform:rotate(-90deg);pointer-events:none}
+.thumb circle{fill:none;stroke:rgba(255,255,255,.12);stroke-width:2}
+.thumb circle.p{stroke:#d9d2ff;stroke-dasharray:207;stroke-dashoffset:207}
+.thumb.on circle.p{animation:ring var(--dur,4.5s) linear forwards}
+.stage.hold .thumb.on circle.p{animation-play-state:paused}
+@keyframes ring{to{stroke-dashoffset:0}}
+
+/* CUTS: 3D coverflow */
+.flow{position:relative;height:clamp(380px,48vw,560px);perspective:1400px;touch-action:pan-y;cursor:grab;user-select:none}
+.flow .it{position:absolute;left:50%;top:50%;width:clamp(230px,26vw,340px);aspect-ratio:9/11;margin:0;border-radius:22px;overflow:hidden;background:#e9e6e1;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.16,.84,.24,1),opacity .9s,filter .9s;box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.flow .it img{width:100%;height:100%;object-fit:cover;pointer-events:none}
+.flow.drag .it{transition:none}
+
+/* HOURS: live bar for today */
+.today{width:min(420px,100%);margin-top:6px}
+.today .bar{position:relative;height:6px;border-radius:9px;background:rgba(255,255,255,.08);overflow:visible}
+.today .fill{position:absolute;left:0;top:0;bottom:0;border-radius:9px;background:linear-gradient(90deg,#8b6cf0,#d9d2ff)}
+.today .dot{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#fff;box-shadow:0 0 0 6px rgba(217,210,255,.18)}
+.today .ends{display:flex;justify-content:space-between;font-size:13px;color:var(--mute);margin-top:10px}
+
+/* magnetic */
+.btn{will-change:transform}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
@@ -261,25 +350,35 @@ section+section::before,.ticker+section::before{content:"";position:absolute;top
 </nav>
 
 <header class="hero" id="top">
+ <div class="pin">
   <div class="bg" id="heroBg"></div>
   <div class="shade"></div>
-  <div class="wrap">
+  <div class="vig" id="heroVig"></div>
+  <div class="wrap" id="heroTxt">
     <img class="crest" src="img/logo.webp" alt="" style="display:block"><span class="status" id="status"><i></i><span>Open today</span></span>
-    <h1>A King's<em>Experience.</em></h1>
+    <h1><span class="ln"><span>A King's</span></span><span class="ln"><span><em class="gr">Experience.</em></span></span></h1>
     <p>Grooming Parlor · 5466 Perkiomen Ave, Reading, PA</p>
     <div class="row">
       <button class="btn solid" data-book>Book now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       <a class="btn" href="#visit">Hours &amp; location</a>
     </div>
   </div>
+  <div class="cue"><i></i>Scroll</div>
+ </div>
 </header>
 
 <div class="ticker" aria-hidden="true"><div class="t" id="tick"></div></div>
 
-<section class="creed">
+<section class="about" id="about">
   <div class="wrap">
-    <p class="kicker reveal">About us</p>
-    <p class="big" id="creed" style="margin-top:28px">As the "King" or "Queen" of your own life, you prefer to be treated with respect and dignity. <em>The treatment we provide to you will be nothing short of royalty.</em></p>
+    <div class="grid">
+      <div class="frame" id="aboutFrame"><img src="img/shop-work.webp" alt="A barber at work in the Parlor" id="aboutImg"><img class="badge" src="img/logo.webp" alt=""></div>
+      <div class="txt">
+        <p class="kicker reveal">About us</p>
+        <p class="big" id="creed">As the "King" or "Queen" of your own life, you prefer to be treated with respect and dignity. <em>The treatment we provide to you will be nothing short of royalty.</em></p>
+        <p class="quote reveal"><span class="gr">"When you know better, you do better."</span></p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -288,7 +387,7 @@ section+section::before,.ticker+section::before{content:"";position:absolute;top
     <div class="head">
       <div><p class="kicker reveal">Our team</p><h2 class="reveal" style="margin-top:18px">Behind the <em>chair.</em></h2></div>
     </div>
-    <div class="court-grid" id="court"></div>
+    <div class="stage" id="stage"><div class="portrait" id="portrait"><div class="nm" id="pName"></div><span class="shine"></span></div><div class="thumbs" id="thumbs"></div><a class="btn solid" id="pBook" target="_blank" rel="noopener">Book</a></div>
   </div>
 </section>
 
@@ -300,14 +399,13 @@ section+section::before,.ticker+section::before{content:"";position:absolute;top
         <div class="lb-ctrl"><button id="lbPrev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><button id="lbNext" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
     </div>
   </div>
-  <div class="lb-rail" id="rail"></div>
+  <div class="flow" id="flow"></div>
 </section>
 
 <section class="parlor" id="parlor">
   <div class="wrap">
     <div class="head">
       <div><h2 class="reveal">The <em>Parlor.</em></h2></div>
-      <p class="reveal">"When you know better, you do better."</p>
     </div>
     <div class="lb-ctrl reveal" style="margin:-30px 0 30px;justify-content:center"><button data-rail="prail" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><button data-rail="prail" data-dir="1" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></div>
   </div>
@@ -365,6 +463,7 @@ section+section::before,.ticker+section::before{content:"";position:absolute;top
         <div><h3>Address</h3><p class="v"><a href="https://maps.google.com/?q=5466+Perkiomen+Ave+Suite+D21+Reading+PA+19606" target="_blank" rel="noopener">5466 Perkiomen Ave, Suite D21<br>Reading, PA 19606</a></p></div>
         <div><h3>Contact</h3><p class="v"><a href="tel:+14843609967">(484) 360-9967</a><br><a href="mailto:info@kingsgroomingparlor.com" style="font-size:.8em">info@kingsgroomingparlor.com</a></p></div>
         <div><h3>Hours</h3><div class="hours" id="hours"></div></div>
+        <div class="today" id="todayBar"></div>
         <div><button class="btn solid" data-book>Book a barber</button></div>
       </div>
       <div class="map reveal"><iframe title="Map to A King's Experience Grooming Parlor" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=5466%20Perkiomen%20Ave%2C%20Reading%2C%20PA%2019606&z=15&output=embed"></iframe></div>
@@ -390,6 +489,7 @@ section+section::before,.ticker+section::before{content:"";position:absolute;top
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
 const BARBERS=[
   {name:"Gully",role:"Hair Stylist & Barber",img:"img/barber-gully.webp",url:"https://daughter-of-a-king-106020.square.site/"},
@@ -402,23 +502,63 @@ const BARBERS=[
 const CUTS=["Skin fade","Low fade","Hard part","Textured fade","Kids curls","Fade & beard","Kids fade","Textured crop","Kids crop","Buzz & beard","Shave & goatee","Taper","Line-up & beard","Curly top"];
 const arrow='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>';
 
-/* barbers */
-const court=document.getElementById('court'), picks=document.getElementById('picks');
+/* barbers: select stage. Big portrait wipes in, thumbnails pick, a ring times the auto-advance */
+const picks=document.getElementById('picks'), stage=document.getElementById('stage'), portrait=document.getElementById('portrait'),
+      pName=document.getElementById('pName'), pBook=document.getElementById('pBook'), thumbs=document.getElementById('thumbs');
 BARBERS.forEach((b,i)=>{
-  court.insertAdjacentHTML('beforeend',`<article class="card reveal" tabindex="0"><span class="shine"></span><span class="num">No. ${String(i+1).padStart(2,'0')}</span><img src="${b.img}" alt="${b.name}, ${b.role}" loading="lazy"><div class="meta"><div><h3>${b.name}</h3><p class="role">${b.role}</p></div><a class="book" href="${b.url}" target="_blank" rel="noopener" aria-label="Book with ${b.name}">${arrow}</a></div></article>`);
   picks.insertAdjacentHTML('beforeend',`<a class="pick" href="${b.url}" target="_blank" rel="noopener"><img src="${b.img}" alt=""><div><b>${b.name}</b></div>${arrow}</a>`);
+  thumbs.insertAdjacentHTML('beforeend',`<button class="thumb" aria-label="${b.name}"><img src="${b.img}" alt="" loading="lazy"><svg viewBox="0 0 70 70"><circle cx="35" cy="35" r="33"/><circle class="p" cx="35" cy="35" r="33"/></svg></button>`);
+  new Image().src=b.img;
 });
-court.addEventListener('click',e=>{const c=e.target.closest('.card');if(c&&!e.target.closest('.book'))c.querySelector('.book').click()});
+const TB=[...thumbs.children]; let cur=-1, stageVis=false, stageHold=false, adv=null;
+function show(i){
+  if(i===cur)return; cur=i; const b=BARBERS[i];
+  const ph=document.createElement('div'); ph.className='ph enter'; ph.innerHTML=`<img src="${b.img}" alt="${b.name}, ${b.role}">`;
+  portrait.insertBefore(ph,pName);
+  const olds=[...portrait.querySelectorAll('.ph')].slice(0,-1); setTimeout(()=>olds.forEach(o=>o.remove()),1100);
+  pName.innerHTML=`<b>${b.name}</b><span>${b.role}</span>`; pName.classList.remove('swap'); void pName.offsetWidth; pName.classList.add('swap');
+  portrait.classList.remove('flash'); void portrait.offsetWidth; portrait.classList.add('flash');
+  pBook.href=b.url; pBook.innerHTML=`Book with ${b.name} ${arrow}`;
+  TB.forEach((t,k)=>{t.classList.toggle('on',k===i); const c=t.querySelector('circle.p'); c.style.animation='none'; void c.offsetWidth; c.style.animation=''});
+  schedule();
+}
+function schedule(){clearTimeout(adv); if(stageVis&&!stageHold) adv=setTimeout(()=>show((cur+1)%BARBERS.length),4500)}
+const jump=k=>{cur=-1;show(k)};
+TB.forEach((t,i)=>t.onclick=()=>jump(i));
+stage.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){stageHold=true;stage.classList.add('hold');clearTimeout(adv)}});
+stage.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'){stageHold=false;stage.classList.remove('hold');jump(cur)}});
+let sx=null; portrait.addEventListener('pointerdown',e=>sx=e.clientX);
+portrait.addEventListener('pointerup',e=>{if(sx===null)return; const dx=e.clientX-sx; sx=null; if(Math.abs(dx)>40)jump((cur+(dx<0?1:-1)+BARBERS.length)%BARBERS.length)});
+new IntersectionObserver(es=>{stageVis=es[0].isIntersecting; if(stageVis)schedule(); else clearTimeout(adv)},{threshold:.35}).observe(stage);
+show(0);
 
-/* subtle 3D tilt on barber cards (mouse only) */
-court.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;const c=e.target.closest('.card');if(!c)return;const b=c.getBoundingClientRect();const x=(e.clientX-b.left)/b.width-.5,y=(e.clientY-b.top)/b.height-.5;c.style.transform=`perspective(900px) rotateY(${x*8}deg) rotateX(${-y*8}deg)`});
-court.addEventListener('pointerout',e=>{const c=e.target.closest('.card');if(c&&!c.contains(e.relatedTarget))c.style.transform=''});
-/* lookbook */
-const rail=document.getElementById('rail');
-CUTS.forEach((c,i)=>rail.insertAdjacentHTML('beforeend',`<figure class="cut"><img src="img/cut-${i+1}.webp" alt="Haircut done at the Parlor" loading="lazy" draggable="false"></figure>`));
-const step=()=>rail.querySelector('.cut').offsetWidth+16;
-document.getElementById('lbNext').onclick=()=>rail._step(1);
-document.getElementById('lbPrev').onclick=()=>rail._step(-1);
+/* cuts: 3D coverflow. Centre card faces you, neighbours angle back; auto-advances, drag/swipe or arrows to move */
+const flow=document.getElementById('flow');
+CUTS.forEach((c,i)=>flow.insertAdjacentHTML('beforeend',`<figure class="it"><img src="img/cut-${i+1}.webp" alt="Haircut done at the Parlor" loading="lazy" draggable="false"></figure>`));
+const IT=[...flow.children], N=IT.length; let fpos=0, fVis=false, fHold=0, fdrag=null;
+function layout(){
+  const w=IT[0].offsetWidth, gap=w*0.62;
+  IT.forEach((el,i)=>{
+    let o=i-fpos; o=((o%N)+N+N/2)%N-N/2;
+    const a=Math.abs(o), side=Math.sign(o);
+    const x=o*gap - side*Math.max(0,a-1)*w*0.18, z=-Math.min(a,4)*160, ry=-side*Math.min(a,1)*42;
+    el.style.transform=`translate(-50%,-50%) translate3d(${x}px,0,${z}px) rotateY(${ry}deg) scale(${a<.5?1.04:1})`;
+    el.style.opacity=a>3.5?0:1; el.style.zIndex=100-Math.round(a*10); el.style.filter=`brightness(${1-Math.min(a,3)*.18})`;
+  });
+}
+const go=d=>{fpos=Math.round(fpos)+d; fHold=performance.now()+3500; layout()};
+document.getElementById('lbNext').onclick=()=>go(1);
+document.getElementById('lbPrev').onclick=()=>go(-1);
+flow.addEventListener('pointerdown',e=>{fdrag={x:e.clientX,y:e.clientY,p:fpos,h:null}});
+addEventListener('pointermove',e=>{if(!fdrag)return; const dx=e.clientX-fdrag.x, dy=e.clientY-fdrag.y;
+  if(fdrag.h===null&&(Math.abs(dx)>6||Math.abs(dy)>6)){fdrag.h=Math.abs(dx)>Math.abs(dy); if(fdrag.h)flow.classList.add('drag')}
+  if(!fdrag.h)return; fpos=fdrag.p-dx/(IT[0].offsetWidth*0.62); layout()});
+addEventListener('pointerup',()=>{if(!fdrag)return; const was=fdrag.h; flow.classList.remove('drag'); if(was){fpos=Math.round(fpos); fHold=performance.now()+3500; layout()} fdrag=null; flow._dragged=was});
+flow.addEventListener('click',e=>{if(flow._dragged){flow._dragged=false;return} const it=e.target.closest('.it'); if(it){const i=IT.indexOf(it); let o=i-fpos; o=((o%N)+N+N/2)%N-N/2; if(Math.abs(o)>.5)go(Math.round(o))}});
+new IntersectionObserver(es=>fVis=es[0].isIntersecting,{threshold:.3}).observe(flow);
+setInterval(()=>{if(fVis&&!fdrag&&performance.now()>fHold){fpos=Math.round(fpos)+1;layout()}},2600);
+addEventListener('resize',layout); layout();
+
 /* GALLERIES. Each one is a track moved with translate3d at sub-pixel positions (smooth, no pixel stepping).
    It drifts on its own while on screen, loops seamlessly (contents are doubled), and the user can drag/swipe it
    sideways with momentum. Vertical swipes still scroll the page (touch-action:pan-y), the gallery never moves
@@ -455,7 +595,7 @@ function gallery(r,{mobileOnly=false}={}){
     requestAnimationFrame(tick);
   })(0);
 }
-gallery(rail); gallery(document.getElementById('prail')); gallery(court,{mobileOnly:true});
+gallery(document.getElementById('prail'));
 document.querySelectorAll('[data-rail]').forEach(b=>b.onclick=()=>document.getElementById(b.dataset.rail)._step(+b.dataset.dir));
 
 
@@ -472,6 +612,8 @@ document.getElementById('hours').innerHTML=[1,2,3,4,5,6,0].map(i=>`<span class="
 const st=document.getElementById('status'), open=d!==0&&h>=8&&h<19;
 st.querySelector('span').textContent=open?'Open now until 7pm':(d===0||(d===6&&h>=19)?'Closed today, open Monday 8am':(h<8?'Opens today at 8am':'Closed, opens tomorrow 8am'));
 if(!open)st.classList.add('closed');
+{const tb=document.getElementById('todayBar'); if(d!==0){const p=Math.min(1,Math.max(0,(h-8)/11));
+  tb.innerHTML=`<div class="bar"><div class="fill" style="width:${p*100}%"></div><div class="dot" style="left:${p*100}%"></div></div><div class="ends"><span>8am</span><span>${open?'Open now':'Closed now'}</span><span>7pm</span></div>`}else tb.remove()}
 document.getElementById('yr').textContent=new Date().getFullYear();
 
 /* splash */
@@ -498,18 +640,34 @@ creed.innerHTML=creed.innerHTML.replace(/(<em>|<\/em>)|([^\s<>]+)/g,(m,tag,w)=>t
 const words=[...creed.querySelectorAll('.w')];
 
 /* scroll effects */
-const heroBg=document.getElementById('heroBg');
+const heroBg=document.getElementById('heroBg'), heroEl=document.getElementById('top'), heroTxt=document.getElementById('heroTxt'), heroVig=document.getElementById('heroVig'), aboutFrame=document.getElementById('aboutFrame'), aboutImg=document.getElementById('aboutImg');
 let ticking=false;
 function onScroll(){
   const y=scrollY;
   nav.classList.toggle('solid',y>40);
-  if(y<innerHeight*1.2)heroBg.style.transform=`translate3d(0,${y*.28}px,0) scale(1.08)`;
+  const hp=Math.min(1,Math.max(0,y/(heroEl.offsetHeight-innerHeight)));
+  const ez=hp*hp*(3-2*hp);
+  heroBg.style.transform=`scale(${1+ez*.85})`;
+  heroTxt.style.transform=`translate3d(0,${-ez*90}px,0) scale(${1-ez*.12})`; heroTxt.style.opacity=1-Math.min(1,hp*1.6);
+  heroVig.style.opacity=Math.max(0,(hp-.6)/.4)*.6;
+  const ar=aboutFrame.getBoundingClientRect(); aboutImg.style.transform=`translate3d(0,${(ar.top+ar.height/2-innerHeight/2)*-.12}px,0)`;
   const r=creed.getBoundingClientRect(), p=Math.min(1,Math.max(0,(innerHeight*.85-r.top)/(r.height+innerHeight*.35)));
   const n=Math.round(p*words.length); words.forEach((w,i)=>w.classList.toggle('on',i<n));
   ticking=false;
 }
 addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});
 onScroll();
+document.querySelectorAll('h2.reveal').forEach(h=>{h.classList.remove('reveal');h.classList.add('split');
+  const wrapWords=n=>{[...n.childNodes].forEach(c=>{if(c.nodeType===3){const f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(w=>{if(!w)return;if(/^\s+$/.test(w)){f.append(w);return}const o=document.createElement('span');o.className='sw';const i=document.createElement('span');i.textContent=w;o.append(i);f.append(o)});c.replaceWith(f)}else wrapWords(c)})};
+  wrapWords(h); h.querySelectorAll('.sw>span').forEach((s,i)=>s.style.transitionDelay=i*80+'ms')});
+document.querySelectorAll('.split,#aboutFrame').forEach(el=>el.classList.add('reveal'));
+if(matchMedia('(pointer:fine)').matches)document.querySelectorAll('.btn').forEach(b=>{
+  b.addEventListener('pointermove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.25}px,${(e.clientY-r.top-r.height/2)*.35}px)`});
+  b.addEventListener('pointerleave',()=>b.style.transform='')});
+if(window.Lenis){const lenis=new Lenis({duration:1.15,smoothWheel:true}); (function raf(t){lenis.raf(t);requestAnimationFrame(raf)})(0);
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:a.getAttribute('href')==='#top'?0:-60})}}));
+  window._lenis=lenis;}
+
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
 document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4)*70+'ms';io.observe(el)});
 </script>
