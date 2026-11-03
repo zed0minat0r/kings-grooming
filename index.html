@@ -46,21 +46,16 @@ h2 em{font-style:italic;font-weight:400;color:#d9d2ff}
 .reveal.in{opacity:1;transform:none}
 
 /* ---------- splash ---------- */
-#splash{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 42%,#1e1c1a 0%,#0c0b0b 64%);transition:opacity 1.4s ease,visibility 0s linear 1.4s}
+#splash{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 42%,#1c1c21 0%,#0b0b0c 62%);transition:opacity .8s ease,visibility 0s linear .8s}
 #splash.gone{opacity:0;visibility:hidden}
 #splash .board{position:absolute;inset:0;background-image:linear-gradient(45deg,rgba(255,255,255,.025) 25%,transparent 25%,transparent 75%,rgba(255,255,255,.025) 75%),linear-gradient(45deg,rgba(255,255,255,.025) 25%,transparent 25%,transparent 75%,rgba(255,255,255,.025) 75%);background-size:120px 120px;background-position:0 0,60px 60px;-webkit-mask:radial-gradient(ellipse at 50% 45%,#000 0%,transparent 70%);mask:radial-gradient(ellipse at 50% 45%,#000 0%,transparent 70%)}
 #splash .inner{position:relative;text-align:center;padding:24px}
-#splash .badge{width:min(260px,56vw);margin:0 auto;position:relative;filter:drop-shadow(0 30px 60px rgba(0,0,0,.7));animation:rise 2.6s cubic-bezier(.22,.61,.36,1) both,float 9s ease-in-out 2.6s infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-#splash .badge::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);background-size:300% 100%;-webkit-mask:url(img/logo.webp) center/contain no-repeat;mask:url(img/logo.webp) center/contain no-repeat;animation:glint 11s ease-in-out 2.5s infinite;opacity:.6}
+#splash .badge{width:min(300px,62vw);margin:0 auto;position:relative;filter:drop-shadow(0 30px 60px rgba(0,0,0,.7));animation:rise 1.4s cubic-bezier(.2,.7,.2,1) both}
+#splash .badge::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);background-size:300% 100%;-webkit-mask:url(img/logo.webp) center/contain no-repeat;mask:url(img/logo.webp) center/contain no-repeat;animation:glint 4.5s ease-in-out 1.2s infinite}
 @keyframes glint{0%{background-position:150% 0}45%,100%{background-position:-60% 0}}
 @keyframes rise{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
-#splash .tag{margin:36px 0 34px;font:400 italic clamp(20px,2.8vw,26px)/1.4 var(--serif);letter-spacing:.01em;color:#e8e4dc;animation:rise 2.4s .9s cubic-bezier(.22,.61,.36,1) both}
-#splash .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;animation:rise 2.4s 1.5s cubic-bezier(.22,.61,.36,1) both}
-#splash::before{content:"";position:absolute;left:50%;top:44%;width:min(900px,140vw);aspect-ratio:1;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(217,200,170,.10),transparent 62%);animation:breathe 10s ease-in-out infinite}
-@keyframes breathe{0%,100%{opacity:.55;transform:translate(-50%,-50%) scale(.96)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.04)}}
-#splash .board{animation:drift 60s linear infinite}
-@keyframes drift{to{background-position:120px 120px,180px 180px}}
+#splash .tag{margin:34px 0 30px;font:400 italic clamp(22px,3.4vw,30px)/1.25 var(--serif);color:var(--chalk);animation:rise 1.2s .35s both}
+#splash .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;animation:rise 1.2s .55s both}
 
 /* ---------- nav ---------- */
 nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent}
@@ -434,8 +429,8 @@ em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff
     <img class="badge" src="img/logo.webp" alt="Kings Grooming Parlor">
     <p class="tag">A King's Experience welcomes you.</p>
     <div class="row">
-      <button class="btn" id="enter">Come on in</button>
       <button class="btn solid" data-book>Book a barber</button>
+      <button class="btn" id="enter">Enter</button>
     </div>
   </div>
 </div>
