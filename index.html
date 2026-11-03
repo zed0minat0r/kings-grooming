@@ -298,7 +298,7 @@ em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff
 .thumb svg{position:absolute;inset:-5px;width:70px;height:70px;transform:rotate(-90deg);pointer-events:none}
 .thumb circle{fill:none;stroke:rgba(255,255,255,.12);stroke-width:2}
 .thumb circle.p{stroke:#d9d2ff;stroke-dasharray:207;stroke-dashoffset:207}
-.thumb.on circle.p{animation:ring var(--dur,2.8s) linear forwards}
+.thumb.on circle.p{animation:ring var(--dur,3.8s) linear forwards}
 .stage.hold .thumb.on circle.p{animation-play-state:paused}
 @keyframes ring{to{stroke-dashoffset:0}}
 
@@ -686,7 +686,7 @@ function show(i){
   TB.forEach((t,k)=>{t.classList.toggle('on',k===i); const c=t.querySelector('circle.p'); c.style.animation='none'; void c.offsetWidth; c.style.animation=''});
   schedule();
 }
-function schedule(){clearTimeout(adv); if(stageVis&&!stageHold) adv=setTimeout(()=>show((cur+1)%BARBERS.length),2800)}
+function schedule(){clearTimeout(adv); if(stageVis&&!stageHold) adv=setTimeout(()=>show((cur+1)%BARBERS.length),3800)}
 const jump=k=>{cur=-1;show(k)};
 TB.forEach((t,i)=>t.onclick=()=>jump(i));
 stage.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){stageHold=true;stage.classList.add('hold');clearTimeout(adv)}});
