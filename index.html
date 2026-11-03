@@ -420,8 +420,9 @@ em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff
 
 /* ================= HERO: fly through the letters ================= */
 .hero{height:260svh}
-.kmask{position:absolute;inset:0;z-index:5;background:#000;mix-blend-mode:multiply;display:flex;align-items:center;justify-content:center;pointer-events:none;will-change:transform}
-.kmask .kw{text-align:center;color:#fff;line-height:.86}
+.hero .bgblur{position:absolute;inset:0;background:url(img/shop-blur.webp) center 40%/cover;z-index:4;pointer-events:none;will-change:opacity}
+.kmask{position:absolute;inset:0;z-index:5;background:url(img/shop-row.webp) center 40%/cover;-webkit-background-clip:text;background-clip:text;color:transparent;display:flex;align-items:center;justify-content:center;pointer-events:none;will-change:transform}
+.kmask .kw{text-align:center;color:transparent;line-height:.86;-webkit-text-stroke:1px rgba(255,255,255,.45)}
 .kmask .l1{display:block;font:400 min(27vw,34vh)/.86 var(--serif);letter-spacing:-.01em}
 .kmask .l2{display:block;font:400 italic min(17vw,22vh)/.95 var(--serif)}
 .hero .cue{z-index:6}
@@ -501,6 +502,7 @@ footer.foot .wrap{display:block;text-align:left;color:var(--mute);font-size:15px
       <a class="btn" href="#visit">Hours &amp; location</a>
     </div>
   </div>
+  <div class="bgblur" id="bgBlur"></div>
   <div class="kmask" id="kMask" aria-hidden="true"><div class="kw"><span class="l1">K<span id="kO">I</span>NG'S</span><span class="l2">Experience</span></div></div>
   <div class="cue"><i></i>Scroll</div>
  </div>
@@ -835,7 +837,7 @@ creed.innerHTML=creed.innerHTML.replace(/(<em>|<\/em>)|([^\s<>]+)/g,(m,tag,w)=>t
 const words=[...creed.querySelectorAll('.w')];
 
 /* scroll effects */
-const kMask=document.getElementById('kMask'), heroShade=document.querySelector('.hero .shade'), heroCue=document.querySelector('.hero .cue');
+const bgBlur=document.getElementById('bgBlur'), kMask=document.getElementById('kMask'), heroShade=document.querySelector('.hero .shade'), heroCue=document.querySelector('.hero .cue');
 function kOrigin(){const o=document.getElementById('kO').getBoundingClientRect(), m=kMask.getBoundingClientRect(); kMask.style.transformOrigin=`${o.left+o.width/2-m.left}px ${o.top+o.height*.55-m.top}px`}
 const heroBg=document.getElementById('heroBg'), heroEl=document.getElementById('top'), heroTxt=document.getElementById('heroTxt'), heroVig=document.getElementById('heroVig'), aboutFrame=document.getElementById('aboutFrame'), aboutImg=document.getElementById('aboutImg'), carImg=document.getElementById('carImg');
 let ticking=false;
@@ -846,8 +848,8 @@ function onScroll(){
   const ez=hp*hp*(3-2*hp);
   // phase 1 (0-.62): fly into the cut-out letters; phase 2: hero content settles in over the full shop
   const f=Math.min(1,hp/.62), fe=f*f*f;                          // accelerate into the letters
-  if(f<1){kMask.style.display='';kMask.style.transform=`scale(${Math.exp(fe*Math.log(160))})`}else kMask.style.display='none';
-  heroBg.style.transform=`scale(${1.22-.22*(1-Math.pow(1-f,2))})`;
+  if(f<1){kMask.style.display='';kMask.style.transform=`scale(${Math.exp(fe*Math.log(22))})`;kMask.style.opacity=1-Math.max(0,(f-.62)/.38)}else kMask.style.display='none';
+  heroBg.style.transform='none'; bgBlur.style.opacity=f<1?1-Math.max(0,(f-.5)/.5):0; bgBlur.style.display=f<1?'':'none';
   const t=Math.min(1,Math.max(0,(hp-.6)/.22)), te=1-Math.pow(1-t,3);
   heroShade.style.opacity=te; heroTxt.style.opacity=te; heroTxt.style.transform=`translate3d(0,${(1-te)*40}px,0)`;
   heroVig.style.opacity=0; heroCue.style.opacity=hp<.03?1:0;
