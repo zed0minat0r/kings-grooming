@@ -413,7 +413,7 @@ em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff
 #qv.flying .qimg img{visibility:hidden}
 .qfly{position:fixed;z-index:95;overflow:hidden;background:#f2f1ee;pointer-events:none;will-change:transform}
 .qfly img{width:100%;height:100%;object-fit:contain;display:block}
-#qv .scrim{position:absolute;inset:0;background:rgba(0,0,0,.72);opacity:0;transition:opacity .45s ease}
+#qv .scrim{position:absolute;inset:0;background:rgba(0,0,0,.72);opacity:0;transition:opacity .56s ease}
 #qv.open .scrim{opacity:1}
 #qv .box{position:relative;width:min(920px,100%);max-height:92svh;overflow:auto;display:grid;grid-template-columns:1fr;background:#f2f1ee;color:#111;border-radius:26px;opacity:0;transform-origin:50% 50%;will-change:transform}
 @media (min-width:760px){#qv .box{grid-template-columns:1.1fr .9fr}}
@@ -762,7 +762,7 @@ tabs.addEventListener('click',e=>{const b=e.target.closest('button'); if(!b||b.t
 moreBtn.onclick=()=>{const list=listFor(), from=shown; shown+=8; pgrid.insertAdjacentHTML('beforeend',list.slice(from,shown).map(card).join('')); shopMeta(list)};
 /* quick view: ONE cohesive animation. The whole card (shirt + name + price + button) grows out of the
    tapped tile as a single object and shrinks back into it on close; only the dark backdrop fades. */
-const qv=document.getElementById('qv'), qvImg=document.getElementById('qvImg'), qbox=qv.querySelector('.box'), EASE='cubic-bezier(.22,.8,.22,1)';
+const qv=document.getElementById('qv'), qvImg=document.getElementById('qvImg'), qbox=qv.querySelector('.box'), EASE='cubic-bezier(.22,.8,.22,1)', EASE_OUT='cubic-bezier(.78,0,.78,.2)';
 let qSrc=null, qBusy=false;
 function boxFrom(tileR){const b=qbox.getBoundingClientRect(); const sc=Math.max(.08,tileR.width/b.width);
   const dx=(tileR.left+tileR.width/2)-(b.left+b.width/2), dy=(tileR.top+tileR.height/2)-(b.top+b.height/2);
@@ -779,7 +779,7 @@ function closeQV(){if(qBusy||!qv.classList.contains('open'))return; qBusy=true;
   const tr=qSrc&&qSrc.getBoundingClientRect(), onScreen=tr&&tr.bottom>0&&tr.top<innerHeight;
   const to=onScreen?boxFrom(tr):'translateY(24px) scale(.94)';
   qv.classList.add('closing'); qv.classList.remove('open'); qv.setAttribute('aria-hidden','true');
-  const a=qbox.animate([{transform:'none',opacity:1,offset:0},{opacity:1,offset:.7},{transform:to,opacity:0,offset:1}],{duration:460,easing:EASE,fill:'forwards'});
+  const a=qbox.animate([{transform:'none',opacity:1,offset:0},{opacity:1,offset:.75},{transform:to,opacity:0,offset:1}],{duration:560,easing:EASE_OUT,fill:'forwards'});
   a.onfinish=()=>{qv.classList.remove('closing'); a.cancel(); qBusy=false; window._lenis&&window._lenis.start()};
 }
 pgrid.addEventListener('click',e=>{const c=e.target.closest('.pc'); if(c)openQV(PROD[+c.dataset.k],c.querySelector('.im'))});
