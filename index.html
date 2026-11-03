@@ -318,6 +318,47 @@ em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff
 /* magnetic */
 .btn{will-change:transform}
 
+
+/* ================= V3 part 2 ================= */
+.cutname{text-align:center;margin-top:8px;min-height:84px}
+.cutname b{display:block;font:400 clamp(30px,4vw,46px)/1.1 var(--serif)}
+.cutname span{display:block;margin-top:8px;font:600 12px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
+.cutname.swap b,.cutname.swap span{animation:fadeup .7s cubic-bezier(.16,.84,.24,1) both}
+/* careers: split with photo, perks as icon tiles */
+.careers{background:var(--ink2);overflow:hidden}
+.careers .grid{display:grid;gap:clamp(30px,5vw,70px);align-items:center;grid-template-columns:1fr}
+@media (min-width:900px){.careers .grid{grid-template-columns:.9fr 1.1fr}}
+.careers .photo{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:4/5;max-width:520px;width:100%;margin:0 auto}
+.careers .photo img{width:100%;height:118%;object-fit:cover;will-change:transform}
+.careers .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(8,8,9,.85))}
+.careers .photo .cta{position:absolute;left:0;right:0;bottom:26px;z-index:2;text-align:center}
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.tile{border:1px solid var(--line);border-radius:20px;padding:24px 18px;text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.03),transparent);transition:transform .4s cubic-bezier(.16,.84,.24,1),border-color .4s,background .4s}
+.tile:hover{transform:translateY(-6px);border-color:rgba(217,210,255,.35);background:linear-gradient(180deg,rgba(139,108,240,.10),transparent)}
+.tile svg{width:38px;height:38px;margin:0 auto 14px;display:block;stroke:#d9d2ff;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.tile svg *{stroke-dasharray:120;stroke-dashoffset:120;transition:stroke-dashoffset 1.6s cubic-bezier(.16,.84,.24,1)}
+.tile.in svg *{stroke-dashoffset:0}
+.tile b{display:block;font:400 20px/1.2 var(--serif)}
+/* policies: icon cards */
+.rule svg{width:44px;height:44px;margin:0 auto 6px;display:block;stroke:#d9d2ff;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.rule{transition:transform .4s cubic-bezier(.16,.84,.24,1),border-color .4s}
+.rule:hover{transform:translateY(-6px);border-color:rgba(217,210,255,.35)}
+/* store: product rail */
+.merch{text-align:center;overflow:hidden}
+.srail{overflow:hidden;padding:10px var(--pad) 20px;cursor:grab;touch-action:pan-y;margin-top:10px}
+.prod{flex:0 0 clamp(220px,22vw,280px);text-decoration:none;text-align:left;display:block}
+.prod .im{border-radius:20px;overflow:hidden;background:#f3f3f1;aspect-ratio:1;position:relative}
+.prod img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,.84,.24,1);pointer-events:none}
+.prod:hover img{transform:scale(1.06)}
+.prod .im::after{content:"View";position:absolute;right:12px;bottom:12px;font:700 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;background:#0b0b0c;color:#fff;padding:9px 12px;border-radius:999px;opacity:0;transform:translateY(6px);transition:.35s}
+.prod:hover .im::after{opacity:1;transform:none}
+.prod b{display:block;font:600 15px/1.35 var(--sans);margin-top:14px;color:var(--chalk)}
+.prod span{display:block;font:400 18px/1 var(--serif);color:#d9d2ff;margin-top:6px}
+/* parlor: bigger rail with inner parallax */
+.prail figure{flex:0 0 clamp(270px,36vw,520px)}
+/* contact: call card */
+.callbig{display:inline-flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none!important;border:0!important}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
@@ -342,6 +383,7 @@ em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff
       <a href="#barbers">Barbers</a>
       <a href="#lookbook">Cuts</a>
       <a href="#parlor">The Parlor</a>
+      <a href="#careers">Careers</a>
       <a href="#visit">Contact</a>
       <button class="btn solid" data-book>Book now</button>
     </div>
@@ -395,11 +437,13 @@ em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff
   <div class="wrap">
     <div class="head">
       <div><h2 class="reveal">The <em>cuts.</em></h2></div>
+      <p class="reveal">Fades, tapers, line-ups, beards and kids cuts, all done in the Parlor.</p>
       <div class="reveal" style="display:flex;flex-direction:column;align-items:center;gap:22px">
         <div class="lb-ctrl"><button id="lbPrev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><button id="lbNext" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
     </div>
   </div>
   <div class="flow" id="flow"></div>
+  <div class="cutname" id="cutName"><b></b><span></span></div>
 </section>
 
 <section class="parlor" id="parlor">
@@ -417,18 +461,23 @@ em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff
       <figure><img src="img/shop-stations.webp" alt="Stations with tool chests" loading="lazy" draggable="false"></figure>
       <figure><img src="img/shop-chair.webp" alt="A barber chair at its station" loading="lazy" draggable="false"></figure>
   </div>
+</section>
+
+<section class="careers" id="careers">
   <div class="wrap">
-    <div style="margin-top:90px" class="head">
+    <div class="head">
       <div><p class="kicker reveal">Careers</p><h2 class="reveal" style="margin-top:18px">Come work <em>with us.</em></h2></div>
-      <a class="btn reveal" href="mailto:info@kingsgroomingparlor.com?subject=Join%20the%20Team">Join the team</a>
     </div>
-    <div class="perks reveal">
-      <div><b>Flexibility in schedules</b></div>
-      <div><b>Monthly &amp; yearly incentives</b></div>
-      <div><b>Mini-fridge per every two stations</b></div>
-      <div><b>TV &amp; Bluetooth headset per station</b></div>
-      <div><b>Employee exposure via in-house marketing</b></div>
-      <div><b>Luminescent lighting (ring lights unnecessary)</b></div>
+    <div class="grid">
+      <div class="photo reveal"><img src="img/shop-station.webp" alt="A barber station at the Parlor" id="carImg"><div class="cta"><a class="btn solid" href="mailto:info@kingsgroomingparlor.com?subject=Join%20the%20Team">Join the team</a></div></div>
+      <div class="tiles">
+        <div class="tile reveal"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="14"/><path d="M20 12v8l6 4"/></svg><b>Flexibility in schedules</b></div>
+        <div class="tile reveal"><svg viewBox="0 0 40 40"><path d="M13 8h14v8a7 7 0 0 1-14 0z"/><path d="M13 11H8a5 5 0 0 0 5 6M27 11h5a5 5 0 0 1-5 6M20 23v6M14 32h12"/></svg><b>Monthly &amp; yearly incentives</b></div>
+        <div class="tile reveal"><svg viewBox="0 0 40 40"><rect x="11" y="6" width="18" height="28" rx="3"/><path d="M11 16h18M15 10v3M15 20v5"/></svg><b>Mini-fridge per every two stations</b></div>
+        <div class="tile reveal"><svg viewBox="0 0 40 40"><rect x="6" y="9" width="28" height="18" rx="2"/><path d="M15 32h10M20 27v5"/></svg><b>TV &amp; Bluetooth headset per station</b></div>
+        <div class="tile reveal"><svg viewBox="0 0 40 40"><path d="M8 17v6l14 6V11z"/><path d="M8 17H5v6h3M27 14a7 7 0 0 1 0 12M31 10a12 12 0 0 1 0 20"/></svg><b>Employee exposure via in-house marketing</b></div>
+        <div class="tile reveal"><svg viewBox="0 0 40 40"><path d="M14 26a9 9 0 1 1 12 0v4H14z"/><path d="M16 34h8M20 5v-1M8 9l-1-1M32 9l1-1"/></svg><b>Luminescent lighting (ring lights unnecessary)</b></div>
+      </div>
     </div>
   </div>
 </section>
@@ -439,18 +488,19 @@ em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff
       <div><h2 class="reveal">Our <em>policies.</em></h2></div>
     </div>
     <div class="rules">
-      <div class="rule reveal"><h3>Late cancellations</h3><p>If you need to cancel more than 24 hours before your appointment, just give us a call or shoot us a message. If you don't let us know or have to cancel less than 3 hours before your appointment, you may be subject to a cancellation fee at the discretion of the stylist.</p></div>
-      <div class="rule reveal"><h3>Tardiness</h3><p>Please arrive on time for each appointment. If you are more than 15 minutes late, we may have to reschedule your appointment for another time. If you're running late, let us know.</p></div>
-      <div class="rule reveal"><h3>Gift cards</h3><p>Gift cards available for purchase.</p></div></div>
+      <div class="rule reveal"><svg viewBox="0 0 44 44"><rect x="7" y="10" width="30" height="27" rx="3"/><path d="M7 18h30M15 6v8M29 6v8M17 25l10 8M27 25l-10 8"/></svg><h3>Late cancellations</h3><p>If you need to cancel more than 24 hours before your appointment, just give us a call or shoot us a message. If you don't let us know or have to cancel less than 3 hours before your appointment, you may be subject to a cancellation fee at the discretion of the stylist.</p></div>
+      <div class="rule reveal"><svg viewBox="0 0 44 44"><circle cx="22" cy="24" r="14"/><path d="M22 16v8l5 4M18 5h8M22 5v5"/></svg><h3>Tardiness</h3><p>Please arrive on time for each appointment. If you are more than 15 minutes late, we may have to reschedule your appointment for another time. If you're running late, let us know.</p></div>
+      <div class="rule reveal"><svg viewBox="0 0 44 44"><rect x="6" y="15" width="32" height="22" rx="3"/><path d="M6 22h32M22 15v22M22 15c-3-6-10-6-10-2s7 2 10 2c3 0 10 2 10-2s-7-4-10 2"/></svg><h3>Gift cards</h3><p>Gift cards available for purchase.</p></div></div>
     </div>
   </div>
 </section>
 
 <section class="merch">
   <div class="wrap">
-    <h2 class="reveal" style="margin-bottom:30px">KGP <em>store.</em></h2>
-    <a class="btn reveal" href="https://www.kingsgroomingparlor.com/category/all-products" target="_blank" rel="noopener">Shop the store</a>
+    <div class="head"><div><h2 class="reveal">KGP <em>store.</em></h2></div></div>
   </div>
+  <div class="srail" id="srail"></div>
+  <div class="wrap" style="margin-top:34px"><a class="btn reveal" href="https://www.kingsgroomingparlor.com/category/all-products" target="_blank" rel="noopener">Shop all 37 items</a></div>
 </section>
 
 <section class="visit" id="visit">
@@ -545,6 +595,8 @@ function layout(){
     el.style.transform=`translate(-50%,-50%) translate3d(${x}px,0,${z}px) rotateY(${ry}deg) scale(${a<.5?1.04:1})`;
     el.style.opacity=a>3.5?0:1; el.style.zIndex=100-Math.round(a*10); el.style.filter=`brightness(${1-Math.min(a,3)*.18})`;
   });
+  const ci=((Math.round(fpos)%N)+N)%N;
+  if(ci!==layout.last){layout.last=ci; const cn=document.getElementById('cutName'); cn.querySelector('b').textContent=CUTS[ci]; cn.querySelector('span').textContent=`${String(ci+1).padStart(2,'0')} / ${N}`; cn.classList.remove('swap'); void cn.offsetWidth; cn.classList.add('swap')}
 }
 const go=d=>{fpos=Math.round(fpos)+d; fHold=performance.now()+3500; layout()};
 document.getElementById('lbNext').onclick=()=>go(1);
@@ -559,6 +611,9 @@ new IntersectionObserver(es=>fVis=es[0].isIntersecting,{threshold:.3}).observe(f
 setInterval(()=>{if(fVis&&!fdrag&&performance.now()>fHold){fpos=Math.round(fpos)+1;layout()}},2600);
 addEventListener('resize',layout); layout();
 
+const SHOP=[["KGP Logo Tee","$25.00","unisex-heavy-cotton-tee-8"],["KGP Chess Piece Tee","$25.00","unisex-heavy-cotton-tee-5"],["KGP \"Jedi Jet\" Tee","$25.00","unisex-heavy-cotton-tee-9"],["KGP \"The Alienated Barber\" Tee","$25.00","unisex-heavy-cotton-tee-2"],["KGP \"Charly H\" Tee","$25.00","unisex-heavy-cotton-tee"],["KGP \"Uni Corin\" Tee","$25.00","unisex-heavy-cotton-tee-1"],["KGP \"Daddy Clipperhands\" Tee","$25.00","unisex-heavy-cotton-tee-3"],["KGP Logo Long Sleeve","$30.00","ultra-cotton-long-sleeve-tee-3"],["KGP Chess Piece Long Sleeve","$30.00","ultra-cotton-long-sleeve-tee-2"],["KGP \"Jedi Jet\" Long Sleeve","$30.00","unisex-ultra-cotton-long-sleeve-tee"],["KGP \"Uni Corin\" Long Sleeve","$30.00","ultra-cotton-long-sleeve-tee-8"],["Dad Hat with Leather Patch","$30.00","dad-hat-with-leather-patch-round-2"],["Baseball Cap with Leather Patch","$25.00","baseball-with-leather-patch-round"],["Baseball Cap with Leather Patch","$25.00","baseball-cap-with-leather-patch-round-1"],["Baseball Cap with Leather Patch","$25.00","dad-hat-with-leather-patch-round"],["\"KGP\" Vinyl Decals","$3.00","kgp-vinyl-decals"]];
+const srail=document.getElementById('srail');
+SHOP.forEach(([n,pr,slug],i)=>srail.insertAdjacentHTML('beforeend',`<a class="prod" href="https://www.kingsgroomingparlor.com/product-page/${slug}" target="_blank" rel="noopener"><div class="im"><img src="img/shop-${i+1}.webp" alt="${n.replace(/"/g,'&quot;')}" loading="lazy" draggable="false"></div><b>${n}</b><span>${pr}</span></a>`));
 /* GALLERIES. Each one is a track moved with translate3d at sub-pixel positions (smooth, no pixel stepping).
    It drifts on its own while on screen, loops seamlessly (contents are doubled), and the user can drag/swipe it
    sideways with momentum. Vertical swipes still scroll the page (touch-action:pan-y), the gallery never moves
@@ -595,7 +650,7 @@ function gallery(r,{mobileOnly=false}={}){
     requestAnimationFrame(tick);
   })(0);
 }
-gallery(document.getElementById('prail'));
+gallery(document.getElementById('prail')); gallery(srail);
 document.querySelectorAll('[data-rail]').forEach(b=>b.onclick=()=>document.getElementById(b.dataset.rail)._step(+b.dataset.dir));
 
 
@@ -640,7 +695,7 @@ creed.innerHTML=creed.innerHTML.replace(/(<em>|<\/em>)|([^\s<>]+)/g,(m,tag,w)=>t
 const words=[...creed.querySelectorAll('.w')];
 
 /* scroll effects */
-const heroBg=document.getElementById('heroBg'), heroEl=document.getElementById('top'), heroTxt=document.getElementById('heroTxt'), heroVig=document.getElementById('heroVig'), aboutFrame=document.getElementById('aboutFrame'), aboutImg=document.getElementById('aboutImg');
+const heroBg=document.getElementById('heroBg'), heroEl=document.getElementById('top'), heroTxt=document.getElementById('heroTxt'), heroVig=document.getElementById('heroVig'), aboutFrame=document.getElementById('aboutFrame'), aboutImg=document.getElementById('aboutImg'), carImg=document.getElementById('carImg');
 let ticking=false;
 function onScroll(){
   const y=scrollY;
@@ -650,6 +705,7 @@ function onScroll(){
   heroBg.style.transform=`scale(${1+ez*.85})`;
   heroTxt.style.transform=`translate3d(0,${-ez*90}px,0) scale(${1-ez*.12})`; heroTxt.style.opacity=1-Math.min(1,hp*1.6);
   heroVig.style.opacity=Math.max(0,(hp-.6)/.4)*.6;
+  const cr=carImg.getBoundingClientRect(); carImg.style.transform=`translate3d(0,${(cr.top+cr.height/2-innerHeight/2)*-.1-30}px,0)`;
   const ar=aboutFrame.getBoundingClientRect(); aboutImg.style.transform=`translate3d(0,${(ar.top+ar.height/2-innerHeight/2)*-.12}px,0)`;
   const r=creed.getBoundingClientRect(), p=Math.min(1,Math.max(0,(innerHeight*.85-r.top)/(r.height+innerHeight*.35)));
   const n=Math.round(p*words.length); words.forEach((w,i)=>w.classList.toggle('on',i<n));
