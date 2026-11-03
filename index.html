@@ -12,7 +12,7 @@
 <link rel="icon" href="img/logo.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,100,500;0,100,700;0,100,800;0,112,800;1,100,600;1,100,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BarberShop","name":"A King's Experience Grooming Parlor","image":"https://kings-grooming.vercel.app/img/shop-row.webp","telephone":"+1-484-360-9967","email":"info@kingsgroomingparlor.com","address":{"@type":"PostalAddress","streetAddress":"5466 Perkiomen Ave, Suite D21","addressLocality":"Reading","addressRegion":"PA","postalCode":"19606","addressCountry":"US"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"08:00","closes":"19:00"}],"url":"https://kings-grooming.vercel.app/"}
 </script>
@@ -22,7 +22,7 @@
   --chalk:#f6f4ef; --mute:#cdcac3; --dim:#8f8c86;
   --royal:#5b2bd6; --royal2:#8b6cf0;
   --chrome:linear-gradient(100deg,#c9cbd0 0%,#ffffff 22%,#d3d5da 38%,#ffffff 52%,#c4c6cb 70%,#f4f5f7 86%,#cfd1d6 100%);
-  --serif:'Archivo',system-ui,sans-serif; --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --serif:'DM Serif Display',Georgia,serif; --sans:'Inter',system-ui,-apple-system,sans-serif;
   --pad:clamp(20px,5vw,72px);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -35,8 +35,8 @@ a{color:inherit}
 @keyframes sheen{to{background-position:-220% 0}}
 .kicker{font:700 13px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
 .kicker b{color:var(--royal2);font-weight:600}
-h2{font:800 clamp(38px,6vw,80px)/1.02 var(--serif);letter-spacing:-.025em;font-stretch:112%}
-h2 em{font-style:italic;font-weight:800;color:#d9d2ff}
+h2{font:400 clamp(40px,6.2vw,84px)/1.02 var(--serif);letter-spacing:-.005em}
+h2 em{font-style:italic;font-weight:400;color:#d9d2ff}
 .btn{display:inline-flex;align-items:center;gap:10px;font:600 14px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:18px 26px;border-radius:999px;border:1px solid var(--line);color:var(--chalk);background:transparent;cursor:pointer;transition:transform .25s,background .25s,border-color .25s,color .25s}
 .btn:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.35)}
 .btn.solid{background:var(--chalk);color:var(--ink);border-color:var(--chalk)}
@@ -54,7 +54,7 @@ h2 em{font-style:italic;font-weight:800;color:#d9d2ff}
 #splash .badge::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);background-size:300% 100%;-webkit-mask:url(img/logo.webp) center/contain no-repeat;mask:url(img/logo.webp) center/contain no-repeat;animation:glint 4.5s ease-in-out 1.2s infinite}
 @keyframes glint{0%{background-position:150% 0}45%,100%{background-position:-60% 0}}
 @keyframes rise{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
-#splash .tag{margin:34px 0 30px;font:500 italic clamp(22px,3.4vw,30px)/1.25 var(--serif);color:var(--chalk);animation:rise 1.2s .35s both}
+#splash .tag{margin:34px 0 30px;font:400 italic clamp(22px,3.4vw,30px)/1.25 var(--serif);color:var(--chalk);animation:rise 1.2s .35s both}
 #splash .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;animation:rise 1.2s .55s both}
 
 /* ---------- nav ---------- */
@@ -63,7 +63,7 @@ nav.solid{background:rgba(11,11,12,.78);backdrop-filter:blur(14px);-webkit-backd
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
 nav .mark{display:flex;align-items:center;gap:12px;text-decoration:none}
 nav .mark img{width:38px}
-nav .mark span{font:700 17px/1 var(--serif);letter-spacing:.02em}
+nav .mark span{font:400 17px/1 var(--serif);letter-spacing:.02em}
 nav .links{display:flex;gap:30px;align-items:center}
 nav .links a{font:500 13px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--mute);transition:color .2s}
 nav .links a:hover{color:var(--chalk)}
@@ -82,8 +82,8 @@ nav .links .btn{padding:13px 20px;color:var(--ink)}
 .hero .bg{position:absolute;inset:-6% 0 0;background:url(img/shop-row.webp) center 40%/cover;transform:scale(1.08);will-change:transform}
 .hero .shade{position:absolute;inset:0;background:radial-gradient(ellipse 75% 60% at 50% 50%,rgba(8,8,9,.82) 0%,rgba(8,8,9,.62) 55%,rgba(8,8,9,.45) 100%),linear-gradient(180deg,rgba(11,11,12,.35) 0%,transparent 30%,transparent 75%,var(--ink) 100%)}
 .hero .wrap{position:relative;width:100%;padding-top:90px;padding-bottom:60px}
-.hero h1{font:800 clamp(52px,10vw,150px)/.92 var(--serif);letter-spacing:-.035em;margin:22px 0 26px;font-stretch:112%}
-.hero h1 em{font-weight:800;font-style:italic;display:block;color:#d9d2ff}
+.hero h1{font:400 clamp(52px,10vw,150px)/.92 var(--serif);letter-spacing:-.01em;margin:22px 0 26px}
+.hero h1 em{font-weight:400;font-style:italic;display:block;color:#d9d2ff}
 .hero p{max-width:560px;margin:0 auto;color:#f1efea;font-size:clamp(17px,1.7vw,20px);text-shadow:0 2px 18px rgba(0,0,0,.9)}
 .hero h1{color:#fff;text-shadow:0 4px 40px rgba(0,0,0,.75)}
 .hero .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px;justify-content:center}
@@ -95,7 +95,7 @@ nav .links .btn{padding:13px 20px;color:var(--ink)}
 /* ---------- ticker ---------- */
 .ticker{border-block:1px solid var(--line);overflow:hidden;background:var(--ink2)}
 .ticker .t{display:flex;width:max-content;animation:tick 38s linear infinite}
-.ticker span{font:700 italic clamp(18px,2.2vw,26px)/1 var(--serif);padding:22px 28px;white-space:nowrap;color:var(--mute)}
+.ticker span{font:400 italic clamp(18px,2.2vw,26px)/1 var(--serif);padding:22px 28px;white-space:nowrap;color:var(--mute)}
 .ticker span b{font-style:normal;font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--royal2);margin-right:28px;vertical-align:middle}
 @keyframes tick{to{transform:translateX(-50%)}}
 
@@ -105,7 +105,7 @@ section{padding:clamp(88px,13vw,170px) 0;position:relative}
 
 /* ---------- creed ---------- */
 .creed{background:var(--ink)}
-.creed .big{font:600 clamp(28px,4.2vw,58px)/1.18 var(--serif);letter-spacing:-.015em;max-width:1050px;margin-left:auto;margin-right:auto}
+.creed .big{font:400 clamp(28px,4.2vw,58px)/1.18 var(--serif);letter-spacing:-.015em;max-width:1050px;margin-left:auto;margin-right:auto}
 .creed .wrap{text-align:center}
 .creed .big em{font-style:italic}
 .creed .big .w{opacity:.16;transition:opacity .5s}
@@ -121,12 +121,12 @@ section{padding:clamp(88px,13vw,170px) 0;position:relative}
 .card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(11,11,12,.92) 100%);z-index:1}
 .card:hover img,.card:focus-visible img{transform:scale(1.06);filter:none}
 .card .meta{position:absolute;left:20px;right:20px;bottom:20px;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
-.card h3{font:700 32px/1 var(--serif)}
+.card h3{font:400 32px/1 var(--serif)}
 .card .role{font:600 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--mute);margin-top:9px}
 .card .book{flex:none;display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--chalk);color:var(--ink);text-decoration:none;transition:transform .3s,background .3s}
 .card .book:hover{transform:rotate(-45deg) scale(1.06);background:#fff}
 .card .book svg{width:20px;height:20px}
-.card .num{position:absolute;top:18px;left:20px;z-index:2;font:500 italic 15px/1 var(--serif);color:rgba(255,255,255,.7)}
+.card .num{position:absolute;top:18px;left:20px;z-index:2;font:400 italic 15px/1 var(--serif);color:rgba(255,255,255,.7)}
 
 /* ---------- lookbook ---------- */
 .lookbook{background:#000;overflow:hidden}
@@ -151,7 +151,7 @@ section{padding:clamp(88px,13vw,170px) 0;position:relative}
 .prail figure:hover img{transform:scale(1.04)}
 .perks{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-top:56px}
 .perks div{background:var(--ink);padding:28px 26px;text-align:center}
-.perks b{display:block;font:700 22px/1.2 var(--serif);margin-bottom:6px}
+.perks b{display:block;font:400 22px/1.2 var(--serif);margin-bottom:6px}
 @media (max-width:760px){.perks{grid-template-columns:1fr}}
 .perks span{color:var(--mute);font-size:15px}
 
@@ -159,8 +159,8 @@ section{padding:clamp(88px,13vw,170px) 0;position:relative}
 .etiquette{background:var(--ink2)}
 .rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
 .rule{text-align:center;border:1px solid var(--line);border-radius:22px;padding:34px 30px;background:linear-gradient(180deg,rgba(255,255,255,.025),transparent)}
-.rule .n{font:900 64px/1 var(--serif)}
-.rule h3{font:700 26px/1.15 var(--serif);margin:18px 0 10px}
+.rule .n{font:400 64px/1 var(--serif)}
+.rule h3{font:400 26px/1.15 var(--serif);margin:18px 0 10px}
 .rule p{color:var(--mute)}
 
 /* ---------- merch ---------- */
@@ -174,7 +174,7 @@ section{padding:clamp(88px,13vw,170px) 0;position:relative}
 @media (min-width:900px){.visit-grid{grid-template-columns:1fr 1.15fr}}
 .info{border:1px solid var(--line);border-radius:22px;padding:clamp(28px,4vw,46px);display:flex;flex-direction:column;gap:30px;text-align:center;align-items:center}
 .info h3{font:600 11px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
-.info .v{font:600 clamp(20px,2.2vw,26px)/1.35 var(--serif)}
+.info .v{font:400 clamp(20px,2.2vw,26px)/1.35 var(--serif)}
 .info a{text-decoration:none;border-bottom:1px solid var(--line);transition:border-color .2s}
 .info a:hover{border-color:var(--chalk)}
 .hours{display:grid;grid-template-columns:auto auto;gap:6px 22px;font-size:16px;justify-content:center;text-align:left}
@@ -198,16 +198,36 @@ footer a{color:var(--mute);text-decoration:none}
 @media (min-width:700px){#sheet{place-items:center}#sheet .panel{border-radius:26px;padding:34px}}
 #sheet.open .panel{transform:none}
 #sheet .grab{width:44px;height:5px;border-radius:9px;background:rgba(255,255,255,.18);margin:0 auto 20px}
-#sheet h3{font:700 34px/1.05 var(--serif);margin:10px 0 6px}
+#sheet h3{font:400 34px/1.05 var(--serif);margin:10px 0 6px}
 #sheet .sub{color:var(--mute);margin-bottom:22px}
 .pick{display:flex;align-items:center;gap:16px;padding:12px;border:1px solid var(--line);border-radius:18px;text-decoration:none;margin-bottom:10px;transition:background .2s,border-color .2s}
 .pick:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.22)}
 .pick img{width:58px;height:58px;border-radius:14px;object-fit:cover;object-position:center 20%}
-.pick b{font:700 22px/1 var(--serif);display:block}
+.pick b{font:400 22px/1 var(--serif);display:block}
 .pick span{font-size:13px;color:var(--mute)}
 .pick svg{margin-left:auto;width:18px;height:18px;color:var(--mute)}
 #sheet .x{position:absolute;top:16px;right:16px;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--chalk);font-size:20px;cursor:pointer}
 .note{font-size:13px;color:var(--dim);margin-top:14px;text-align:center}
+
+
+/* ---------- richness pass: crest, glows, hairlines, sheen, tilt ---------- */
+.hero .crest{width:clamp(86px,11vw,130px);margin:0 auto 18px;filter:drop-shadow(0 12px 30px rgba(0,0,0,.7));position:relative}
+.hero .crest::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.6) 50%,transparent 65%);background-size:300% 100%;-webkit-mask:url(img/logo.webp) center/contain no-repeat;mask:url(img/logo.webp) center/contain no-repeat;animation:glint 5s ease-in-out 1s infinite}
+section+section::before,.ticker+section::before{content:"";position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent)}
+.head{position:relative}
+.head::before{content:"";position:absolute;left:50%;top:40%;width:min(720px,90vw);height:260px;transform:translate(-50%,-50%);background:radial-gradient(ellipse at center,rgba(139,108,240,.16),transparent 70%);pointer-events:none;z-index:-1}
+.head h2 em,.hero h1 em{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff 50%,#ffffff 70%,#b7acff 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 10s linear infinite;padding-right:.08em}
+.creed{overflow:hidden}
+.creed::after{content:"";position:absolute;right:-6%;top:50%;width:min(620px,70vw);aspect-ratio:600/700;transform:translateY(-50%) rotate(-8deg);background:url(img/logo.webp) center/contain no-repeat;opacity:.05;filter:grayscale(1);pointer-events:none}
+.card{transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.card .shine{position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.22) 48%,transparent 62%);background-size:250% 100%;background-position:150% 0;transition:background-position .9s ease}
+.card:hover .shine{background-position:-60% 0}
+.visit{overflow:hidden}
+.visit::after{content:"";position:absolute;inset:0;background:url(img/shop-chairs.webp) center/cover;opacity:.12;filter:blur(18px) grayscale(.4);transform:scale(1.1);pointer-events:none;z-index:0}
+.visit .wrap{position:relative;z-index:1}
+.info{background:rgba(20,20,22,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.pole{display:inline-block;width:10px;height:44px;border-radius:6px;margin:0 auto 22px;background:repeating-linear-gradient(-45deg,#c8102e 0 6px,#fff 6px 12px,#1f3fbf 12px 18px,#fff 18px 24px);background-size:100% 200%;animation:pole 3s linear infinite;box-shadow:0 0 18px rgba(255,255,255,.15)}
+@keyframes pole{to{background-position:0 -68px}}
 
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
@@ -244,7 +264,7 @@ footer a{color:var(--mute);text-decoration:none}
   <div class="bg" id="heroBg"></div>
   <div class="shade"></div>
   <div class="wrap">
-    <span class="status" id="status"><i></i><span>Open today</span></span>
+    <img class="crest" src="img/logo.webp" alt="" style="display:block"><span class="status" id="status"><i></i><span>Open today</span></span>
     <h1>A King's<em>Experience.</em></h1>
     <p>Grooming Parlor · 5466 Perkiomen Ave, Reading, PA</p>
     <div class="row">
@@ -385,11 +405,14 @@ const arrow='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-w
 /* barbers */
 const court=document.getElementById('court'), picks=document.getElementById('picks');
 BARBERS.forEach((b,i)=>{
-  court.insertAdjacentHTML('beforeend',`<article class="card reveal" tabindex="0"><span class="num">No. ${String(i+1).padStart(2,'0')}</span><img src="${b.img}" alt="${b.name}, ${b.role}" loading="lazy"><div class="meta"><div><h3>${b.name}</h3><p class="role">${b.role}</p></div><a class="book" href="${b.url}" target="_blank" rel="noopener" aria-label="Book with ${b.name}">${arrow}</a></div></article>`);
+  court.insertAdjacentHTML('beforeend',`<article class="card reveal" tabindex="0"><span class="shine"></span><span class="num">No. ${String(i+1).padStart(2,'0')}</span><img src="${b.img}" alt="${b.name}, ${b.role}" loading="lazy"><div class="meta"><div><h3>${b.name}</h3><p class="role">${b.role}</p></div><a class="book" href="${b.url}" target="_blank" rel="noopener" aria-label="Book with ${b.name}">${arrow}</a></div></article>`);
   picks.insertAdjacentHTML('beforeend',`<a class="pick" href="${b.url}" target="_blank" rel="noopener"><img src="${b.img}" alt=""><div><b>${b.name}</b></div>${arrow}</a>`);
 });
 court.addEventListener('click',e=>{const c=e.target.closest('.card');if(c&&!e.target.closest('.book'))c.querySelector('.book').click()});
 
+/* subtle 3D tilt on barber cards (mouse only) */
+court.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;const c=e.target.closest('.card');if(!c)return;const b=c.getBoundingClientRect();const x=(e.clientX-b.left)/b.width-.5,y=(e.clientY-b.top)/b.height-.5;c.style.transform=`perspective(900px) rotateY(${x*8}deg) rotateX(${-y*8}deg)`});
+court.addEventListener('pointerout',e=>{const c=e.target.closest('.card');if(c&&!c.contains(e.relatedTarget))c.style.transform=''});
 /* lookbook */
 const rail=document.getElementById('rail');
 CUTS.forEach((c,i)=>rail.insertAdjacentHTML('beforeend',`<figure class="cut"><img src="img/cut-${i+1}.webp" alt="Haircut done at the Parlor" loading="lazy" draggable="false"></figure>`));
