@@ -118,7 +118,8 @@ section{padding:clamp(88px,13vw,170px) 0;position:relative}
 .court{background:var(--ink2)}
 .court-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 @media (min-width:900px){.court-grid{grid-template-columns:repeat(3,1fr);gap:18px}}
-@media (max-width:899px){.court-grid{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(var(--pad)*-1);padding:0 var(--pad) 10px;scrollbar-width:none}.court-grid::-webkit-scrollbar{display:none}.court-grid .card{flex:0 0 min(74vw,320px);scroll-snap-align:start}}
+@media (max-width:899px){.court-grid{display:flex;gap:14px;overflow-x:auto;overflow-y:hidden;overscroll-behavior:contain;margin:0 calc(var(--pad)*-1);padding:0 var(--pad) 10px;scrollbar-width:none}.court-grid::-webkit-scrollbar{display:none}.court-grid .card{flex:0 0 min(74vw,320px)}}
+@media (min-width:900px){.court-grid .clone{display:none}}
 .card{position:relative;border-radius:22px;overflow:hidden;background:var(--ink3);aspect-ratio:3/4;isolation:isolate;cursor:pointer;outline:none}
 .card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;transition:transform 1.1s cubic-bezier(.2,.7,.2,1),filter .6s;filter:grayscale(.35) contrast(1.04)}
 .card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(11,11,12,.92) 100%);z-index:1}
@@ -133,10 +134,10 @@ section{padding:clamp(88px,13vw,170px) 0;position:relative}
 
 /* ---------- lookbook ---------- */
 .lookbook{background:#000;overflow:hidden}
-.lb-rail{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 var(--pad) 22px;scrollbar-width:none;cursor:grab}
+.lb-rail{display:flex;gap:16px;overflow-x:auto;overflow-y:hidden;overscroll-behavior:contain;padding:0 var(--pad) 22px;scrollbar-width:none;cursor:grab}
 .lb-rail::-webkit-scrollbar{display:none}
-.lb-rail.drag{cursor:grabbing;scroll-snap-type:none}
-.cut{flex:0 0 clamp(240px,26vw,340px);scroll-snap-align:start;border-radius:20px;overflow:hidden;background:radial-gradient(ellipse at 50% 35%,#1b1b1f 0%,#000 70%);border:1px solid rgba(255,255,255,.06);position:relative}
+.lb-rail.drag{cursor:grabbing}
+.cut{flex:0 0 clamp(240px,26vw,340px);border-radius:20px;overflow:hidden;background:radial-gradient(ellipse at 50% 35%,#1b1b1f 0%,#000 70%);border:1px solid rgba(255,255,255,.06);position:relative}
 .cut img{width:100%;aspect-ratio:1;object-fit:contain;transition:transform .8s cubic-bezier(.2,.7,.2,1);pointer-events:none;user-select:none}
 .cut:hover img{transform:scale(1.05)}
 .cut figcaption{position:absolute;left:18px;bottom:16px;font:600 11px/1 var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--mute)}
@@ -147,9 +148,9 @@ section{padding:clamp(88px,13vw,170px) 0;position:relative}
 
 /* ---------- parlor ---------- */
 .parlor{background:var(--ink)}
-.prail{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 var(--pad) 10px;scrollbar-width:none;cursor:grab}
+.prail{display:flex;gap:16px;overflow-x:auto;overflow-y:hidden;overscroll-behavior:contain;padding:0 var(--pad) 10px;scrollbar-width:none;cursor:grab}
 .prail::-webkit-scrollbar{display:none}
-.prail.drag{cursor:grabbing;scroll-snap-type:none}
+.prail.drag{cursor:grabbing}
 .prail figure{flex:0 0 clamp(260px,34vw,460px);aspect-ratio:3/4;border-radius:20px;overflow:hidden;scroll-snap-align:start}
 .prail img{width:100%;height:100%;object-fit:cover;pointer-events:none;user-select:none;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
 .prail figure:hover img{transform:scale(1.04)}
@@ -402,19 +403,40 @@ BARBERS.forEach((b,i)=>{
   court.insertAdjacentHTML('beforeend',`<article class="card reveal" tabindex="0"><span class="num">No. ${String(i+1).padStart(2,'0')}</span><img src="${b.img}" alt="${b.name}, ${b.role}" loading="lazy"><div class="meta"><div><h3>${b.name}</h3><p class="role">${b.role}</p></div><a class="book" href="${b.url}" target="_blank" rel="noopener" aria-label="Book with ${b.name}">${arrow}</a></div></article>`);
   picks.insertAdjacentHTML('beforeend',`<a class="pick" href="${b.url}" target="_blank" rel="noopener"><img src="${b.img}" alt=""><div><b>${b.name}</b><span>${b.role}</span></div>${arrow}</a>`);
 });
-court.querySelectorAll('.card').forEach(c=>c.addEventListener('click',e=>{if(!e.target.closest('.book'))c.querySelector('.book').click()}));
+court.addEventListener('click',e=>{const c=e.target.closest('.card');if(c&&!e.target.closest('.book'))c.querySelector('.book').click()});
 
 /* lookbook */
 const rail=document.getElementById('rail');
 CUTS.forEach((c,i)=>rail.insertAdjacentHTML('beforeend',`<figure class="cut"><img src="img/cut-${i+1}.webp" alt="${c} done at the Parlor" loading="lazy" draggable="false"><figcaption>${c}</figcaption></figure>`));
 const step=()=>rail.querySelector('.cut').offsetWidth+16;
-document.getElementById('lbNext').onclick=()=>rail.scrollBy({left:step(),behavior:'smooth'});
-document.getElementById('lbPrev').onclick=()=>rail.scrollBy({left:-step(),behavior:'smooth'});
+document.getElementById('lbNext').onclick=()=>{rail._pause&&rail._pause();rail.scrollBy({left:step(),behavior:'smooth'})};
+document.getElementById('lbPrev').onclick=()=>{rail._pause&&rail._pause();rail.scrollBy({left:-step(),behavior:'smooth'})};
 let dr=null,dx=0,sl=0;
 [rail,document.getElementById('prail')].forEach(r=>r.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;dr=r;dx=e.clientX;sl=r.scrollLeft;r.classList.add('drag')}));
 addEventListener('pointermove',e=>{if(dr)dr.scrollLeft=sl-(e.clientX-dx)});
 addEventListener('pointerup',()=>{if(dr){dr.classList.remove('drag');dr=null}});
-document.querySelectorAll('[data-rail]').forEach(b=>b.onclick=()=>{const r=document.getElementById(b.dataset.rail);r.scrollBy({left:b.dataset.dir*(r.firstElementChild.offsetWidth+16),behavior:'smooth'})});
+document.querySelectorAll('[data-rail]').forEach(b=>b.onclick=()=>{const r=document.getElementById(b.dataset.rail);r._pause&&r._pause();r.scrollBy({left:b.dataset.dir*(r.firstElementChild.offsetWidth+16),behavior:'smooth'})});
+/* auto-drift: each horizontal gallery drifts on its own once it is on screen, loops forever,
+   pauses while touched/dragged/arrowed and picks back up 3s later */
+function drift(r,{mobileOnly=false}={}){
+  const kids=[...r.children]; kids.forEach(k=>{const c=k.cloneNode(true);c.classList.remove('reveal');c.classList.add('in','clone');c.setAttribute('aria-hidden','true');c.querySelectorAll('a,[tabindex]').forEach(a=>a.tabIndex=-1);r.appendChild(c)});
+  let pos=r.scrollLeft, vis=false, hold=0, last=0;
+  const first=r.children[0], firstClone=r.children[kids.length];
+  const half=()=>firstClone.offsetLeft-first.offsetLeft;
+  const pause=()=>{hold=performance.now()+3000};
+  ['pointerdown','touchstart','wheel'].forEach(ev=>r.addEventListener(ev,pause,{passive:true}));
+  r.addEventListener('scroll',()=>{if(performance.now()<hold){pos=r.scrollLeft;if(pos>=half())r.scrollLeft=pos-=half()}},{passive:true});
+  r._pause=pause;
+  new IntersectionObserver(es=>vis=es[0].isIntersecting,{threshold:.25}).observe(r);
+  (function tick(t){
+    const dt=Math.min(50,t-(last||t)); last=t;
+    const on=vis&&t>hold&&!(mobileOnly&&innerWidth>899)&&getComputedStyle(r).overflowX!=='visible';
+    if(on){pos+=dt*0.035; if(pos>=half())pos-=half(); r.scrollLeft=pos}
+    requestAnimationFrame(tick);
+  })(0);
+}
+drift(rail); drift(document.getElementById('prail')); drift(court,{mobileOnly:true});
+
 
 /* ticker */
 const T=["Fades","Tapers","Beard work","Line-ups","Kids cuts","Gift cards","Mon to Sat, 8 to 7","5466 Perkiomen Ave"];
