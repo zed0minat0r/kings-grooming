@@ -94,7 +94,7 @@ nav .links .btn{padding:13px 20px;color:var(--ink)}
 
 /* ---------- ticker ---------- */
 .ticker{border-block:1px solid var(--line);overflow:hidden;background:var(--ink2)}
-.ticker .t{display:flex;width:max-content;animation:tick 38s linear infinite}
+.ticker .t{display:flex;width:max-content;will-change:transform}
 .ticker span{font:400 italic clamp(18px,2.2vw,26px)/1 var(--serif);padding:22px 28px;white-space:nowrap;color:var(--mute)}
 .ticker span b{font-style:normal;font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--royal2);margin-right:28px;vertical-align:middle}
 @keyframes tick{to{transform:translateX(-50%)}}
@@ -477,7 +477,7 @@ footer.foot .wrap{display:block;text-align:left;color:var(--mute);font-size:15px
   .map iframe{min-height:360px}
 }
 
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
 </style>
 </head>
 <body>
@@ -840,6 +840,8 @@ document.querySelectorAll('[data-rail]').forEach(b=>b.onclick=()=>document.getEl
 const T=["Monday - Saturday 8am - 7pm","5466 Perkiomen Ave, Reading, PA","(484) 360-9967","Gift cards available"];
 const tickHTML=T.map(t=>`<span><b>&#9819;</b>${t}</span>`).join('');
 document.getElementById('tick').innerHTML=tickHTML+tickHTML;
+{const tk=document.getElementById('tick'); let tx=0, tl=0;
+ (function tick(t){const dt=Math.min(50,t-(tl||t)); tl=t; tx+=dt*0.045; const half=tk.scrollWidth/2; if(half>0&&tx>=half)tx-=half; tk.style.transform=`translate3d(${-tx}px,0,0)`; requestAnimationFrame(tick)})(0);}
 
 /* hours + live status (shop time, America/New_York) */
 const DAYS=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
