@@ -327,10 +327,12 @@ em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff
 .cutname.swap b,.cutname.swap span{animation:fadeup .7s cubic-bezier(.16,.84,.24,1) both}
 /* careers: split with photo, perks as icon tiles */
 .careers{background:var(--ink2);overflow:hidden}
+.careers .reveal{transform:none!important;transition:opacity .8s ease!important;transition-delay:0s!important}
+.careers .tile svg *{transition-delay:.2s}
 .careers .grid{display:grid;gap:clamp(30px,5vw,70px);align-items:center;grid-template-columns:1fr}
 @media (min-width:900px){.careers .grid{grid-template-columns:.9fr 1.1fr}}
 .careers .photo{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:4/5;max-width:520px;width:100%;margin:0 auto}
-.careers .photo img{width:100%;height:118%;object-fit:cover;will-change:transform}
+.careers .photo img{width:100%;height:100%;object-fit:cover}
 .careers .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(8,8,9,.85))}
 .careers .photo .cta{position:absolute;left:0;right:0;bottom:26px;z-index:2;text-align:center}
 .tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
@@ -463,7 +465,7 @@ footer.foot .wrap{display:block;text-align:left;color:var(--mute);font-size:15px
 <div id="splash" role="dialog" aria-label="Welcome">
   <div class="board"></div>
   <div class="inner">
-    <img class="badge" src="img/logo.webp" alt="Kings Grooming Parlor">
+    <img decoding="async" class="badge" src="img/logo.webp" alt="Kings Grooming Parlor">
     <p class="tag">A King's Experience welcomes you.</p>
     <div class="row">
       <button class="btn solid" data-book>Book a barber</button>
@@ -474,7 +476,7 @@ footer.foot .wrap{display:block;text-align:left;color:var(--mute);font-size:15px
 
 <nav id="nav">
   <div class="wrap">
-    <a class="mark" href="#top"><img src="img/logo.webp" alt=""><span>King's Experience</span></a>
+    <a class="mark" href="#top"><img decoding="async" src="img/logo.webp" alt=""><span>King's Experience</span></a>
     <div class="links">
       <a href="#barbers">Barbers</a>
       <a href="#lookbook">Cuts</a>
@@ -494,7 +496,7 @@ footer.foot .wrap{display:block;text-align:left;color:var(--mute);font-size:15px
   <div class="shade"></div>
   <div class="vig" id="heroVig"></div>
   <div class="wrap" id="heroTxt">
-    <img class="crest" src="img/logo.webp" alt="" style="display:block"><span class="status" id="status"><i></i><span>Open today</span></span>
+    <img decoding="async" class="crest" src="img/logo.webp" alt="" style="display:block"><span class="status" id="status"><i></i><span>Open today</span></span>
     <h1><span class="ln"><span>A King's</span></span><span class="ln"><span><em class="gr">Experience.</em></span></span></h1>
     <p>Grooming Parlor · 5466 Perkiomen Ave, Reading, PA</p>
     <div class="row">
@@ -513,7 +515,7 @@ footer.foot .wrap{display:block;text-align:left;color:var(--mute);font-size:15px
 <section class="about" id="about">
   <div class="wrap">
     <div class="grid">
-      <div class="frame" id="aboutFrame"><img src="img/shop-work.webp" alt="A barber at work in the Parlor" id="aboutImg"><img class="badge" src="img/logo.webp" alt=""></div>
+      <div class="frame" id="aboutFrame"><img decoding="async" src="img/shop-work.webp" alt="A barber at work in the Parlor" id="aboutImg"><img decoding="async" class="badge" src="img/logo.webp" alt=""></div>
       <div class="txt">
         <p class="kicker reveal">About us</p>
         <p class="big" id="creed">As the "King" or "Queen" of your own life, you prefer to be treated with respect and dignity. <em>The treatment we provide to you will be nothing short of royalty.</em></p>
@@ -553,12 +555,12 @@ footer.foot .wrap{display:block;text-align:left;color:var(--mute);font-size:15px
     <div class="lb-ctrl reveal" style="margin:-30px 0 30px;justify-content:center"><button data-rail="prail" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><button data-rail="prail" data-dir="1" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></div>
   </div>
   <div class="prail" id="prail">
-      <figure><img src="img/shop-row.webp" alt="Row of barber chairs inside the Parlor" loading="lazy" draggable="false"></figure>
-      <figure><img src="img/shop-work.webp" alt="A barber at work in the Parlor" loading="lazy" draggable="false"></figure>
-      <figure><img src="img/shop-chairs.webp" alt="Barber chairs and stations" loading="lazy" draggable="false"></figure>
-      <figure><img src="img/shop-station.webp" alt="A barber station with mirror and TV" loading="lazy" draggable="false"></figure>
-      <figure><img src="img/shop-stations.webp" alt="Stations with tool chests" loading="lazy" draggable="false"></figure>
-      <figure><img src="img/shop-chair.webp" alt="A barber chair at its station" loading="lazy" draggable="false"></figure>
+      <figure><img decoding="async" src="img/shop-row.webp" alt="Row of barber chairs inside the Parlor" loading="lazy" draggable="false"></figure>
+      <figure><img decoding="async" src="img/shop-work.webp" alt="A barber at work in the Parlor" loading="lazy" draggable="false"></figure>
+      <figure><img decoding="async" src="img/shop-chairs.webp" alt="Barber chairs and stations" loading="lazy" draggable="false"></figure>
+      <figure><img decoding="async" src="img/shop-station.webp" alt="A barber station with mirror and TV" loading="lazy" draggable="false"></figure>
+      <figure><img decoding="async" src="img/shop-stations.webp" alt="Stations with tool chests" loading="lazy" draggable="false"></figure>
+      <figure><img decoding="async" src="img/shop-chair.webp" alt="A barber chair at its station" loading="lazy" draggable="false"></figure>
   </div>
 </section>
 
@@ -568,7 +570,7 @@ footer.foot .wrap{display:block;text-align:left;color:var(--mute);font-size:15px
       <div><p class="kicker reveal">Careers</p><h2 class="reveal" style="margin-top:18px">Come work <em>with us.</em></h2></div>
     </div>
     <div class="grid">
-      <div class="photo reveal"><img src="img/shop-station.webp" alt="A barber station at the Parlor" id="carImg"><div class="cta"><a class="btn solid" href="mailto:info@kingsgroomingparlor.com?subject=Join%20the%20Team">Join the team</a></div></div>
+      <div class="photo reveal"><img decoding="async" src="img/shop-station.webp" alt="A barber station at the Parlor" id="carImg"><div class="cta"><a class="btn solid" href="mailto:info@kingsgroomingparlor.com?subject=Join%20the%20Team">Join the team</a></div></div>
       <div class="tiles">
         <div class="tile reveal"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="14"/><path d="M20 12v8l6 4"/></svg><b>Flexibility in schedules</b></div>
         <div class="tile reveal"><svg viewBox="0 0 40 40"><path d="M13 8h14v8a7 7 0 0 1-14 0z"/><path d="M13 11H8a5 5 0 0 0 5 6M27 11h5a5 5 0 0 1-5 6M20 23v6M14 32h12"/></svg><b>Monthly &amp; yearly incentives</b></div>
@@ -603,7 +605,7 @@ footer.foot .wrap{display:block;text-align:left;color:var(--mute);font-size:15px
     <div class="more"><button class="btn" id="moreBtn">Show more</button><a class="btn solid" href="https://www.kingsgroomingparlor.com/category/all-products" target="_blank" rel="noopener">Shop the full store</a></div>
   </div>
 </section>
-<div id="qv" aria-hidden="true"><div class="scrim" data-qclose></div><div class="box" role="dialog" aria-label="Product" data-lenis-prevent><button class="x" data-qclose aria-label="Close">&times;</button><div class="qimg"><img id="qvImg" alt=""></div><div class="qtx"><span class="qc" id="qvCat"></span><h3 id="qvName"></h3><p class="qp" id="qvPrice"></p><a class="btn solid" id="qvBuy" target="_blank" rel="noopener">Buy on the KGP store</a><p class="qn">Checkout, sizes and colors on the KGP store.</p></div></div></div>
+<div id="qv" aria-hidden="true"><div class="scrim" data-qclose></div><div class="box" role="dialog" aria-label="Product" data-lenis-prevent><button class="x" data-qclose aria-label="Close">&times;</button><div class="qimg"><img decoding="async" id="qvImg" alt=""></div><div class="qtx"><span class="qc" id="qvCat"></span><h3 id="qvName"></h3><p class="qp" id="qvPrice"></p><a class="btn solid" id="qvBuy" target="_blank" rel="noopener">Buy on the KGP store</a><p class="qn">Checkout, sizes and colors on the KGP store.</p></div></div></div>
 
 <section class="visit" id="visit">
   <div class="wrap">
@@ -626,12 +628,12 @@ footer.foot .wrap{display:block;text-align:left;color:var(--mute);font-size:15px
 <footer class="foot">
   <div class="wrap">
     <div class="fcta reveal">
-      <img src="img/logo.webp" alt="">
+      <img decoding="async" src="img/logo.webp" alt="">
       <h2>Book your <em>next cut.</em></h2>
       <div class="row"><button class="btn solid" data-book>Book now</button><a class="btn" href="tel:+14843609967">(484) 360-9967</a></div>
     </div>
     <div class="fcols">
-      <div class="fc brand"><img src="img/logo.webp" alt="Kings Grooming Parlor"><p>A King's Experience Grooming Parlor</p><a class="soc" href="https://www.instagram.com/a.kings.experience/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor"/></svg><span>@a.kings.experience</span></a></div>
+      <div class="fc brand"><img decoding="async" src="img/logo.webp" alt="Kings Grooming Parlor"><p>A King's Experience Grooming Parlor</p><a class="soc" href="https://www.instagram.com/a.kings.experience/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor"/></svg><span>@a.kings.experience</span></a></div>
       <div class="fc"><h4>Visit</h4><a href="https://maps.google.com/?q=5466+Perkiomen+Ave+Suite+D21+Reading+PA+19606" target="_blank" rel="noopener">5466 Perkiomen Ave, Suite D21<br>Reading, PA 19606</a></div>
       <div class="fc"><h4>Hours</h4><p>Monday - Saturday<br>8:00 am - 7:00 pm</p><p class="dim">Sunday closed</p></div>
       <div class="fc"><h4>Contact</h4><a href="tel:+14843609967">(484) 360-9967</a><a href="mailto:info@kingsgroomingparlor.com">info@kingsgroomingparlor.com</a></div>
@@ -670,14 +672,14 @@ const arrow='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-w
 const picks=document.getElementById('picks'), stage=document.getElementById('stage'), portrait=document.getElementById('portrait'),
       pName=document.getElementById('pName'), pBook=document.getElementById('pBook'), thumbs=document.getElementById('thumbs');
 BARBERS.forEach((b,i)=>{
-  picks.insertAdjacentHTML('beforeend',`<a class="pick" href="${b.url}" target="_blank" rel="noopener"><img src="${b.img}" alt=""><div><b>${b.name}</b></div>${arrow}</a>`);
-  thumbs.insertAdjacentHTML('beforeend',`<button class="thumb" aria-label="${b.name}"><img src="${b.img}" alt="" loading="lazy"><svg viewBox="0 0 70 70"><circle cx="35" cy="35" r="33"/><circle class="p" cx="35" cy="35" r="33"/></svg></button>`);
+  picks.insertAdjacentHTML('beforeend',`<a class="pick" href="${b.url}" target="_blank" rel="noopener"><img decoding="async" src="${b.img}" alt=""><div><b>${b.name}</b></div>${arrow}</a>`);
+  thumbs.insertAdjacentHTML('beforeend',`<button class="thumb" aria-label="${b.name}"><img decoding="async" src="${b.img}" alt="" loading="lazy"><svg viewBox="0 0 70 70"><circle cx="35" cy="35" r="33"/><circle class="p" cx="35" cy="35" r="33"/></svg></button>`);
   new Image().src=b.img;
 });
 const TB=[...thumbs.children]; let cur=-1, stageVis=false, stageHold=false, adv=null;
 function show(i){
   if(i===cur)return; cur=i; const b=BARBERS[i];
-  const ph=document.createElement('div'); ph.className='ph enter'; ph.innerHTML=`<img src="${b.img}" alt="${b.name}, ${b.role}">`;
+  const ph=document.createElement('div'); ph.className='ph enter'; ph.innerHTML=`<img decoding="async" src="${b.img}" alt="${b.name}, ${b.role}">`;
   portrait.insertBefore(ph,pName);
   const olds=[...portrait.querySelectorAll('.ph')].slice(0,-1); setTimeout(()=>olds.forEach(o=>o.remove()),1100);
   pName.innerHTML=`<b>${b.name}</b><span>${b.role}</span>`; pName.classList.remove('swap'); void pName.offsetWidth; pName.classList.add('swap');
@@ -698,7 +700,7 @@ show(0);
 
 /* cuts: 3D coverflow. Centre card faces you, neighbours angle back; auto-advances, drag/swipe or arrows to move */
 const flow=document.getElementById('flow');
-CUTS.forEach((c,i)=>flow.insertAdjacentHTML('beforeend',`<figure class="it"><img src="img/cut-${i+1}.webp" alt="Haircut done at the Parlor" loading="lazy" draggable="false"></figure>`));
+CUTS.forEach((c,i)=>flow.insertAdjacentHTML('beforeend',`<figure class="it"><img decoding="async" src="img/cut-${i+1}.webp" alt="Haircut done at the Parlor" loading="lazy" draggable="false"></figure>`));
 const IT=[...flow.children], N=IT.length; let fpos=0, fVis=false, fHold=0, fdrag=null;
 function layout(){
   const w=IT[0].offsetWidth, gap=w*0.62;
@@ -730,14 +732,14 @@ const FEAT={"n": "KGP LOGO TEE", "p": "$25.00", "u": "unisex-heavy-cotton-tee-8"
 /* store: featured product, filter tabs with sliding underline, product grid, quick view */
 const esc=t=>t.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
 const purl=u=>`https://www.kingsgroomingparlor.com/product-page/${u}`;
-document.getElementById('feat').innerHTML=`<div class="fi"><img src="${FEAT.i}" alt="${esc(FEAT.n)}"></div><div class="ft"><span class="lbl">Featured</span><h3>${esc(FEAT.n)}</h3><p class="pr">${FEAT.p}</p><div class="acts"><a class="btn solid" href="${purl(FEAT.u)}" target="_blank" rel="noopener">Buy now</a><button class="btn" data-q="feat">Quick view</button></div></div>`;
+document.getElementById('feat').innerHTML=`<div class="fi"><img decoding="async" src="${FEAT.i}" alt="${esc(FEAT.n)}"></div><div class="ft"><span class="lbl">Featured</span><h3>${esc(FEAT.n)}</h3><p class="pr">${FEAT.p}</p><div class="acts"><a class="btn solid" href="${purl(FEAT.u)}" target="_blank" rel="noopener">Buy now</a><button class="btn" data-q="feat">Quick view</button></div></div>`;
 const CATS=['All','Tees','Long sleeves','Hats','Decals'], tabs=document.getElementById('tabs'), pgrid=document.getElementById('pgrid'), moreBtn=document.getElementById('moreBtn'), cnt=document.getElementById('cnt');
 tabs.innerHTML=CATS.map(c=>`<button>${c}</button>`).join('')+'<span class="ul"></span>';
 let curCat='All', shown=8;
 function renderShop(){
   const list=PROD.filter(x=>curCat==='All'||x.c===curCat);
   const vis=list.slice(0,shown);
-  pgrid.innerHTML=vis.map((x,k)=>`<div class="pc" tabindex="0" data-k="${PROD.indexOf(x)}" style="animation-delay:${(k%8)*60}ms"><div class="im"><img src="${x.i}" alt="${esc(x.n)}" loading="lazy"><span class="q">Quick view</span></div><span class="c">${x.c}</span><b>${esc(x.n)}</b><span class="pr">${x.p}</span></div>`).join('');
+  pgrid.innerHTML=vis.map((x,k)=>`<div class="pc" tabindex="0" data-k="${PROD.indexOf(x)}" style="animation-delay:${(k%8)*60}ms"><div class="im"><img decoding="async" src="${x.i}" alt="${esc(x.n)}" loading="lazy"><span class="q">Quick view</span></div><span class="c">${x.c}</span><b>${esc(x.n)}</b><span class="pr">${x.p}</span></div>`).join('');
   cnt.textContent=`${list.length} item${list.length===1?'':'s'}`;
   moreBtn.style.display=list.length>shown?'':'none';
   [...tabs.querySelectorAll('button')].forEach(b=>b.classList.toggle('on',b.textContent===curCat));
@@ -853,7 +855,6 @@ function onScroll(){
   const t=Math.min(1,Math.max(0,(hp-.6)/.22)), te=1-Math.pow(1-t,3);
   heroShade.style.opacity=te; heroTxt.style.opacity=te; heroTxt.style.transform=`translate3d(0,${(1-te)*40}px,0)`;
   heroVig.style.opacity=0; heroCue.style.opacity=hp<.03?1:0;
-  const cr=carImg.getBoundingClientRect(); carImg.style.transform=`translate3d(0,${(cr.top+cr.height/2-innerHeight/2)*-.1-30}px,0)`;
   const ar=aboutFrame.getBoundingClientRect(); aboutImg.style.transform=`translate3d(0,${(ar.top+ar.height/2-innerHeight/2)*-.12}px,0)`;
   const r=creed.getBoundingClientRect(), p=Math.min(1,Math.max(0,(innerHeight*.85-r.top)/(r.height+innerHeight*.35)));
   const n=Math.round(p*words.length); words.forEach((w,i)=>w.classList.toggle('on',i<n));
