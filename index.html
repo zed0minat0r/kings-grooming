@@ -118,7 +118,7 @@ section{padding:clamp(88px,13vw,170px) 0;position:relative}
 .court{background:var(--ink2)}
 .court-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 @media (min-width:900px){.court-grid{grid-template-columns:repeat(3,1fr);gap:18px}}
-@media (max-width:520px){.court-grid{grid-template-columns:1fr}}
+@media (max-width:899px){.court-grid{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(var(--pad)*-1);padding:0 var(--pad) 10px;scrollbar-width:none}.court-grid::-webkit-scrollbar{display:none}.court-grid .card{flex:0 0 min(74vw,320px);scroll-snap-align:start}}
 .card{position:relative;border-radius:22px;overflow:hidden;background:var(--ink3);aspect-ratio:3/4;isolation:isolate;cursor:pointer;outline:none}
 .card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;transition:transform 1.1s cubic-bezier(.2,.7,.2,1),filter .6s;filter:grayscale(.35) contrast(1.04)}
 .card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(11,11,12,.92) 100%);z-index:1}
@@ -147,12 +147,12 @@ section{padding:clamp(88px,13vw,170px) 0;position:relative}
 
 /* ---------- parlor ---------- */
 .parlor{background:var(--ink)}
-.mosaic{display:grid;gap:14px;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(150px,19vw,280px);grid-auto-flow:dense}
-.mosaic figure{border-radius:18px;overflow:hidden;position:relative}
-.mosaic img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
-.mosaic figure:hover img{transform:scale(1.05)}
-.m1{grid-column:span 2;grid-row:span 2}.m2{grid-column:span 2}.m3,.m4{grid-column:span 1}.m5,.m6{grid-column:span 2}
-@media (max-width:760px){.mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px}.m1{grid-column:span 2;grid-row:span 2}.m2,.m5,.m6{grid-column:span 2;grid-row:span 1}.m3,.m4{grid-column:span 1;grid-row:span 2}}
+.prail{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 var(--pad) 10px;scrollbar-width:none;cursor:grab}
+.prail::-webkit-scrollbar{display:none}
+.prail.drag{cursor:grabbing;scroll-snap-type:none}
+.prail figure{flex:0 0 clamp(260px,34vw,460px);aspect-ratio:3/4;border-radius:20px;overflow:hidden;scroll-snap-align:start}
+.prail img{width:100%;height:100%;object-fit:cover;pointer-events:none;user-select:none;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.prail figure:hover img{transform:scale(1.04)}
 .perks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-top:56px}
 .perks div{background:var(--ink);padding:28px 26px}
 .perks b{display:block;font:700 22px/1.2 var(--serif);margin-bottom:6px}
@@ -221,7 +221,7 @@ footer a{color:var(--mute);text-decoration:none}
   <div class="board"></div>
   <div class="inner">
     <img class="badge" src="img/logo.webp" alt="Kings Grooming Parlor">
-    <p class="tag">Welcome to the Parlor, Your Majesty.</p>
+    <p class="tag">Welcome to the Parlor.</p>
     <div class="row">
       <button class="btn solid" data-book>Book a barber</button>
       <button class="btn" id="enter">Enter</button>
@@ -298,14 +298,17 @@ footer a{color:var(--mute);text-decoration:none}
       <div><p class="kicker reveal"><b>IV</b> &nbsp; The Parlor</p><h2 class="reveal" style="margin-top:18px">From the ambiance <em>to the service.</em></h2></div>
       <p class="reveal">"When you know better, you do better." Every station has its own TV, real luminescent lighting and room to breathe, so you can relax and enjoy your time in the chair.</p>
     </div>
-    <div class="mosaic">
-      <figure class="m1 reveal"><img src="img/shop-row.webp" alt="Row of barber chairs inside the Parlor" loading="lazy"></figure>
-      <figure class="m2 reveal"><img src="img/shop-chairs.webp" alt="Barber chairs and stations" loading="lazy"></figure>
-      <figure class="m3 reveal"><img src="img/shop-work.webp" alt="A barber at work in the Parlor" loading="lazy"></figure>
-      <figure class="m4 reveal"><img src="img/shop-station.webp" alt="A barber station with mirror and TV" loading="lazy"></figure>
-      <figure class="m5 reveal"><img src="img/shop-stations.webp" alt="Stations with tool chests" loading="lazy"></figure>
-      <figure class="m6 reveal"><img src="img/shop-chair.webp" alt="A barber chair at its station" loading="lazy"></figure>
-    </div>
+    <div class="lb-ctrl reveal" style="margin:-30px 0 26px;justify-content:flex-end"><button data-rail="prail" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><button data-rail="prail" data-dir="1" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></div>
+  </div>
+  <div class="prail" id="prail">
+      <figure><img src="img/shop-row.webp" alt="Row of barber chairs inside the Parlor" loading="lazy" draggable="false"></figure>
+      <figure><img src="img/shop-work.webp" alt="A barber at work in the Parlor" loading="lazy" draggable="false"></figure>
+      <figure><img src="img/shop-chairs.webp" alt="Barber chairs and stations" loading="lazy" draggable="false"></figure>
+      <figure><img src="img/shop-station.webp" alt="A barber station with mirror and TV" loading="lazy" draggable="false"></figure>
+      <figure><img src="img/shop-stations.webp" alt="Stations with tool chests" loading="lazy" draggable="false"></figure>
+      <figure><img src="img/shop-chair.webp" alt="A barber chair at its station" loading="lazy" draggable="false"></figure>
+  </div>
+  <div class="wrap">
     <div style="margin-top:90px" class="head">
       <div><p class="kicker reveal"><b>V</b> &nbsp; Careers</p><h2 class="reveal" style="margin-top:18px">Come work <em>with us.</em></h2></div>
       <p class="reveal">Barbers and stylists who care about the craft: there's a chair for you. <a href="mailto:info@kingsgroomingparlor.com?subject=Joining%20the%20team" style="color:var(--chalk)">Apply by email</a>.</p>
@@ -407,10 +410,11 @@ CUTS.forEach((c,i)=>rail.insertAdjacentHTML('beforeend',`<figure class="cut"><im
 const step=()=>rail.querySelector('.cut').offsetWidth+16;
 document.getElementById('lbNext').onclick=()=>rail.scrollBy({left:step(),behavior:'smooth'});
 document.getElementById('lbPrev').onclick=()=>rail.scrollBy({left:-step(),behavior:'smooth'});
-let dx=null,sl=0;
-rail.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;dx=e.clientX;sl=rail.scrollLeft;rail.classList.add('drag')});
-addEventListener('pointermove',e=>{if(dx!==null)rail.scrollLeft=sl-(e.clientX-dx)});
-addEventListener('pointerup',()=>{if(dx!==null){dx=null;rail.classList.remove('drag')}});
+let dr=null,dx=0,sl=0;
+[rail,document.getElementById('prail')].forEach(r=>r.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;dr=r;dx=e.clientX;sl=r.scrollLeft;r.classList.add('drag')}));
+addEventListener('pointermove',e=>{if(dr)dr.scrollLeft=sl-(e.clientX-dx)});
+addEventListener('pointerup',()=>{if(dr){dr.classList.remove('drag');dr=null}});
+document.querySelectorAll('[data-rail]').forEach(b=>b.onclick=()=>{const r=document.getElementById(b.dataset.rail);r.scrollBy({left:b.dataset.dir*(r.firstElementChild.offsetWidth+16),behavior:'smooth'})});
 
 /* ticker */
 const T=["Fades","Tapers","Beard work","Line-ups","Kids cuts","Gift cards","Mon to Sat, 8 to 7","5466 Perkiomen Ave"];
