@@ -298,7 +298,7 @@ em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff
 .thumb svg{position:absolute;inset:-5px;width:70px;height:70px;transform:rotate(-90deg);pointer-events:none}
 .thumb circle{fill:none;stroke:rgba(255,255,255,.12);stroke-width:2}
 .thumb circle.p{stroke:#d9d2ff;stroke-dasharray:207;stroke-dashoffset:207}
-.thumb.on circle.p{animation:ring var(--dur,4.5s) linear forwards}
+.thumb.on circle.p{animation:ring var(--dur,2.8s) linear forwards}
 .stage.hold .thumb.on circle.p{animation-play-state:paused}
 @keyframes ring{to{stroke-dashoffset:0}}
 
@@ -418,6 +418,42 @@ em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff
 #qv .qn{font-size:13px;color:#666}
 #qv .x{position:absolute;top:14px;right:14px;z-index:2;width:42px;height:42px;border-radius:50%;border:0;background:#fff;color:#111;font-size:22px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.15)}
 
+/* ================= HERO: fly through the letters ================= */
+.hero{height:260svh}
+.kmask{position:absolute;inset:0;z-index:5;background:#000;mix-blend-mode:multiply;display:flex;align-items:center;justify-content:center;pointer-events:none;will-change:transform}
+.kmask .kw{text-align:center;color:#fff;line-height:.86}
+.kmask .l1{display:block;font:400 min(27vw,34vh)/.86 var(--serif);letter-spacing:-.01em}
+.kmask .l2{display:block;font:400 italic min(17vw,22vh)/.95 var(--serif)}
+.hero .cue{z-index:6}
+.hero .shade{will-change:opacity}
+
+/* ================= FOOTER ================= */
+footer.foot{position:relative;overflow:hidden;padding:0 0 calc(30px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:radial-gradient(ellipse at 50% 0%,rgba(139,108,240,.14),transparent 60%),#09090a}
+footer.foot .wrap{display:block;text-align:left;color:var(--mute);font-size:15px}
+.fcta{text-align:center;padding:clamp(70px,10vw,120px) 0 clamp(50px,7vw,80px);border-bottom:1px solid var(--line)}
+.fcta img{width:74px;margin:0 auto 22px}
+.fcta h2{margin-bottom:28px}
+.fcta .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.fcols{display:grid;grid-template-columns:1fr 1fr;gap:34px 24px;padding:56px 0 46px;text-align:center}
+@media (min-width:900px){.fcols{grid-template-columns:1.4fr 1fr 1fr 1fr .8fr;text-align:left}}
+.fc{display:flex;flex-direction:column;gap:10px;align-items:center}
+@media (min-width:900px){.fc{align-items:flex-start}}
+.fc.brand{grid-column:1/-1}
+@media (min-width:900px){.fc.brand{grid-column:auto}}
+.fc.brand img{width:64px}
+.fc.brand p{font:400 20px/1.25 var(--serif);color:var(--chalk);max-width:240px}
+.fc h4{font:700 11px/1 var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--chalk);margin-bottom:6px}
+.fc a,.fc p{color:var(--mute);text-decoration:none;line-height:1.55;transition:color .2s}
+.fc a:hover{color:var(--chalk)}
+.fc .dim{color:var(--dim)}
+.soc{display:inline-flex;align-items:center;gap:10px;margin-top:4px}
+.soc svg{width:20px;height:20px}
+.fbot{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--dim)}
+@media (max-width:899px){.fbot{justify-content:center;text-align:center}}
+.totop{display:inline-flex;align-items:center;gap:8px;color:var(--mute);text-decoration:none}
+.totop svg{width:15px;height:15px}
+.fword{font:400 10.4vw/.8 var(--serif);text-align:center;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.08);margin-top:34px;user-select:none;pointer-events:none}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
@@ -465,6 +501,7 @@ em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff
       <a class="btn" href="#visit">Hours &amp; location</a>
     </div>
   </div>
+  <div class="kmask" id="kMask" aria-hidden="true"><div class="kw"><span class="l1">K<span id="kO">I</span>NG'S</span><span class="l2">Experience</span></div></div>
   <div class="cue"><i></i>Scroll</div>
  </div>
 </header>
@@ -584,11 +621,23 @@ em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff
   </div>
 </section>
 
-<footer>
+<footer class="foot">
   <div class="wrap">
-    <div class="l"><img src="img/logo.webp" alt=""><span>&copy; <span id="yr"></span> A King's Experience Grooming Parlor</span></div>
-    <div class="l"><a href="tel:+14843609967">(484) 360-9967</a><a href="mailto:info@kingsgroomingparlor.com">Email</a><a href="#top">Top</a></div>
+    <div class="fcta reveal">
+      <img src="img/logo.webp" alt="">
+      <h2>Book your <em>next cut.</em></h2>
+      <div class="row"><button class="btn solid" data-book>Book now</button><a class="btn" href="tel:+14843609967">(484) 360-9967</a></div>
+    </div>
+    <div class="fcols">
+      <div class="fc brand"><img src="img/logo.webp" alt="Kings Grooming Parlor"><p>A King's Experience Grooming Parlor</p><a class="soc" href="https://www.instagram.com/a.kings.experience/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor"/></svg><span>@a.kings.experience</span></a></div>
+      <div class="fc"><h4>Visit</h4><a href="https://maps.google.com/?q=5466+Perkiomen+Ave+Suite+D21+Reading+PA+19606" target="_blank" rel="noopener">5466 Perkiomen Ave, Suite D21<br>Reading, PA 19606</a></div>
+      <div class="fc"><h4>Hours</h4><p>Monday - Saturday<br>8:00 am - 7:00 pm</p><p class="dim">Sunday closed</p></div>
+      <div class="fc"><h4>Contact</h4><a href="tel:+14843609967">(484) 360-9967</a><a href="mailto:info@kingsgroomingparlor.com">info@kingsgroomingparlor.com</a></div>
+      <div class="fc"><h4>Explore</h4><a href="#barbers">Barbers</a><a href="#lookbook">Cuts</a><a href="#store">Store</a><a href="#careers">Careers</a><a href="#visit">Contact</a></div>
+    </div>
+    <div class="fbot"><span>&copy; <span id="yr"></span> A King's Experience Grooming Parlor. All rights reserved.</span><a href="#top" class="totop">Back to top <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a></div>
   </div>
+  <div class="fword" aria-hidden="true">King's Experience</div>
 </footer>
 
 <div id="sheet" aria-hidden="true">
@@ -635,7 +684,7 @@ function show(i){
   TB.forEach((t,k)=>{t.classList.toggle('on',k===i); const c=t.querySelector('circle.p'); c.style.animation='none'; void c.offsetWidth; c.style.animation=''});
   schedule();
 }
-function schedule(){clearTimeout(adv); if(stageVis&&!stageHold) adv=setTimeout(()=>show((cur+1)%BARBERS.length),4500)}
+function schedule(){clearTimeout(adv); if(stageVis&&!stageHold) adv=setTimeout(()=>show((cur+1)%BARBERS.length),2800)}
 const jump=k=>{cur=-1;show(k)};
 TB.forEach((t,i)=>t.onclick=()=>jump(i));
 stage.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){stageHold=true;stage.classList.add('hold');clearTimeout(adv)}});
@@ -786,6 +835,8 @@ creed.innerHTML=creed.innerHTML.replace(/(<em>|<\/em>)|([^\s<>]+)/g,(m,tag,w)=>t
 const words=[...creed.querySelectorAll('.w')];
 
 /* scroll effects */
+const kMask=document.getElementById('kMask'), heroShade=document.querySelector('.hero .shade'), heroCue=document.querySelector('.hero .cue');
+function kOrigin(){const o=document.getElementById('kO').getBoundingClientRect(), m=kMask.getBoundingClientRect(); kMask.style.transformOrigin=`${o.left+o.width/2-m.left}px ${o.top+o.height*.55-m.top}px`}
 const heroBg=document.getElementById('heroBg'), heroEl=document.getElementById('top'), heroTxt=document.getElementById('heroTxt'), heroVig=document.getElementById('heroVig'), aboutFrame=document.getElementById('aboutFrame'), aboutImg=document.getElementById('aboutImg'), carImg=document.getElementById('carImg');
 let ticking=false;
 function onScroll(){
@@ -793,9 +844,13 @@ function onScroll(){
   nav.classList.toggle('solid',y>40);
   const hp=Math.min(1,Math.max(0,y/(heroEl.offsetHeight-innerHeight)));
   const ez=hp*hp*(3-2*hp);
-  heroBg.style.transform=`scale(${1+ez*.45})`;
-  heroTxt.style.transform=`translate3d(0,${-ez*90}px,0) scale(${1-ez*.12})`; heroTxt.style.opacity=1-Math.min(1,hp*1.6);
-  heroVig.style.opacity=Math.max(0,(hp-.7)/.3)*.3;
+  // phase 1 (0-.62): fly into the cut-out letters; phase 2: hero content settles in over the full shop
+  const f=Math.min(1,hp/.62), fe=f*f*f;                          // accelerate into the letters
+  if(f<1){kMask.style.display='';kMask.style.transform=`scale(${Math.exp(fe*Math.log(160))})`}else kMask.style.display='none';
+  heroBg.style.transform=`scale(${1.22-.22*(1-Math.pow(1-f,2))})`;
+  const t=Math.min(1,Math.max(0,(hp-.6)/.22)), te=1-Math.pow(1-t,3);
+  heroShade.style.opacity=te; heroTxt.style.opacity=te; heroTxt.style.transform=`translate3d(0,${(1-te)*40}px,0)`;
+  heroVig.style.opacity=0; heroCue.style.opacity=hp<.03?1:0;
   const cr=carImg.getBoundingClientRect(); carImg.style.transform=`translate3d(0,${(cr.top+cr.height/2-innerHeight/2)*-.1-30}px,0)`;
   const ar=aboutFrame.getBoundingClientRect(); aboutImg.style.transform=`translate3d(0,${(ar.top+ar.height/2-innerHeight/2)*-.12}px,0)`;
   const r=creed.getBoundingClientRect(), p=Math.min(1,Math.max(0,(innerHeight*.85-r.top)/(r.height+innerHeight*.35)));
@@ -803,6 +858,7 @@ function onScroll(){
   ticking=false;
 }
 addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});
+kMask.style.transform='none'; document.fonts.ready.then(()=>{kOrigin();onScroll()}); addEventListener('resize',()=>{kMask.style.transform='none';kOrigin();onScroll()});
 onScroll();
 document.querySelectorAll('h2.reveal').forEach(h=>{h.classList.remove('reveal');h.classList.add('split');
   const wrapWords=n=>{[...n.childNodes].forEach(c=>{if(c.nodeType===3){const f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(w=>{if(!w)return;if(/^\s+$/.test(w)){f.append(w);return}const o=document.createElement('span');o.className='sw';const i=document.createElement('span');i.textContent=w;o.append(i);f.append(o)});c.replaceWith(f)}else wrapWords(c)})};
