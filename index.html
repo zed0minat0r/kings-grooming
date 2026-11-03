@@ -372,6 +372,57 @@ em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff
   .about .frame{max-width:none;aspect-ratio:4/4.6}
   .careers .photo{aspect-ratio:4/4.4}
 }
+/* ================= STORE (modern shop) ================= */
+.merch{text-align:left;background:var(--ink)}
+.feat{display:grid;grid-template-columns:1fr;border-radius:28px;overflow:hidden;background:#f2f1ee;color:#111;margin-bottom:46px}
+@media (min-width:860px){.feat{grid-template-columns:1.1fr .9fr}}
+.feat .fi{position:relative;aspect-ratio:1;overflow:hidden;background:radial-gradient(circle at 50% 45%,#ffffff,#e9e7e2 70%)}
+.feat .fi img{width:100%;height:100%;object-fit:contain;transition:transform 1.4s cubic-bezier(.16,.84,.24,1)}
+.feat:hover .fi img{transform:scale(1.04) rotate(-1deg)}
+.feat .ft{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:14px;padding:clamp(28px,5vw,64px)}
+.feat .lbl{font:700 11px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:#6b5bd6}
+.feat h3{font:400 clamp(34px,4vw,54px)/1.05 var(--serif)}
+.feat .pr{font:400 26px/1 var(--serif);color:#333}
+.feat .btn{border-color:#111;color:#111}.feat .btn.solid{background:#111;color:#fff;border-color:#111}
+.feat .acts{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.sbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px;border-bottom:1px solid var(--line)}
+.tabs{display:flex;gap:6px;position:relative;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{background:none;border:0;color:var(--mute);font:600 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:16px 14px;cursor:pointer;white-space:nowrap;transition:color .3s}
+.tabs button.on{color:var(--chalk)}
+.tabs .ul{position:absolute;bottom:0;height:2px;background:#d9d2ff;transition:left .45s cubic-bezier(.16,.84,.24,1),width .45s cubic-bezier(.16,.84,.24,1)}
+.cnt{font-size:13px;color:var(--dim);padding:16px 0}
+.pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(12px,1.6vw,22px)}
+@media (min-width:900px){.pgrid{grid-template-columns:repeat(4,1fr)}}
+.pc{position:relative;text-align:left;cursor:pointer;opacity:0;transform:translateY(20px);animation:pin .7s cubic-bezier(.16,.84,.24,1) forwards}
+@keyframes pin{to{opacity:1;transform:none}}
+.pc .im{position:relative;aspect-ratio:1;border-radius:18px;overflow:hidden;background:#f2f1ee}
+.pc .im img{width:100%;height:100%;object-fit:contain;transition:transform 1s cubic-bezier(.16,.84,.24,1)}
+.pc:hover .im img{transform:scale(1.07)}
+.pc .q{position:absolute;left:10px;right:10px;bottom:10px;padding:12px;border-radius:12px;background:rgba(17,17,17,.88);color:#fff;font:700 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;text-align:center;opacity:0;transform:translateY(10px);transition:.35s cubic-bezier(.16,.84,.24,1)}
+.pc:hover .q,.pc:focus-visible .q{opacity:1;transform:none}
+@media (hover:none){.pc .q{display:none}}
+.pc .c{display:block;margin-top:14px;font:600 10px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--dim)}
+.pc b{display:block;margin-top:7px;font:600 15px/1.35 var(--sans);color:var(--chalk)}
+.pc .pr{display:block;margin-top:6px;font:400 19px/1 var(--serif);color:#d9d2ff}
+.more{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+#qv{position:fixed;inset:0;z-index:90;display:grid;place-items:center;visibility:hidden;pointer-events:none;padding:16px}
+#qv.open{visibility:visible;pointer-events:auto}
+#qv .scrim{position:absolute;inset:0;background:rgba(0,0,0,.7);opacity:0;transition:opacity .35s;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+#qv.open .scrim{opacity:1}
+#qv .box{position:relative;width:min(920px,100%);max-height:92svh;overflow:auto;display:grid;grid-template-columns:1fr;background:#f2f1ee;color:#111;border-radius:26px;transform:translateY(30px) scale(.97);opacity:0;transition:.45s cubic-bezier(.16,.84,.24,1)}
+@media (min-width:760px){#qv .box{grid-template-columns:1.1fr .9fr}}
+#qv.open .box{transform:none;opacity:1}
+#qv .qimg{aspect-ratio:1;background:radial-gradient(circle at 50% 45%,#fff,#e9e7e2 70%)}
+#qv .qimg img{width:100%;height:100%;object-fit:contain}
+#qv .qtx{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:14px;padding:30px}
+#qv .qc{font:700 11px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:#6b5bd6}
+#qv h3{font:400 clamp(28px,3vw,40px)/1.1 var(--serif)}
+#qv .qp{font:400 26px/1 var(--serif);color:#333}
+#qv .btn.solid{background:#111;color:#fff;border-color:#111}
+#qv .qn{font-size:13px;color:#666}
+#qv .x{position:absolute;top:14px;right:14px;z-index:2;width:42px;height:42px;border-radius:50%;border:0;background:#fff;color:#111;font-size:22px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.15)}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
@@ -397,6 +448,7 @@ em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff
       <a href="#lookbook">Cuts</a>
       <a href="#parlor">The Parlor</a>
       <a href="#careers">Careers</a>
+      <a href="#store">Store</a>
       <a href="#visit">Contact</a>
       <button class="btn solid" data-book>Book now</button>
     </div>
@@ -508,13 +560,16 @@ em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff
   </div>
 </section>
 
-<section class="merch">
+<section class="merch" id="store">
   <div class="wrap">
     <div class="head"><div><h2 class="reveal">KGP <em>store.</em></h2></div></div>
+    <div class="feat reveal" id="feat"></div>
+    <div class="sbar reveal"><div class="tabs" id="tabs"></div><span class="cnt" id="cnt"></span></div>
+    <div class="pgrid" id="pgrid"></div>
+    <div class="more"><button class="btn" id="moreBtn">Show more</button><a class="btn solid" href="https://www.kingsgroomingparlor.com/category/all-products" target="_blank" rel="noopener">Shop the full store</a></div>
   </div>
-  <div class="srail" id="srail"></div>
-  <div class="wrap" style="margin-top:34px"><a class="btn reveal" href="https://www.kingsgroomingparlor.com/category/all-products" target="_blank" rel="noopener">Shop all 37 items</a></div>
 </section>
+<div id="qv" aria-hidden="true"><div class="scrim" data-qclose></div><div class="box" role="dialog" aria-label="Product" data-lenis-prevent><button class="x" data-qclose aria-label="Close">&times;</button><div class="qimg"><img id="qvImg" alt=""></div><div class="qtx"><span class="qc" id="qvCat"></span><h3 id="qvName"></h3><p class="qp" id="qvPrice"></p><a class="btn solid" id="qvBuy" target="_blank" rel="noopener">Buy on the KGP store</a><p class="qn">Checkout, sizes and colors on the KGP store.</p></div></div></div>
 
 <section class="visit" id="visit">
   <div class="wrap">
@@ -543,7 +598,7 @@ em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff
 
 <div id="sheet" aria-hidden="true">
   <div class="scrim" data-close></div>
-  <div class="panel" role="dialog" aria-label="Book a barber">
+  <div class="panel" role="dialog" aria-label="Book a barber" data-lenis-prevent>
     <div class="grab"></div>
     <button class="x" data-close aria-label="Close">&times;</button>
     <h3 style="margin-bottom:20px">Book now</h3>
@@ -624,9 +679,37 @@ new IntersectionObserver(es=>fVis=es[0].isIntersecting,{threshold:.3}).observe(f
 setInterval(()=>{if(fVis&&!fdrag&&performance.now()>fHold){fpos=Math.round(fpos)+1;layout()}},2600);
 addEventListener('resize',layout); layout();
 
-const SHOP=[["KGP Logo Tee","$25.00","unisex-heavy-cotton-tee-8"],["KGP Chess Piece Tee","$25.00","unisex-heavy-cotton-tee-5"],["KGP \"Jedi Jet\" Tee","$25.00","unisex-heavy-cotton-tee-9"],["KGP \"The Alienated Barber\" Tee","$25.00","unisex-heavy-cotton-tee-2"],["KGP \"Charly H\" Tee","$25.00","unisex-heavy-cotton-tee"],["KGP \"Uni Corin\" Tee","$25.00","unisex-heavy-cotton-tee-1"],["KGP \"Daddy Clipperhands\" Tee","$25.00","unisex-heavy-cotton-tee-3"],["KGP Logo Long Sleeve","$30.00","ultra-cotton-long-sleeve-tee-3"],["KGP Chess Piece Long Sleeve","$30.00","ultra-cotton-long-sleeve-tee-2"],["KGP \"Jedi Jet\" Long Sleeve","$30.00","unisex-ultra-cotton-long-sleeve-tee"],["KGP \"Uni Corin\" Long Sleeve","$30.00","ultra-cotton-long-sleeve-tee-8"],["Dad Hat with Leather Patch","$30.00","dad-hat-with-leather-patch-round-2"],["Baseball Cap with Leather Patch","$25.00","baseball-with-leather-patch-round"],["Baseball Cap with Leather Patch","$25.00","baseball-cap-with-leather-patch-round-1"],["Baseball Cap with Leather Patch","$25.00","dad-hat-with-leather-patch-round"],["\"KGP\" Vinyl Decals","$3.00","kgp-vinyl-decals"]];
-const srail=document.getElementById('srail');
-SHOP.forEach(([n,pr,slug],i)=>srail.insertAdjacentHTML('beforeend',`<a class="prod" href="https://www.kingsgroomingparlor.com/product-page/${slug}" target="_blank" rel="noopener"><div class="im"><img src="img/shop-${i+1}.webp" alt="${n.replace(/"/g,'&quot;')}" loading="lazy" draggable="false"></div><b>${n}</b><span>${pr}</span></a>`));
+const PROD=[{"n": "KGP \"Jedi Jet\" Tee", "p": "$25.00", "u": "unisex-heavy-cotton-tee-9", "c": "Tees", "i": "img/p17.webp"}, {"n": "KGP TEE", "p": "$25.00", "u": "unisex-heavy-cotton-tee-7", "c": "Tees", "i": "img/p21.webp"}, {"n": "KGP LOGO TEE", "p": "$25.00", "u": "unisex-heavy-cotton-tee-6", "c": "Tees", "i": "img/p22.webp"}, {"n": "KGP CHESS PIECE TEE", "p": "$25.00", "u": "unisex-heavy-cotton-tee-5", "c": "Tees", "i": "img/p23.webp"}, {"n": "KGP \"Mo6ix\" TEE", "p": "$25.00", "u": "unisex-heavy-cotton-tee-4", "c": "Tees", "i": "img/p24.webp"}, {"n": "KGP \"Daddy Clipperhands\" TEE", "p": "$25.00", "u": "unisex-heavy-cotton-tee-3", "c": "Tees", "i": "img/p25.webp"}, {"n": "KGP \"The Alienated Barber\" TEE", "p": "$25.00", "u": "unisex-heavy-cotton-tee-2", "c": "Tees", "i": "img/p26.webp"}, {"n": "KGP \"Uni Corin\" TEE", "p": "$25.00", "u": "unisex-heavy-cotton-tee-1", "c": "Tees", "i": "img/p27.webp"}, {"n": "KGP \"Charly H\" TEE", "p": "$25.00", "u": "unisex-heavy-cotton-tee", "c": "Tees", "i": "img/p28.webp"}, {"n": "Unisex Ultra Cotton Long Sleeve Tee", "p": "$30.00", "u": "unisex-ultra-cotton-long-sleeve-tee-1", "c": "Long sleeves", "i": "img/p02.webp"}, {"n": "KGP \"Jedi Jet\" Long Sleeve Tee", "p": "$30.00", "u": "unisex-ultra-cotton-long-sleeve-tee", "c": "Long sleeves", "i": "img/p18.webp"}, {"n": "\"KGP\" Long Sleeve Tee", "p": "$30.00", "u": "ultra-cotton-long-sleeve-tee-9", "c": "Long sleeves", "i": "img/p19.webp"}, {"n": "KGP \"Uni Corin\" Long Sleeve", "p": "$30.00", "u": "ultra-cotton-long-sleeve-tee-8", "c": "Long sleeves", "i": "img/p29.webp"}, {"n": "KGP \"The Alienated Barber\" LONG SLEEVE", "p": "$30.00", "u": "ultra-cotton-long-sleeve-tee-7", "c": "Long sleeves", "i": "img/p30.webp"}, {"n": "KGP \"Daddy Clipperhands\" LONG SLEEVE", "p": "$30.00", "u": "ultra-cotton-long-sleeve-tee-6", "c": "Long sleeves", "i": "img/p31.webp"}, {"n": "KGP \"Mo6ix\" LONG SLEEVE", "p": "$30.00", "u": "ultra-cotton-long-sleeve-tee-5", "c": "Long sleeves", "i": "img/p32.webp"}, {"n": "KGP \"Charly H\" LONG SLEEVE", "p": "$30.00", "u": "ultra-cotton-long-sleeve-tee-4", "c": "Long sleeves", "i": "img/p33.webp"}, {"n": "KGP LOGO LONG SLEEVE", "p": "$30.00", "u": "ultra-cotton-long-sleeve-tee-3", "c": "Long sleeves", "i": "img/p34.webp"}, {"n": "KGP CHESS PIECE LONG SLEEVE", "p": "$30.00", "u": "ultra-cotton-long-sleeve-tee-2", "c": "Long sleeves", "i": "img/p35.webp"}, {"n": "KGP UNI LONG SLEEVE", "p": "$30.00", "u": "ultra-cotton-long-sleeve-tee-1", "c": "Long sleeves", "i": "img/p36.webp"}, {"n": "KGP LOGO LONG SLEEVE", "p": "$30.00", "u": "ultra-cotton-long-sleeve-tee", "c": "Long sleeves", "i": "img/p37.webp"}, {"n": "Dad Hat with Leather Patch (Round)", "p": "$30.00", "u": "dad-hat-with-leather-patch-round-2", "c": "Hats", "i": "img/p03.webp"}, {"n": "Baseball with Leather Patch (Round)", "p": "$25.00", "u": "baseball-with-leather-patch-round", "c": "Hats", "i": "img/p06.webp"}, {"n": "Baseball Cap with Leather Patch (Round)", "p": "$25.00", "u": "baseball-cap-with-leather-patch-round-1", "c": "Hats", "i": "img/p07.webp"}, {"n": "Baseball cap with Leather Patch (Round)", "p": "$25.00", "u": "dad-hat-with-leather-patch-round-1", "c": "Hats", "i": "img/p08.webp"}, {"n": "Baseball hat with Leather Patch (Round)", "p": "$25.00", "u": "baseball-hat-with-leather-patch-round", "c": "Hats", "i": "img/p09.webp"}, {"n": "Baseball cap with Leather Patch (Round)", "p": "$25.00", "u": "dad-hat-with-leather-patch-round", "c": "Hats", "i": "img/p10.webp"}, {"n": "Baseball cap with Leather Patch (Round)", "p": "$22.00", "u": "baseball-cap-with-leather-patch-round", "c": "Hats", "i": "img/p11.webp"}, {"n": "Round Stickers, Indoor/Outdoor", "p": "$6.07", "u": "round-stickers-indoor-outdoor", "c": "Decals", "i": "img/p01.webp"}, {"n": "Kiss-Cut Vinyl Decals", "p": "$5.00", "u": "kiss-cut-vinyl-decals-5", "c": "Decals", "i": "img/p04.webp"}, {"n": "Kiss-Cut Vinyl Decals", "p": "$3.35", "u": "kiss-cut-vinyl-decals-4", "c": "Decals", "i": "img/p05.webp"}, {"n": "Vinyl Decals", "p": "$5.00", "u": "kiss-cut-vinyl-decals-3", "c": "Decals", "i": "img/p12.webp"}, {"n": "Vinyl Decals", "p": "$3.50", "u": "kiss-cut-vinyl-decals-2", "c": "Decals", "i": "img/p13.webp"}, {"n": "Vinyl Decals", "p": "$3.50", "u": "kiss-cut-vinyl-decals-1", "c": "Decals", "i": "img/p14.webp"}, {"n": "Vinyl Decals", "p": "$5.00", "u": "kiss-cut-vinyl-decals", "c": "Decals", "i": "img/p15.webp"}, {"n": "\"KGP\" Vinyl Decals", "p": "$3.00", "u": "kgp-vinyl-decals", "c": "Decals", "i": "img/p16.webp"}];
+const FEAT={"n": "KGP LOGO TEE", "p": "$25.00", "u": "unisex-heavy-cotton-tee-8", "c": "Tees", "i": "img/p20.webp"};
+/* store: featured product, filter tabs with sliding underline, product grid, quick view */
+const esc=t=>t.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+const purl=u=>`https://www.kingsgroomingparlor.com/product-page/${u}`;
+document.getElementById('feat').innerHTML=`<div class="fi"><img src="${FEAT.i}" alt="${esc(FEAT.n)}"></div><div class="ft"><span class="lbl">Featured</span><h3>${esc(FEAT.n)}</h3><p class="pr">${FEAT.p}</p><div class="acts"><a class="btn solid" href="${purl(FEAT.u)}" target="_blank" rel="noopener">Buy now</a><button class="btn" data-q="feat">Quick view</button></div></div>`;
+const CATS=['All','Tees','Long sleeves','Hats','Decals'], tabs=document.getElementById('tabs'), pgrid=document.getElementById('pgrid'), moreBtn=document.getElementById('moreBtn'), cnt=document.getElementById('cnt');
+tabs.innerHTML=CATS.map(c=>`<button>${c}</button>`).join('')+'<span class="ul"></span>';
+let curCat='All', shown=8;
+function renderShop(){
+  const list=PROD.filter(x=>curCat==='All'||x.c===curCat);
+  const vis=list.slice(0,shown);
+  pgrid.innerHTML=vis.map((x,k)=>`<div class="pc" tabindex="0" data-k="${PROD.indexOf(x)}" style="animation-delay:${(k%8)*60}ms"><div class="im"><img src="${x.i}" alt="${esc(x.n)}" loading="lazy"><span class="q">Quick view</span></div><span class="c">${x.c}</span><b>${esc(x.n)}</b><span class="pr">${x.p}</span></div>`).join('');
+  cnt.textContent=`${list.length} item${list.length===1?'':'s'}`;
+  moreBtn.style.display=list.length>shown?'':'none';
+  [...tabs.querySelectorAll('button')].forEach(b=>b.classList.toggle('on',b.textContent===curCat));
+  const on=tabs.querySelector('button.on'), ul=tabs.querySelector('.ul'); ul.style.left=on.offsetLeft+'px'; ul.style.width=on.offsetWidth+'px';
+}
+tabs.addEventListener('click',e=>{const b=e.target.closest('button'); if(!b)return; curCat=b.textContent; shown=8; renderShop()});
+moreBtn.onclick=()=>{shown+=8; renderShop()};
+const qv=document.getElementById('qv');
+function openQV(x){document.getElementById('qvImg').src=x.i; document.getElementById('qvImg').alt=x.n; document.getElementById('qvCat').textContent=x.c||'Featured';
+  document.getElementById('qvName').textContent=x.n; document.getElementById('qvPrice').textContent=x.p; document.getElementById('qvBuy').href=purl(x.u);
+  qv.classList.add('open'); qv.setAttribute('aria-hidden','false')}
+pgrid.addEventListener('click',e=>{const c=e.target.closest('.pc'); if(c)openQV(PROD[+c.dataset.k])});
+pgrid.addEventListener('keydown',e=>{if(e.key==='Enter'){const c=e.target.closest('.pc'); if(c)openQV(PROD[+c.dataset.k])}});
+document.querySelector('[data-q="feat"]').onclick=()=>openQV(FEAT);
+qv.querySelectorAll('[data-qclose]').forEach(b=>b.onclick=()=>{qv.classList.remove('open');qv.setAttribute('aria-hidden','true')});
+addEventListener('keydown',e=>{if(e.key==='Escape')qv.classList.remove('open')});
+addEventListener('resize',()=>renderShop());
+renderShop();
 /* GALLERIES. Each one is a track moved with translate3d at sub-pixel positions (smooth, no pixel stepping).
    It drifts on its own while on screen, loops seamlessly (contents are doubled), and the user can drag/swipe it
    sideways with momentum. Vertical swipes still scroll the page (touch-action:pan-y), the gallery never moves
@@ -663,7 +746,7 @@ function gallery(r,{mobileOnly=false}={}){
     requestAnimationFrame(tick);
   })(0);
 }
-gallery(document.getElementById('prail')); gallery(srail);
+gallery(document.getElementById('prail'));
 document.querySelectorAll('[data-rail]').forEach(b=>b.onclick=()=>document.getElementById(b.dataset.rail)._step(+b.dataset.dir));
 
 
