@@ -838,7 +838,7 @@ const words=[...creed.querySelectorAll('.w')];
 
 /* scroll effects */
 const bgBlur=document.getElementById('bgBlur'), kMask=document.getElementById('kMask'), heroShade=document.querySelector('.hero .shade'), heroCue=document.querySelector('.hero .cue');
-function kOrigin(){const o=document.getElementById('kO').getBoundingClientRect(), m=kMask.getBoundingClientRect(); kMask.style.transformOrigin=`${o.left+o.width/2-m.left}px ${o.top+o.height*.55-m.top}px`}
+function kOrigin(){const o=kMask.querySelector('.kw').getBoundingClientRect(), m=kMask.getBoundingClientRect(); kMask.style.transformOrigin=`${o.left+o.width/2-m.left}px ${o.top+o.height/2-m.top}px`}
 const heroBg=document.getElementById('heroBg'), heroEl=document.getElementById('top'), heroTxt=document.getElementById('heroTxt'), heroVig=document.getElementById('heroVig'), aboutFrame=document.getElementById('aboutFrame'), aboutImg=document.getElementById('aboutImg'), carImg=document.getElementById('carImg');
 let ticking=false;
 function onScroll(){
