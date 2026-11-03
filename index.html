@@ -391,8 +391,8 @@ em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff
 .cnt{font-size:13px;color:var(--dim);padding:16px 0}
 .pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(12px,1.6vw,22px)}
 @media (min-width:900px){.pgrid{grid-template-columns:repeat(4,1fr)}}
-.pc{position:relative;text-align:left;cursor:pointer;opacity:0;transform:translateY(20px);animation:pin .7s cubic-bezier(.16,.84,.24,1) forwards}
-@keyframes pin{to{opacity:1;transform:none}}
+.pc{position:relative;text-align:left;cursor:pointer;opacity:0;animation:pin .5s ease forwards}
+@keyframes pin{to{opacity:1}}
 .pc .im{position:relative;aspect-ratio:1;border-radius:18px;overflow:hidden;background:#f2f1ee}
 .pc .im img{width:100%;height:100%;object-fit:contain;transition:transform 1s cubic-bezier(.16,.84,.24,1)}
 .pc:hover .im img{transform:scale(1.07)}
@@ -739,7 +739,7 @@ let curCat='All', shown=8;
 function renderShop(){
   const list=PROD.filter(x=>curCat==='All'||x.c===curCat);
   const vis=list.slice(0,shown);
-  pgrid.innerHTML=vis.map((x,k)=>`<div class="pc" tabindex="0" data-k="${PROD.indexOf(x)}" style="animation-delay:${(k%8)*60}ms"><div class="im"><img decoding="async" src="${x.i}" alt="${esc(x.n)}" loading="lazy"><span class="q">Quick view</span></div><span class="c">${x.c}</span><b>${esc(x.n)}</b><span class="pr">${x.p}</span></div>`).join('');
+  pgrid.innerHTML=vis.map((x,k)=>`<div class="pc" tabindex="0" data-k="${PROD.indexOf(x)}" ><div class="im"><img decoding="async" src="${x.i}" alt="${esc(x.n)}" loading="lazy"><span class="q">Quick view</span></div><span class="c">${x.c}</span><b>${esc(x.n)}</b><span class="pr">${x.p}</span></div>`).join('');
   cnt.textContent=`${list.length} item${list.length===1?'':'s'}`;
   moreBtn.style.display=list.length>shown?'':'none';
   [...tabs.querySelectorAll('button')].forEach(b=>b.classList.toggle('on',b.textContent===curCat));
@@ -756,7 +756,8 @@ pgrid.addEventListener('keydown',e=>{if(e.key==='Enter'){const c=e.target.closes
 document.querySelector('[data-q="feat"]').onclick=()=>openQV(FEAT);
 qv.querySelectorAll('[data-qclose]').forEach(b=>b.onclick=()=>{qv.classList.remove('open');qv.setAttribute('aria-hidden','true')});
 addEventListener('keydown',e=>{if(e.key==='Escape')qv.classList.remove('open')});
-addEventListener('resize',()=>renderShop());
+function placeUL(){const on=tabs.querySelector('button.on'), ul=tabs.querySelector('.ul'); if(on){ul.style.left=on.offsetLeft+'px'; ul.style.width=on.offsetWidth+'px'}}
+addEventListener('resize',placeUL);
 renderShop();
 /* GALLERIES. Each one is a track moved with translate3d at sub-pixel positions (smooth, no pixel stepping).
    It drifts on its own while on screen, loops seamlessly (contents are doubled), and the user can drag/swipe it
