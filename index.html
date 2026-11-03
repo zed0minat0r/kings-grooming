@@ -415,9 +415,9 @@ em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff
 .qfly img{width:100%;height:100%;object-fit:contain;display:block}
 #qv .scrim{position:absolute;inset:0;background:rgba(0,0,0,.72);opacity:0;transition:opacity .45s ease}
 #qv.open .scrim{opacity:1}
-#qv .box{position:relative;width:min(920px,100%);max-height:92svh;overflow:auto;display:grid;grid-template-columns:1fr;background:#f2f1ee;color:#111;border-radius:26px;opacity:0;transition:opacity .4s ease}
+#qv .box{position:relative;width:min(920px,100%);max-height:92svh;overflow:auto;display:grid;grid-template-columns:1fr;background:#f2f1ee;color:#111;border-radius:26px;opacity:0;transform-origin:50% 50%;will-change:transform}
 @media (min-width:760px){#qv .box{grid-template-columns:1.1fr .9fr}}
-#qv.open .box{opacity:1}
+#qv.open .box,#qv.closing .box{opacity:1}
 #qv .qimg{aspect-ratio:1;background:radial-gradient(circle at 50% 45%,#fff,#e9e7e2 70%)}
 #qv .qimg img{width:100%;height:100%;object-fit:contain}
 #qv .qtx{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:14px;padding:30px}
@@ -760,33 +760,27 @@ tabs.addEventListener('click',e=>{const b=e.target.closest('button'); if(!b||b.t
   [...tabs.querySelectorAll('button')].forEach(t=>t.classList.toggle('on',t===b)); placeUL();
   pgrid.classList.add('swap'); setTimeout(()=>{renderShop(); pgrid.classList.remove('swap')},180)});
 moreBtn.onclick=()=>{const list=listFor(), from=shown; shown+=8; pgrid.insertAdjacentHTML('beforeend',list.slice(from,shown).map(card).join('')); shopMeta(list)};
-/* quick view: the product image itself flies from its tile into the popup and back (no see-through fading of the shirt) */
+/* quick view: ONE cohesive animation. The whole card (shirt + name + price + button) grows out of the
+   tapped tile as a single object and shrinks back into it on close; only the dark backdrop fades. */
 const qv=document.getElementById('qv'), qvImg=document.getElementById('qvImg'), qbox=qv.querySelector('.box'), EASE='cubic-bezier(.22,.8,.22,1)';
 let qSrc=null, qBusy=false;
-function fly(fromEl,toEl,src,fromR,toR,done){
-  const f=document.createElement('div'); f.className='qfly'; f.innerHTML=`<img src="${src}" alt="">`;
-  Object.assign(f.style,{left:toR.left+'px',top:toR.top+'px',width:toR.width+'px',height:toR.height+'px',borderRadius:getComputedStyle(toEl).borderRadius});
-  document.body.appendChild(f);
-  const sx=fromR.width/toR.width, sy=fromR.height/toR.height, dx=fromR.left-toR.left, dy=fromR.top-toR.top;
-  const a=f.animate([{transform:`translate(${dx}px,${dy}px) scale(${sx},${sy})`,borderRadius:getComputedStyle(fromEl).borderRadius},{transform:'none',borderRadius:getComputedStyle(toEl).borderRadius}],{duration:520,easing:EASE,fill:'forwards'});
-  a.onfinish=()=>{done&&done(); requestAnimationFrame(()=>f.remove())};
-}
+function boxFrom(tileR){const b=qbox.getBoundingClientRect(); const sc=Math.max(.08,tileR.width/b.width);
+  const dx=(tileR.left+tileR.width/2)-(b.left+b.width/2), dy=(tileR.top+tileR.height/2)-(b.top+b.height/2);
+  return `translate(${dx}px,${dy}px) scale(${sc})`}
 function openQV(x,srcEl){if(qBusy)return; qBusy=true; qSrc=srcEl||null;
   qvImg.src=x.i; qvImg.alt=x.n; document.getElementById('qvCat').textContent=x.c||'Featured';
   document.getElementById('qvName').textContent=x.n; document.getElementById('qvPrice').textContent=x.p; document.getElementById('qvBuy').href=purl(x.u);
   window._lenis&&window._lenis.stop();
-  qv.classList.add('open','flying'); qv.setAttribute('aria-hidden','false');
-  const target=qv.querySelector('.qimg');
-  requestAnimationFrame(()=>{ if(qSrc){fly(qSrc,target,x.i,qSrc.getBoundingClientRect(),target.getBoundingClientRect(),()=>{qv.classList.remove('flying');qBusy=false})}
-    else {qv.classList.remove('flying');qBusy=false} });
+  qv.classList.add('open'); qv.setAttribute('aria-hidden','false');
+  const from=qSrc?boxFrom(qSrc.getBoundingClientRect()):'translateY(24px) scale(.94)';
+  qbox.animate([{transform:from,opacity:0,offset:0},{opacity:1,offset:.25},{transform:'none',opacity:1,offset:1}],{duration:560,easing:EASE}).onfinish=()=>{qBusy=false};
 }
 function closeQV(){if(qBusy||!qv.classList.contains('open'))return; qBusy=true;
-  const from=qv.querySelector('.qimg'), fr=from.getBoundingClientRect();
   const tr=qSrc&&qSrc.getBoundingClientRect(), onScreen=tr&&tr.bottom>0&&tr.top<innerHeight;
-  qv.classList.add('closing','flying'); qv.classList.remove('open'); qv.setAttribute('aria-hidden','true');
-  const end=()=>{qv.classList.remove('closing','flying'); qBusy=false; window._lenis&&window._lenis.start()};
-  if(onScreen){qSrc.style.visibility='hidden'; fly(from,qSrc,qvImg.src,fr,tr,()=>{qSrc.style.visibility='';end()})}
-  else setTimeout(end,400);
+  const to=onScreen?boxFrom(tr):'translateY(24px) scale(.94)';
+  qv.classList.add('closing'); qv.classList.remove('open'); qv.setAttribute('aria-hidden','true');
+  const a=qbox.animate([{transform:'none',opacity:1,offset:0},{opacity:1,offset:.7},{transform:to,opacity:0,offset:1}],{duration:460,easing:EASE,fill:'forwards'});
+  a.onfinish=()=>{qv.classList.remove('closing'); a.cancel(); qBusy=false; window._lenis&&window._lenis.start()};
 }
 pgrid.addEventListener('click',e=>{const c=e.target.closest('.pc'); if(c)openQV(PROD[+c.dataset.k],c.querySelector('.im'))});
 pgrid.addEventListener('keydown',e=>{if(e.key==='Enter'){const c=e.target.closest('.pc'); if(c)openQV(PROD[+c.dataset.k],c.querySelector('.im'))}});
