@@ -324,10 +324,9 @@ em .sw>span,.gr{background:linear-gradient(100deg,#bdb3ff 0%,#ffffff 30%,#c9c0ff
 
 /* ================= V3 part 2 ================= */
 
-.cutname{text-align:center;margin-top:8px;min-height:84px}
-.cutname b{display:block;font:400 clamp(30px,4vw,46px)/1.1 var(--serif)}
+.cutname{text-align:center;margin-top:8px;min-height:24px}
 .cutname span{display:block;margin-top:8px;font:600 12px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
-.cutname.swap b,.cutname.swap span{animation:fadeup .7s cubic-bezier(.16,.84,.24,1) both}
+.cutname.swap span{animation:fadeup .7s cubic-bezier(.16,.84,.24,1) both}
 /* careers: split with photo, perks as icon tiles */
 .careers{background:var(--ink2);overflow:hidden}
 .reveal:not(.split):not(#aboutFrame){transform:none!important;transition:opacity .8s ease!important;transition-delay:0s!important}
@@ -564,7 +563,7 @@ footer.foot .wrap{display:block;text-align:left;color:var(--mute);font-size:15px
     </div>
   </div>
   <div class="flow" id="flow"></div>
-  <div class="cutname" id="cutName"><b></b><span></span></div>
+  <div class="cutname" id="cutName"><span></span></div>
 </section>
 
 <section class="parlor" id="parlor">
@@ -732,7 +731,7 @@ function layout(){
     el.style.opacity=a>3.5?0:1; el.style.zIndex=100-Math.round(a*10); el.style.filter=`brightness(${1-Math.min(a,3)*.18})`;
   });
   const ci=((Math.round(fpos)%N)+N)%N;
-  if(ci!==layout.last){layout.last=ci; const cn=document.getElementById('cutName'); cn.querySelector('b').textContent=CUTS[ci]; cn.querySelector('span').textContent=`${String(ci+1).padStart(2,'0')} / ${N}`; cn.classList.remove('swap'); void cn.offsetWidth; cn.classList.add('swap')}
+  if(ci!==layout.last){layout.last=ci; const cn=document.getElementById('cutName'); cn.querySelector('span').textContent=`${String(ci+1).padStart(2,'0')} / ${N}`; cn.classList.remove('swap'); void cn.offsetWidth; cn.classList.add('swap')}
 }
 const go=d=>{fpos=Math.round(fpos)+d; fHold=performance.now()+3500; layout()};
 document.getElementById('lbNext').onclick=()=>go(1);
@@ -879,7 +878,7 @@ const words=[...creed.querySelectorAll('.w')];
 
 /* scroll effects */
 const bgBlur=document.getElementById('bgBlur'), kMask=document.getElementById('kMask'), heroShade=document.querySelector('.hero .shade'), heroCue=document.querySelector('.hero .cue');
-function kOrigin(){const o=kMask.querySelector('.kw').getBoundingClientRect(), m=kMask.getBoundingClientRect(); kMask.style.transformOrigin=`${o.left+o.width/2-m.left}px ${o.top+o.height/2-m.top}px`}
+function kOrigin(){kMask.style.display=''; const o=kMask.querySelector('.kw').getBoundingClientRect(), m=kMask.getBoundingClientRect(); kMask.style.transformOrigin=`${o.left+o.width/2-m.left}px ${o.top+o.height/2-m.top}px`}
 const heroBg=document.getElementById('heroBg'), heroEl=document.getElementById('top'), heroTxt=document.getElementById('heroTxt'), heroVig=document.getElementById('heroVig'), aboutFrame=document.getElementById('aboutFrame'), aboutImg=document.getElementById('aboutImg'), carImg=document.getElementById('carImg');
 let ticking=false;
 function onScroll(){
