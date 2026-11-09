@@ -78,6 +78,8 @@ nav .links .btn{padding:13px 20px;color:var(--ink)}
 }
 
 /* ---------- hero ---------- */
+.hero .bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease}
+.hero .bg video.on{opacity:1}
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;text-align:center}
 .hero .bg{position:absolute;inset:-6% 0 0;background:url(img/shop-row.webp) center 40%/cover;transform:scale(1.08);will-change:transform}
 .hero .shade{position:absolute;inset:0;background:radial-gradient(ellipse 75% 60% at 50% 50%,rgba(8,8,9,.82) 0%,rgba(8,8,9,.62) 55%,rgba(8,8,9,.45) 100%),linear-gradient(180deg,rgba(11,11,12,.35) 0%,transparent 30%,transparent 75%,var(--ink) 100%)}
@@ -513,7 +515,7 @@ footer.foot .wrap{display:block;text-align:left;color:var(--mute);font-size:15px
 
 <header class="hero" id="top">
  <div class="pin">
-  <div class="bg" id="heroBg"></div>
+  <div class="bg" id="heroBg"><video id="heroVid" muted loop playsinline autoplay preload="auto" aria-hidden="true"></video></div>
   <div class="shade"></div>
   <div class="vig" id="heroVig"></div>
   <div class="wrap" id="heroTxt">
@@ -878,6 +880,15 @@ const creed=document.getElementById('creed');
 creed.innerHTML=creed.innerHTML.replace(/(<em>|<\/em>)|([^\s<>]+)/g,(m,tag,w)=>tag?tag:`<span class="w">${w}</span>`);
 const words=[...creed.querySelectorAll('.w')];
 
+/* hero background video (shop footage from the Palo Magazine feature): portrait cut on phones, wide cut on desktop.
+   Fades in over the still photo once it can play; pauses while the hero is off screen. Not gated on reduced motion on purpose. */
+(()=>{const v=document.getElementById('heroVid'); if(!v)return;
+  const tall=innerWidth/innerHeight<0.9; v.src=tall?'vid/hero-tall.mp4':'vid/hero-wide.mp4'; v.poster=tall?'vid/hero-tall.webp':'vid/hero-wide.webp';
+  v.muted=true; v.addEventListener('playing',()=>v.classList.add('on'),{once:true});
+  const go=()=>{const p=v.play(); if(p&&p.catch)p.catch(()=>{})}; go();
+  new IntersectionObserver(es=>{es[0].isIntersecting?go():v.pause()},{threshold:0}).observe(document.getElementById('top'));
+  addEventListener('touchstart',go,{once:true,passive:true});
+})();
 /* scroll effects */
 const bgBlur=document.getElementById('bgBlur'), kMask=document.getElementById('kMask'), heroShade=document.querySelector('.hero .shade'), heroCue=document.querySelector('.hero .cue');
 function kOrigin(){kMask.style.display=''; const o=kMask.querySelector('.kw').getBoundingClientRect(), m=kMask.getBoundingClientRect(); kMask.style.transformOrigin=`${o.left+o.width/2-m.left}px ${o.top+o.height/2-m.top}px`}
