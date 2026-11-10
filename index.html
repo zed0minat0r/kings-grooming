@@ -895,7 +895,7 @@ const words=[...creed.querySelectorAll('.w')];
 /* hero background video (shop footage from the Palo Magazine feature): portrait cut on phones, wide cut on desktop.
    Fades in over the still photo once it can play; pauses while the hero is off screen. Not gated on reduced motion on purpose. */
 (()=>{const v=document.getElementById('heroVid'); if(!v)return;
-  const tall=innerWidth/innerHeight<0.9; v.src=tall?'vid/hero-tall.mp4?v=4':'vid/hero-wide.mp4?v=4'; v.poster=tall?'vid/hero-tall.webp?v=4':'vid/hero-wide.webp?v=4';
+  const tall=innerWidth/innerHeight<0.9; v.src=tall?'vid/hero-tall.mp4?v=5':'vid/hero-wide.mp4?v=5'; v.poster=tall?'vid/hero-tall.webp?v=5':'vid/hero-wide.webp?v=5';
   v.muted=true; v.addEventListener('playing',()=>v.classList.add('on'),{once:true});
   const go=()=>{const p=v.play(); if(p&&p.catch)p.catch(()=>{})}; go();
   new IntersectionObserver(es=>{es[0].isIntersecting?go():v.pause()},{threshold:0}).observe(document.getElementById('top'));
