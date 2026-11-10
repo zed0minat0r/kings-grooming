@@ -50,9 +50,20 @@ h2 em{font-style:italic;font-weight:400;color:#d9d2ff}
 #splash.gone{opacity:0;visibility:hidden}
 #splash .board{position:absolute;inset:0;background-image:linear-gradient(45deg,rgba(255,255,255,.025) 25%,transparent 25%,transparent 75%,rgba(255,255,255,.025) 75%),linear-gradient(45deg,rgba(255,255,255,.025) 25%,transparent 25%,transparent 75%,rgba(255,255,255,.025) 75%);background-size:120px 120px;background-position:0 0,60px 60px;-webkit-mask:radial-gradient(ellipse at 50% 45%,#000 0%,transparent 70%);mask:radial-gradient(ellipse at 50% 45%,#000 0%,transparent 70%)}
 #splash .inner{position:relative;text-align:center;padding:24px}
-#splash .badge{width:min(300px,62vw);margin:0 auto;position:relative;filter:drop-shadow(0 30px 60px rgba(0,0,0,.7));animation:rise 1.4s cubic-bezier(.2,.7,.2,1) both}
-#splash .badge::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);background-size:300% 100%;-webkit-mask:url(img/logo.webp) center/contain no-repeat;mask:url(img/logo.webp) center/contain no-repeat;animation:glint 4.5s ease-in-out 1.2s infinite}
-@keyframes glint{0%{background-position:150% 0}45%,100%{background-position:-60% 0}}
+#splash .crest{position:relative;width:min(340px,68vw);margin:0 auto;animation:rise 1.4s cubic-bezier(.2,.7,.2,1) both}
+#splash .badge{display:block;width:100%;position:relative;filter:drop-shadow(0 30px 60px rgba(0,0,0,.75)) drop-shadow(0 0 1px rgba(255,255,255,.35));animation:flash 5s linear 1.1s infinite}
+#splash .halo{position:absolute;inset:-22%;background:radial-gradient(closest-side,rgba(200,192,255,.22),rgba(140,130,220,.08) 55%,transparent 75%);animation:breathe 5s ease-in-out infinite}
+#splash .sheen{position:absolute;inset:0;pointer-events:none;background:linear-gradient(112deg,transparent 34%,rgba(255,255,255,.18) 42%,rgba(255,255,255,1) 50%,rgba(255,255,255,.18) 58%,transparent 66%),linear-gradient(112deg,transparent 66%,rgba(255,255,255,.55) 69%,transparent 72%);background-size:300% 100%;background-repeat:no-repeat;-webkit-mask:url(img/logo-hd.webp) center/100% 100% no-repeat;mask:url(img/logo-hd.webp) center/100% 100% no-repeat;mix-blend-mode:screen;animation:glint 5s linear 1.1s infinite}
+/* four-point sparkle on the logo's star, flaring as the light passes it */
+#splash .spark{position:absolute;left:43%;top:26.4%;width:58%;filter:drop-shadow(0 0 6px rgba(255,255,255,.9)) drop-shadow(0 0 14px rgba(200,190,255,.8));aspect-ratio:1;transform:translate(-50%,-50%) scale(0) rotate(0deg);pointer-events:none;mix-blend-mode:screen;animation:spark 5s ease-out 1.1s infinite}
+#splash .spark::before,#splash .spark::after{content:"";position:absolute;left:50%;top:50%;width:100%;height:7%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,#fff,#fff 20%,rgba(255,255,255,.55) 45%,transparent)}
+#splash .spark::after{transform:translate(-50%,-50%) rotate(90deg)}
+#splash .spark.s2{left:79%;top:57%;width:26%;animation-delay:2.05s}
+@keyframes spark{0%,18%{transform:translate(-50%,-50%) scale(0) rotate(0deg);opacity:0}26%{transform:translate(-50%,-50%) scale(1) rotate(45deg);opacity:1}40%,100%{transform:translate(-50%,-50%) scale(0) rotate(90deg);opacity:0}}
+@keyframes flash{0%,12%,44%,100%{filter:drop-shadow(0 30px 60px rgba(0,0,0,.75)) drop-shadow(0 0 1px rgba(255,255,255,.35)) brightness(1)}26%{filter:drop-shadow(0 30px 60px rgba(0,0,0,.75)) drop-shadow(0 0 10px rgba(220,214,255,.45)) brightness(1.12)}}
+@keyframes breathe{0%,100%{opacity:.65;transform:scale(.96)}50%{opacity:1;transform:scale(1.04)}}
+#splash .ssocs{justify-content:center;margin-top:26px;animation:rise 1.2s .75s both}
+@keyframes glint{0%{background-position:150% 0}50%,100%{background-position:-50% 0}}
 @keyframes rise{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
 #splash .tag{margin:34px 0 30px;font:400 italic clamp(22px,3.4vw,30px)/1.25 var(--serif);color:var(--chalk);animation:rise 1.2s .35s both}
 #splash .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;animation:rise 1.2s .55s both}
@@ -488,12 +499,13 @@ footer.foot .wrap{display:block;text-align:left;color:var(--mute);font-size:15px
 <div id="splash" role="dialog" aria-label="Welcome">
   <div class="board"></div>
   <div class="inner">
-    <img decoding="async" class="badge" src="img/logo.webp" alt="Kings Grooming Parlor">
+    <div class="crest"><div class="halo"></div><img decoding="async" class="badge" src="img/logo-hd.webp" alt="Kings Grooming Parlor"><div class="sheen"></div><span class="spark"></span><span class="spark s2"></span></div>
     <p class="tag">A King's Experience welcomes you.</p>
     <div class="row">
       <button class="btn solid" data-book>Book a barber</button>
       <button class="btn" id="enter">Enter</button>
     </div>
+    <div class="socs ssocs"><a class="soc" href="https://www.instagram.com/kings_grooming_parlor/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor"/></svg></a><a class="soc" href="https://www.tiktok.com/@kings.grooming.pa" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg></a><a class="soc" href="https://www.youtube.com/@AKingsExperienceGroomingParlor" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.27 5 12 5 12 5s-6.27 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.76 1.77C5.73 19 12 19 12 19s6.27 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15.02V8.98L15.2 12z"/></svg></a><a class="soc" href="https://www.facebook.com/p/A-Kings-Experience-Grooming-Parlor-100088666946963/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg></a></div>
   </div>
 </div>
 
