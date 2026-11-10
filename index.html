@@ -610,7 +610,7 @@ footer.foot .wrap{display:block;text-align:left;color:var(--mute);font-size:15px
       <div><p class="kicker reveal">Careers</p><h2 class="reveal" style="margin-top:18px">Come work <em>with us.</em></h2></div>
     </div>
     <div class="grid">
-      <div class="photo reveal"><img decoding="async" src="img/shop-station.webp" alt="A barber station at the Parlor" id="carImg"><div class="cta"><a class="btn solid" href="mailto:info@kingsgroomingparlor.com?subject=Join%20the%20Team">Join the team</a></div></div>
+      <div class="photo reveal"><img decoding="async" src="img/careers-wall.webp" alt="The lit Kings Grooming Parlor sign on the new wall" id="carImg" style="object-position:50% 0"><div class="cta"><a class="btn solid" href="mailto:info@kingsgroomingparlor.com?subject=Join%20the%20Team">Join the team</a></div></div>
       <div class="tiles">
         <div class="tile reveal"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="14"/><path d="M20 12v8l6 4"/></svg><b>Flexibility in schedules</b></div>
         <div class="tile reveal"><svg viewBox="0 0 40 40"><path d="M13 8h14v8a7 7 0 0 1-14 0z"/><path d="M13 11H8a5 5 0 0 0 5 6M27 11h5a5 5 0 0 1-5 6M20 23v6M14 32h12"/></svg><b>Monthly &amp; yearly incentives</b></div>
@@ -895,7 +895,7 @@ const words=[...creed.querySelectorAll('.w')];
 /* hero background video (shop footage from the Palo Magazine feature): portrait cut on phones, wide cut on desktop.
    Fades in over the still photo once it can play; pauses while the hero is off screen. Not gated on reduced motion on purpose. */
 (()=>{const v=document.getElementById('heroVid'); if(!v)return;
-  const tall=innerWidth/innerHeight<0.9; v.src=tall?'vid/hero-tall.mp4?v=3':'vid/hero-wide.mp4?v=3'; v.poster=tall?'vid/hero-tall.webp?v=3':'vid/hero-wide.webp?v=3';
+  const tall=innerWidth/innerHeight<0.9; v.src=tall?'vid/hero-tall.mp4?v=3':'vid/hero-wide.mp4?v=3'; v.poster=tall?'vid/hero-tall.webp?v=4':'vid/hero-wide.webp?v=4';
   v.muted=true; v.addEventListener('playing',()=>v.classList.add('on'),{once:true});
   const go=()=>{const p=v.play(); if(p&&p.catch)p.catch(()=>{})}; go();
   new IntersectionObserver(es=>{es[0].isIntersecting?go():v.pause()},{threshold:0}).observe(document.getElementById('top'));
