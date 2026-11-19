@@ -456,7 +456,7 @@ function openPV(h,push=true){
   gallery(); opts(); $('.info').scrollTop=0;
   pv.classList.add('on'); pv.setAttribute('aria-hidden','false'); lock();
   if(push&&location.hash!=='#p='+h) history.pushState({pv:h},'','#p='+h);
-  setTimeout(()=>$('#pv .x').focus({preventScroll:true}),60);
+  if(matchMedia('(hover:hover)').matches)setTimeout(()=>$('#pv .x').focus({preventScroll:true}),60);
 }
 function closePV(fromPop=false){
   if(!pv.classList.contains('on'))return;
@@ -488,7 +488,7 @@ $('#bagList').addEventListener('click',e=>{
   else if(sh){closeBag(); $('#collection').scrollIntoView({behavior:'smooth'}); return}
   else return;
   $('#bagMsg').textContent=''; save(); drawBag()});
-function openBag(){bag.classList.add('on');bag.setAttribute('aria-hidden','false');lock();setTimeout(()=>bag.querySelector('.x').focus({preventScroll:true}),60)}
+function openBag(){bag.classList.add('on');bag.setAttribute('aria-hidden','false');lock();if(matchMedia('(hover:hover)').matches)setTimeout(()=>bag.querySelector('.x').focus({preventScroll:true}),60)}
 function closeBag(){bag.classList.remove('on');bag.setAttribute('aria-hidden','true');lock()}
 $('#bagBtn').onclick=openBag; bag.querySelector('[data-close]').onclick=closeBag;
 $('#addBtn').onclick=()=>{
