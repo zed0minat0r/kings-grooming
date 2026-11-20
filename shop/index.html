@@ -104,26 +104,38 @@ nav .bagbtn.bump{animation:bump .5s var(--ease)}
 .sort select option{background:var(--ink2);color:var(--chalk)}
 .sort::after{content:"";position:absolute;right:2px;top:50%;width:7px;height:7px;border-right:1.5px solid var(--mute);border-bottom:1.5px solid var(--mute);transform:translateY(-70%) rotate(45deg);pointer-events:none}
 @media (max-width:640px){.sort select{font-size:0;width:34px;padding-right:0;color:transparent}.sort::after{right:12px}}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(26px,3vw,48px) clamp(12px,1.6vw,26px);transition:opacity .25s}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:34px clamp(12px,1.6vw,22px);transition:opacity .25s}
 .grid.swap{opacity:0}
-@media (min-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
-.tile{display:block;text-align:left;background:none;border:0;cursor:pointer;opacity:0;transform:translateY(18px);animation:tin .8s var(--ease) forwards}
-@keyframes tin{to{opacity:1;transform:none}}
-.tile .im{position:relative;aspect-ratio:4/5;border-radius:4px;overflow:hidden;background:radial-gradient(circle at 50% 42%,#fbfaf8,var(--paper) 55%,var(--paper2))}
-.tile .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:8%;mix-blend-mode:multiply;transition:transform 1.2s var(--ease),opacity .6s ease}
+@media (min-width:900px){.grid{grid-template-columns:repeat(4,1fr);row-gap:44px}}
+.tile{display:block;text-align:left;background:none;border:0;cursor:pointer;opacity:0;animation:tin .6s var(--ease) forwards}
+@keyframes tin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.tile .im{position:relative;aspect-ratio:1;border-radius:18px;overflow:hidden;background:#fff}
+.tile .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:transform 1s var(--ease),opacity .6s ease}
 .tile .im img.alt{opacity:0}
-@media (hover:hover){.tile:hover .im img.alt{opacity:1}.tile:hover .im img.main.has2{opacity:0}.tile:hover .im img{transform:scale(1.04)}}
-.tile .tag{position:absolute;left:14px;top:14px;font:700 10px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:#4a3fa8}
-.tile .add{position:absolute;left:12px;right:12px;bottom:12px;padding:14px;border-radius:999px;background:#0b0b0c;color:#fff;font:600 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;text-align:center;opacity:0;transform:translateY(10px);transition:.45s var(--ease)}
+@media (hover:hover){.tile:hover .im img.alt{opacity:1}.tile:hover .im img.main.has2{opacity:0}.tile:hover .im img{transform:scale(1.07)}}
+.tile .add{position:absolute;left:10px;right:10px;bottom:10px;padding:12px;border-radius:12px;background:rgba(17,17,17,.88);color:#fff;font:700 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;text-align:center;opacity:0;transform:translateY(10px);transition:.35s var(--ease)}
 @media (hover:hover){.tile:hover .add,.tile:focus-visible .add{opacity:1;transform:none}}
-.tile .meta{display:flex;justify-content:space-between;gap:12px;margin-top:16px;align-items:baseline}
-.tile b{font:400 clamp(17px,1.6vw,21px)/1.25 var(--serif);font-weight:400}
-.tile .pr{font:500 14px/1 var(--sans);color:var(--mute);white-space:nowrap}
-@media (max-width:640px){.tile .meta{flex-direction:column;gap:8px;margin-top:12px}}
-.tile .sw{display:flex;gap:6px;margin-top:10px;align-items:center}
-.tile .sw i{width:10px;height:10px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+@media (hover:none){.tile .add{display:none}}
+.tile .cat{display:block;margin-top:14px;font:600 10px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--dim)}
+.tile b{display:block;margin-top:7px;font:600 15px/1.35 var(--sans);color:var(--chalk)}
+.tile .pr{display:block;margin-top:6px;font:400 19px/1 var(--serif);color:var(--lilac)}
+.tile .sw{display:flex;gap:5px;margin-top:10px;align-items:center}
+.tile .sw i{width:9px;height:9px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
 .tile .sw span{font-size:11px;color:var(--dim);margin-left:2px}
-.tile .cat{font:600 10px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--dim);margin-top:8px;display:block}
+/* featured card, same as the homepage merch section */
+.feat{display:grid;grid-template-columns:1fr;border-radius:28px;overflow:hidden;background:#f2f1ee;color:#111;margin-bottom:46px;cursor:pointer}
+@media (min-width:860px){.feat{grid-template-columns:1.1fr .9fr}}
+.feat .fi{position:relative;aspect-ratio:1;overflow:hidden;background:#fff}
+.feat .fi img{width:100%;height:100%;object-fit:contain;transition:transform 1.4s var(--ease)}
+.feat:hover .fi img{transform:scale(1.04) rotate(-1deg)}
+.feat .ft{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:14px;padding:clamp(28px,5vw,64px)}
+.feat .lbl{font:700 11px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:#6b5bd6}
+.feat h3{font:400 clamp(34px,4vw,54px)/1.05 var(--serif)}
+.feat .pr{font:400 26px/1 var(--serif);color:#333}
+.feat .sw{display:flex;gap:8px}
+.feat .sw i{width:14px;height:14px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)}
+.feat .btn{border-color:#111;color:#111}.feat .btn.solid{background:#111;color:#fff;border-color:#111}
+.feat .acts{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
 
 /* editorial band */
 .band{position:relative;display:grid;gap:0;grid-template-columns:1fr;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -221,6 +233,32 @@ footer a:hover{color:var(--chalk)}
 .det li{display:flex;gap:12px}
 .det li::before{content:"";width:5px;height:5px;margin-top:10px;border-radius:50%;background:var(--lilac);flex:none}
 .det + .det{border-top:1px solid var(--line)}
+/* product view in the homepage quick-view palette: white photo side, cream card, dark type */
+#pv .box{background:#f2f1ee;color:#111}
+@media (min-width:900px){#pv .box{border-radius:26px}}
+.gal{background:#fff}
+.gal .rail img{mix-blend-mode:normal;padding:0}
+@media (min-width:900px){.gal .rail img{padding:4%}}
+.gal .thumbs button{background:#fff}.gal .thumbs img{mix-blend-mode:normal}
+.info .kick{color:#6b5bd6}
+.info h2{color:#111}
+.info .price{color:#333}
+.opt .ol{color:#777}.opt .ol b{color:#111}
+.sws button{box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)}
+.sws button.on::after{border-color:#111}
+.pills button{border-color:rgba(0,0,0,.18);color:#111}
+.pills button:hover{border-color:#111}
+.pills button.on{background:#111;color:#fff;border-color:#111}
+#pv .qty{border-color:rgba(0,0,0,.18)}
+#pv .qty button{color:#555}#pv .qty button:hover{color:#111}
+#pv .btn.solid{background:#111;color:#fff;border-color:#111}
+#pv .btn.solid:hover{background:#000}
+.secure{color:#666}
+.det,.det + .det{border-top-color:rgba(0,0,0,.1)}
+.det ul{color:#333}
+.det li::before{background:#6b5bd6}
+@media (max-width:899px){#pv .buy{background:rgba(242,241,238,.96);border-top-color:rgba(0,0,0,.08)}}
+
 
 /* bag drawer */
 #bag{position:fixed;z-index:80;top:0;right:0;bottom:0;width:min(460px,100%);background:var(--ink2);border-left:1px solid var(--line);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .65s var(--ease);visibility:hidden}
@@ -233,8 +271,8 @@ footer a:hover{color:var(--chalk)}
 #bag .x svg{width:14px;height:14px}
 #bag .list{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:8px 24px}
 .li{display:grid;grid-template-columns:92px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);animation:tin .5s var(--ease)}
-.li .lim{aspect-ratio:4/5;background:var(--paper);border-radius:3px;overflow:hidden;cursor:pointer}
-.li .lim img{width:100%;height:100%;object-fit:contain;padding:8%;mix-blend-mode:multiply}
+.li .lim{aspect-ratio:1;background:#fff;border-radius:12px;overflow:hidden;cursor:pointer}
+.li .lim img{width:100%;height:100%;object-fit:contain}
 .li .lt{display:flex;flex-direction:column;gap:4px;min-width:0}
 .li .lt b{font:400 18px/1.25 var(--serif);font-weight:400}
 .li .lt .v{font-size:13px;color:var(--dim)}
@@ -290,6 +328,7 @@ footer a:hover{color:var(--chalk)}
     <div class="chead">
       <div><span class="kick reveal">Reading, PA</span><h2 class="reveal">The <em>collection.</em></h2></div>
     </div>
+    <div class="feat reveal" id="feat"></div>
   </div>
   <div class="bar"><div class="wrap">
     <div class="chips" id="chips"></div>
@@ -387,9 +426,9 @@ function tile(p,i){
   const ci=colorOpt(p), sw=ci>=0?p.opts[ci].v:[];
   const alt=p.im[1]?IMG(p.im[1]):'';
   return `<button class="tile" data-h="${p.h}" style="animation-delay:${Math.min(i,8)*60}ms" aria-label="${esc(p.n)}, ${hasRange(p)?'from ':''}${money(p.base)}">
-    <div class="im"><img class="main${alt?' has2':''}" src="${p.cover}" alt="" loading="${i<6?'eager':'lazy'}" decoding="async">${alt?`<img class="alt" src="${alt}" alt="" loading="lazy" decoding="async">`:''}<span class="add">View</span></div>
-    <div class="meta"><b>${esc(p.n)}</b><span class="pr">${hasRange(p)?'From ':''}${money(p.base)}</span></div>
-    ${sw.length>1?`<div class="sw">${sw.slice(0,6).map(v=>`<i style="background:${v.hex}"></i>`).join('')}${sw.length>6?`<span>+${sw.length-6}</span>`:''}</div>`:`<span class="cat">${p.c==='Decals'?'Decal':p.c.replace(/s$/,'')}</span>`}
+    <div class="im"><img class="main${alt?' has2':''}" src="${p.cover}" alt="" loading="${i<6?'eager':'lazy'}" decoding="async">${alt?`<img class="alt" src="${alt}" alt="" loading="lazy" decoding="async">`:''}<span class="add">Quick view</span></div>
+    <span class="cat">${p.c}</span><b>${esc(p.n)}</b><span class="pr">${hasRange(p)?'From ':''}${money(p.base)}</span>
+    ${sw.length>1?`<div class="sw">${sw.slice(0,6).map(v=>`<i style="background:${v.hex}"></i>`).join('')}${sw.length>6?`<span>+${sw.length-6}</span>`:''}</div>`:''}
   </button>`}
 function render(){
   let list=CAT.filter(p=>cur==='All'||p.c===cur);
@@ -405,6 +444,9 @@ sortSel.addEventListener('change',swapRender);
 addEventListener('resize',placeUL);
 grid.addEventListener('click',e=>{const t=e.target.closest('.tile'); if(t)openPV(t.dataset.h)});
 render(); document.fonts&&document.fonts.ready.then(placeUL);
+{const F=CAT[0], fs=colorOpt(F)>=0?F.opts[colorOpt(F)].v:[], fe=$('#feat');
+ fe.innerHTML=`<div class="fi"><img src="${F.cover}" alt="${esc(F.n)}"></div><div class="ft"><span class="lbl">Featured</span><h3>${esc(F.n)}</h3><p class="pr">${hasRange(F)?'From ':''}${money(F.base)}</p>${fs.length>1?`<div class="sw">${fs.map(v=>`<i style="background:${v.hex}"></i>`).join('')}</div>`:''}<div class="acts"><button class="btn solid">Shop now</button></div></div>`;
+ fe.onclick=()=>openPV(F.h)}
 
 /* ---------- overlays ---------- */
 const scrim=$('#scrim'), pv=$('#pv'), bag=$('#bag');
